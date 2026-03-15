@@ -841,7 +841,6 @@
     });
   }
 
-
   function dynamicCurrentMenuClass(selector) {
     let fileName = window.location.pathname.split("/").pop() || ""; // Default to index.html if no file name
 
