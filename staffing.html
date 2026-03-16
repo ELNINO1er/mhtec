@@ -65,6 +65,7 @@
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="assets/css/language-switcher.css" />
 </head>
 
 <body class="custom-cursor">
@@ -89,19 +90,19 @@
         <div class="popup-inner">
             <div class="close-chat"><i class="fa fa-times"></i></div>
             <div class="chat-form">
-                <p>Remplissez le formulaire ci-dessous et nous vous repondrons dans les plus brefs delais.</p>
+                <p data-i18n="chat.description">Remplissez le formulaire ci-dessous et nous vous repondrons dans les plus brefs delais.</p>
                 <form action="assets/inc/sendemail.php" method="POST" class="contact-form-validated">
                     <div class="form-group">
-                        <input type="text" name="name" placeholder="Votre nom" required>
+                        <input type="text" name="name" placeholder="Votre nom" data-i18n-placeholder="chat.name_placeholder" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" placeholder="contact@mhtechnology.com" required>
+                        <input type="email" name="email" placeholder="contact@mhtechnology.com" data-i18n-placeholder="chat.email_placeholder" required>
                     </div>
                     <div class="form-group">
-                        <textarea name="message" placeholder="Votre message" required></textarea>
+                        <textarea name="message" placeholder="Votre message" data-i18n-placeholder="chat.message_placeholder" required></textarea>
                     </div>
                     <div class="form-group message-btn">
-                        <button type="submit" class="thm-btn"> Envoyer
+                        <button type="submit" class="thm-btn"><span data-i18n="chat.send_button">Envoyer</span>
                             <span class="fas fa-arrow-right"></span>
                         </button>
                     </div>
@@ -128,29 +129,29 @@
                                 <a href="index.html"><img src="assets/images/resources/logo-2.png" alt="" /></a>
                             </div>
                             <div class="content-box">
-                                <h4>A propos de MHTECH</h4>
+                                <h4 data-i18n="sidebar.about_title">A propos de MHTECH</h4>
                                 <div class="inner-text">
-                                     <p>MHTECH Consulting accompagne les entreprises dans leur transformation digitale
+                                     <p data-i18n="sidebar.about_text">MHTECH Consulting accompagne les entreprises dans leur transformation digitale
                                          avec des solutions modernes, performantes et securisees.
                                      </p>
                                 </div>
                             </div>
 
                             <div class="form-inner">
-                                <h4>Demandez une consultation</h4>
+                                <h4 data-i18n="sidebar.consultation_title">Demandez une consultation</h4>
                                 <form action="assets/inc/sendemail.php" method="POST" class="contact-form-validated">
                                     <div class="form-group">
-                                        <input type="text" name="name" placeholder="Name" required="">
+                                        <input type="text" name="name" placeholder="Name" data-i18n-placeholder="sidebar.name_placeholder" required="">
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" name="email" placeholder="Email" required="">
+                                        <input type="email" name="email" placeholder="Email" data-i18n-placeholder="sidebar.email_placeholder" required="">
                                     </div>
                                     <div class="form-group">
-                                        <textarea name="message" placeholder="Message..." required=""></textarea>
+                                        <textarea name="message" placeholder="Message..." data-i18n-placeholder="sidebar.message_placeholder" required=""></textarea>
                                     </div>
                                     <div class="form-group message-btn">
                                         <button class="thm-btn" data-text="Envoyer +" type="submit"
-                                            data-loading-text="Veuillez patienter...">Envoyer
+                                            data-loading-text="Veuillez patienter..."><span data-i18n="sidebar.send_button">Envoyer</span>
                                             <span class="fas fa-arrow-right"></span>
                                         </button>
                                     </div>
@@ -159,7 +160,7 @@
                             </div>
 
                             <div class="sidebar-contact-info">
-                                <h4>Coordonnees</h4>
+                                <h4 data-i18n="sidebar.contact_title">Coordonnees</h4>
                                 <ul class="list-unstyled">
                                     <li>
                                         <span class="icon-pin"></span> 88 broklyn street, New York
@@ -246,29 +247,33 @@
                             <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                             <ul class="main-menu__list">
                                 <li>
-                                    <a href="index.html">Accueil</a>
+                                    <a href="index.html" data-i18n="nav.home">Accueil</a>
                                 </li>
                                 <li>
-                                    <a href="about.html">A propos</a>
+                                    <a href="about.html" data-i18n="nav.about">A propos</a>
                                 </li>
                                 <li>
-                                    <a href="services.html">Services IT</a>
+                                    <a href="services.html" data-i18n="nav.services">Services IT</a>
                                 </li>
                                 <li>
-                                    <a href="staffing.html">Staffing IT</a>
+                                    <a href="staffing.html" data-i18n="nav.staffing">Staffing IT</a>
                                 </li>
                                 <li>
-                                    <a href="testimonials.html">Temoignages</a>
+                                    <a href="testimonials.html" data-i18n="nav.testimonials">Temoignages</a>
                                 </li>
                                 <li>
-                                    <a href="blog.html">Blog</a>
+                                    <a href="blog.html" data-i18n="nav.blog">Blog</a>
                                 </li>
                                 <li>
-                                    <a href="contact.html">Contact</a>
+                                    <a href="contact.html" data-i18n="nav.contact">Contact</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="main-menu__right">
+                            <div class="language-switcher">
+                                <button class="lang-btn active" data-lang="fr">FR</button>
+                                <button class="lang-btn" data-lang="en">EN</button>
+                            </div>
                             <div class="main-menu__call">
                                 <div class="main-menu__call-icon">
                                     <i class="icon-call"></i>
@@ -308,12 +313,12 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h3>Staffing IT</h3>
+                    <h3 data-i18n="staffing_page.page_title">Staffing IT</h3>
                     <div class="thm-breadcrumb__inner">
                         <ul class="thm-breadcrumb list-unstyled">
-                            <li><a href="index.html">Accueil</a></li>
+                            <li><a href="index.html" data-i18n="staffing_page.breadcrumb_home">Accueil</a></li>
                             <li><span class="icon-arrow-angle-pointing-to-right"></span></li>
-                            <li>Staffing IT</li>
+                            <li data-i18n="staffing_page.breadcrumb_current">Staffing IT</li>
                         </ul>
                     </div>
                 </div>
@@ -327,17 +332,17 @@
                 <!-- Introduction Section -->
                 <div class="section-title text-center sec-title-animation animation-style2 mb-5">
                     <div class="section-title__tagline-box">
-                        <span class="section-title__tagline">Staffing IT</span>
+                        <span class="section-title__tagline" data-i18n="staffing_page.intro_tagline">Staffing IT</span>
                     </div>
-                    <h2 class="section-title__title title-animation">Trouvez les talents IT dont vous avez besoin</h2>
-                    <p class="section-title__text">MH Tech Consulting connecte les meilleures competences IT avec les entreprises innovantes</p>
+                    <h2 class="section-title__title title-animation" data-i18n="staffing_page.intro_title">Trouvez les talents IT dont vous avez besoin</h2>
+                    <p class="section-title__text" data-i18n="staffing_page.intro_description">MH Tech Consulting connecte les meilleures competences IT avec les entreprises innovantes</p>
                 </div>
 
                 <!-- Section Pour les Entreprises -->
                 <div class="row mb-5">
                     <div class="col-12">
-                        <h2 class="mb-4" style="color: #2563eb; font-size: 32px;">Pour les Entreprises</h2>
-                        <p class="mb-4" style="font-size: 16px; line-height: 1.8;">Vous cherchez a renforcer votre equipe avec des experts IT qualifies ? MH Tech Consulting vous aide a recruter rapidement les meilleurs talents pour vos projets technologiques.</p>
+                        <h2 class="mb-4" style="color: #2563eb; font-size: 32px;" data-i18n="staffing_page.for_companies_title">Pour les Entreprises</h2>
+                        <p class="mb-4" style="font-size: 16px; line-height: 1.8;" data-i18n="staffing_page.for_companies_description">Vous cherchez a renforcer votre equipe avec des experts IT qualifies ? MH Tech Consulting vous aide a recruter rapidement les meilleurs talents pour vos projets technologiques.</p>
                     </div>
                 </div>
 
@@ -354,8 +359,8 @@
                                 </div>
                             </div>
                             <div class="services-two__content">
-                                <h3 class="services-two__title">Developpeurs & Ingenieurs</h3>
-                                <p class="services-two__text">Full Stack, Front-end, Back-end, Mobile, DevOps - Des developpeurs qualifies pour tous vos besoins techniques.</p>
+                                <h3 class="services-two__title" data-i18n="staffing_page.talent1_title">Developpeurs & Ingenieurs</h3>
+                                <p class="services-two__text" data-i18n="staffing_page.talent1_desc">Full Stack, Front-end, Back-end, Mobile, DevOps - Des developpeurs qualifies pour tous vos besoins techniques.</p>
                             </div>
                         </div>
                     </div>
@@ -372,8 +377,8 @@
                                 </div>
                             </div>
                             <div class="services-two__content">
-                                <h3 class="services-two__title">Designers & UX/UI</h3>
-                                <p class="services-two__text">Designers UI/UX, graphistes, experts en experience utilisateur pour creer des interfaces performantes.</p>
+                                <h3 class="services-two__title" data-i18n="staffing_page.talent2_title">Designers & UX/UI</h3>
+                                <p class="services-two__text" data-i18n="staffing_page.talent2_desc">Designers UI/UX, graphistes, experts en experience utilisateur pour creer des interfaces performantes.</p>
                             </div>
                         </div>
                     </div>
@@ -390,8 +395,8 @@
                                 </div>
                             </div>
                             <div class="services-two__content">
-                                <h3 class="services-two__title">Experts Cybersecurite</h3>
-                                <p class="services-two__text">Specialistes en securite informatique, pentesters, analystes SOC pour proteger vos systemes.</p>
+                                <h3 class="services-two__title" data-i18n="staffing_page.talent3_title">Experts Cybersecurite</h3>
+                                <p class="services-two__text" data-i18n="staffing_page.talent3_desc">Specialistes en securite informatique, pentesters, analystes SOC pour proteger vos systemes.</p>
                             </div>
                         </div>
                     </div>
@@ -408,8 +413,8 @@
                                 </div>
                             </div>
                             <div class="services-two__content">
-                                <h3 class="services-two__title">Chefs de Projet IT</h3>
-                                <p class="services-two__text">Project Managers, Scrum Masters, Product Owners pour piloter vos initiatives technologiques.</p>
+                                <h3 class="services-two__title" data-i18n="staffing_page.talent4_title">Chefs de Projet IT</h3>
+                                <p class="services-two__text" data-i18n="staffing_page.talent4_desc">Project Managers, Scrum Masters, Product Owners pour piloter vos initiatives technologiques.</p>
                             </div>
                         </div>
                     </div>
@@ -426,8 +431,8 @@
                                 </div>
                             </div>
                             <div class="services-two__content">
-                                <h3 class="services-two__title">Consultants IT</h3>
-                                <p class="services-two__text">Experts en architecture, cloud, data science et intelligence artificielle pour vos projets strategiques.</p>
+                                <h3 class="services-two__title" data-i18n="staffing_page.talent5_title">Consultants IT</h3>
+                                <p class="services-two__text" data-i18n="staffing_page.talent5_desc">Experts en architecture, cloud, data science et intelligence artificielle pour vos projets strategiques.</p>
                             </div>
                         </div>
                     </div>
@@ -444,8 +449,8 @@
                                 </div>
                             </div>
                             <div class="services-two__content">
-                                <h3 class="services-two__title">Support & Operations</h3>
-                                <p class="services-two__text">Administrateurs systemes, techniciens support, operateurs IT pour maintenir vos infrastructures.</p>
+                                <h3 class="services-two__title" data-i18n="staffing_page.talent6_title">Support & Operations</h3>
+                                <p class="services-two__text" data-i18n="staffing_page.talent6_desc">Administrateurs systemes, techniciens support, operateurs IT pour maintenir vos infrastructures.</p>
                             </div>
                         </div>
                     </div>
@@ -456,7 +461,7 @@
                 <div class="row mt-5 mb-5">
                     <div class="col-12 text-center">
                         <a href="contact.html" class="thm-btn" style="padding: 15px 40px; font-size: 18px;">
-                            Recrutez vos talents IT
+                            <span data-i18n="staffing_page.cta_companies_button">Recrutez vos talents IT</span>
                             <span class="fas fa-arrow-right"></span>
                         </a>
                     </div>
@@ -465,8 +470,8 @@
                 <!-- Section Pour les Candidats -->
                 <div class="row mb-5 mt-5">
                     <div class="col-12">
-                        <h2 class="mb-4" style="color: #2563eb; font-size: 32px;">Pour les Candidats</h2>
-                        <p class="mb-4" style="font-size: 16px; line-height: 1.8;">Vous etes un professionnel IT en quete de nouvelles opportunites ? MH Tech Consulting vous accompagne dans votre evolution de carriere avec des missions stimulantes et des projets innovants.</p>
+                        <h2 class="mb-4" style="color: #2563eb; font-size: 32px;" data-i18n="staffing_page.for_candidates_title">Pour les Candidats</h2>
+                        <p class="mb-4" style="font-size: 16px; line-height: 1.8;" data-i18n="staffing_page.for_candidates_description">Vous etes un professionnel IT en quete de nouvelles opportunites ? MH Tech Consulting vous accompagne dans votre evolution de carriere avec des missions stimulantes et des projets innovants.</p>
                     </div>
                 </div>
 
@@ -482,8 +487,8 @@
                                 </div>
                             </div>
                             <div class="services-two__content">
-                                <h3 class="services-two__title">Missions Variees</h3>
-                                <p class="services-two__text">Acces a des projets diversifies dans differents secteurs : finance, sante, e-commerce, industrie et plus encore.</p>
+                                <h3 class="services-two__title" data-i18n="staffing_page.candidate_benefit1_title">Missions Variees</h3>
+                                <p class="services-two__text" data-i18n="staffing_page.candidate_benefit1_desc">Acces a des projets diversifies dans differents secteurs : finance, sante, e-commerce, industrie et plus encore.</p>
                             </div>
                         </div>
                     </div>
@@ -498,8 +503,8 @@
                                 </div>
                             </div>
                             <div class="services-two__content">
-                                <h3 class="services-two__title">Accompagnement Personnalise</h3>
-                                <p class="services-two__text">Support tout au long de votre parcours, de la recherche de mission a l'integration dans votre nouvelle equipe.</p>
+                                <h3 class="services-two__title" data-i18n="staffing_page.candidate_benefit2_title">Accompagnement Personnalise</h3>
+                                <p class="services-two__text" data-i18n="staffing_page.candidate_benefit2_desc">Support tout au long de votre parcours, de la recherche de mission a l'integration dans votre nouvelle equipe.</p>
                             </div>
                         </div>
                     </div>
@@ -509,7 +514,7 @@
                 <div class="row mt-5">
                     <div class="col-12 text-center">
                         <a href="contact.html" class="thm-btn" style="padding: 15px 40px; font-size: 18px;">
-                            Postulez maintenant
+                            <span data-i18n="staffing_page.cta_candidates_button">Postulez maintenant</span>
                             <span class="fas fa-arrow-right"></span>
                         </a>
                     </div>
@@ -526,13 +531,13 @@
             </div>
             <ul class="contact-three__sliding-text-list list-unstyled marquee_mode-3">
                 <li>
-                    <h2 data-hover="Identite visuelle" class="contact-three__sliding-text-title">CONTACTEZ-NOUS *</h2>
+                    <h2 data-hover="Identite visuelle" class="contact-three__sliding-text-title" data-i18n="staffing_page.contact_sliding_text">CONTACTEZ-NOUS *</h2>
                 </li>
                 <li>
-                    <h2 data-hover="Identite visuelle" class="contact-three__sliding-text-title">CONTACTEZ-NOUS *</h2>
+                    <h2 data-hover="Identite visuelle" class="contact-three__sliding-text-title" data-i18n="staffing_page.contact_sliding_text">CONTACTEZ-NOUS *</h2>
                 </li>
                 <li>
-                    <h2 data-hover="Identite visuelle" class="contact-three__sliding-text-title">CONTACTEZ-NOUS *</h2>
+                    <h2 data-hover="Identite visuelle" class="contact-three__sliding-text-title" data-i18n="staffing_page.contact_sliding_text">CONTACTEZ-NOUS *</h2>
                 </li>
             </ul>
             <div class="container">
@@ -1165,6 +1170,7 @@
 
     <!-- template js -->
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/i18n.js"></script>
 </body>
 
 </html>

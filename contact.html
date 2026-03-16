@@ -65,6 +65,7 @@
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="assets/css/language-switcher.css" />
 </head>
 
 <body class="custom-cursor">
@@ -89,19 +90,19 @@
         <div class="popup-inner">
             <div class="close-chat"><i class="fa fa-times"></i></div>
             <div class="chat-form">
-                <p>Remplissez le formulaire ci-dessous et nous vous repondrons dans les plus brefs delais.</p>
+                <p data-i18n="chat.description">Remplissez le formulaire ci-dessous et nous vous repondrons dans les plus brefs delais.</p>
                 <form action="assets/inc/sendemail.php" method="POST" class="contact-form-validated">
                     <div class="form-group">
-                        <input type="text" name="name" placeholder="Votre nom" required>
+                        <input type="text" name="name" data-i18n-placeholder="chat.name_placeholder" placeholder="Votre nom" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" placeholder="contact@mhtechnology.com" required>
+                        <input type="email" name="email" data-i18n-placeholder="chat.email_placeholder" placeholder="contact@mhtechnology.com" required>
                     </div>
                     <div class="form-group">
-                        <textarea name="message" placeholder="Votre message" required></textarea>
+                        <textarea name="message" data-i18n-placeholder="chat.message_placeholder" placeholder="Votre message" required></textarea>
                     </div>
                     <div class="form-group message-btn">
-                        <button type="submit" class="thm-btn"> Envoyer
+                        <button type="submit" class="thm-btn" data-i18n="chat.send_button"> Envoyer
                             <span class="fas fa-arrow-right"></span>
                         </button>
                     </div>
@@ -128,28 +129,28 @@
                                 <a href="index.html"><img src="assets/images/resources/logo-2.png" alt="" /></a>
                             </div>
                             <div class="content-box">
-                                <h4>A propos de MHTECH</h4>
+                                <h4 data-i18n="sidebar.about_title">A propos de MHTECH</h4>
                                 <div class="inner-text">
-                                     <p>MHTECH Consulting accompagne les entreprises dans leur transformation digitale
+                                     <p data-i18n="sidebar.about_text">MHTECH Consulting accompagne les entreprises dans leur transformation digitale
                                          avec des solutions modernes, performantes et securisees.
                                      </p>
                                 </div>
                             </div>
 
                             <div class="form-inner">
-                                <h4>Demandez une consultation</h4>
+                                <h4 data-i18n="sidebar.consultation_title">Demandez une consultation</h4>
                                 <form action="assets/inc/sendemail.php" method="POST" class="contact-form-validated">
                                     <div class="form-group">
-                                        <input type="text" name="name" placeholder="Name" required="">
+                                        <input type="text" name="name" data-i18n-placeholder="sidebar.name_placeholder" placeholder="Name" required="">
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" name="email" placeholder="Email" required="">
+                                        <input type="email" name="email" data-i18n-placeholder="sidebar.email_placeholder" placeholder="Email" required="">
                                     </div>
                                     <div class="form-group">
-                                        <textarea name="message" placeholder="Message..." required=""></textarea>
+                                        <textarea name="message" data-i18n-placeholder="sidebar.message_placeholder" placeholder="Message..." required=""></textarea>
                                     </div>
                                     <div class="form-group message-btn">
-                                        <button class="thm-btn" data-text="Envoyer +" type="submit"
+                                        <button class="thm-btn" data-text="Envoyer +" type="submit" data-i18n="sidebar.send_button"
                                             data-loading-text="Veuillez patienter...">Envoyer
                                             <span class="fas fa-arrow-right"></span>
                                         </button>
@@ -159,7 +160,7 @@
                             </div>
 
                             <div class="sidebar-contact-info">
-                                <h4>Coordonnees</h4>
+                                <h4 data-i18n="sidebar.contact_title">Coordonnees</h4>
                                 <ul class="list-unstyled">
                                     <li>
                                         <span class="icon-pin"></span> 88 broklyn street, New York
@@ -246,29 +247,33 @@
                             <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                             <ul class="main-menu__list">
                                 <li>
-                                    <a href="index.html">Accueil</a>
+                                    <a href="index.html" data-i18n="nav.home">Accueil</a>
                                 </li>
                                 <li>
-                                    <a href="about.html">A propos</a>
+                                    <a href="about.html" data-i18n="nav.about">A propos</a>
                                 </li>
                                 <li>
-                                    <a href="services.html">Services IT</a>
+                                    <a href="services.html" data-i18n="nav.services">Services IT</a>
                                 </li>
                                 <li>
-                                    <a href="staffing.html">Staffing IT</a>
+                                    <a href="staffing.html" data-i18n="nav.staffing">Staffing IT</a>
                                 </li>
                                 <li>
-                                    <a href="testimonials.html">Temoignages</a>
+                                    <a href="testimonials.html" data-i18n="nav.testimonials">Temoignages</a>
                                 </li>
                                 <li>
-                                    <a href="blog.html">Blog</a>
+                                    <a href="blog.html" data-i18n="nav.blog">Blog</a>
                                 </li>
                                 <li>
-                                    <a href="contact.html">Contact</a>
+                                    <a href="contact.html" data-i18n="nav.contact">Contact</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="main-menu__right">
+                            <div class="language-switcher">
+                                <button class="lang-btn active" data-lang="fr">FR</button>
+                                <button class="lang-btn" data-lang="en">EN</button>
+                            </div>
                             <div class="main-menu__call">
                                 <div class="main-menu__call-icon">
                                     <i class="icon-call"></i>
@@ -308,12 +313,12 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h3>Contact</h3>
+                    <h3 data-i18n="contact_page.page_title">Contact</h3>
                     <div class="thm-breadcrumb__inner">
                         <ul class="thm-breadcrumb list-unstyled">
-                            <li><a href="index.html">Accueil</a></li>
+                            <li><a href="index.html" data-i18n="contact_page.breadcrumb_home">Accueil</a></li>
                             <li><span class="icon-arrow-angle-pointing-to-right"></span></li>
-                            <li>Contact</li>
+                            <li data-i18n="contact_page.breadcrumb_current">Contact</li>
                         </ul>
                     </div>
                 </div>
@@ -331,7 +336,7 @@
                             <div class="contact-info__icon">
                                 <span class="icon-call"></span>
                             </div>
-                            <p>Telephone</p>
+                            <p data-i18n="contact_page.phone_label">Telephone</p>
                             <h3><a href="tel:+000000000">+XXX XXX XXX</a></h3>
                         </div>
                     </div>
@@ -342,7 +347,7 @@
                             <div class="contact-info__icon">
                                 <span class="icon-email"></span>
                             </div>
-                            <p>Email</p>
+                            <p data-i18n="contact_page.email_label">Email</p>
                             <h3><a href="mailto:contact@mhtechnology.com">contact@mhtechnology.com</a></h3>
                         </div>
                     </div>
@@ -353,7 +358,7 @@
                             <div class="contact-info__icon">
                                 <span class="icon-pin"></span>
                             </div>
-                            <p>Adresse</p>
+                            <p data-i18n="contact_page.address_label">Adresse</p>
                             <h3>Votre localisation</h3>
                         </div>
                     </div>
@@ -379,43 +384,43 @@
                         </div>
                         <div class="col-xl-6">
                             <div class="contact-page__right">
-                                <h3 class="contact-page__form-title">Construisons votre prochaine Technologie Solution</h3>
+                                <h3 class="contact-page__form-title" data-i18n="contact_page.form_title">Construisons votre prochaine Technologie Solution</h3>
                                 <form id="contact-form" class="contact-form-validated contact-page__form"
                                     action="assets/inc/sendemail.php" method="POST">
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-6 col-md-6">
                                             <div class="contact-page__input-box">
-                                                <input type="text" name="name" placeholder="Votre nom" required="">
+                                                <input type="text" name="name" data-i18n-placeholder="contact_page.name_placeholder" placeholder="Votre nom" required="">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-6 col-md-6">
                                             <div class="contact-page__input-box">
-                                                <input type="email" name="email" placeholder="contact@mhtechnology.com" required="">
+                                                <input type="email" name="email" data-i18n-placeholder="contact_page.email_placeholder" placeholder="contact@mhtechnology.com" required="">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-6 col-md-6">
                                             <div class="contact-page__input-box">
-                                                <input type="text" placeholder="+XXX XXX XXX" name="phone" required="">
+                                                <input type="text" data-i18n-placeholder="contact_page.phone_placeholder" placeholder="+XXX XXX XXX" name="phone" required="">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-6 col-md-6">
                                             <div class="contact-page__input-box">
                                                 <select name="request_type" class="selectpicker" required="">
-                                                    <option value="">Type de demande</option>
-                                                    <option value="consulting">Consulting IT</option>
-                                                    <option value="staffing">Staffing IT</option>
-                                                    <option value="candidature">Candidature</option>
-                                                    <option value="autre">Autre</option>
+                                                    <option value="" data-i18n="contact_page.request_type_default">Type de demande</option>
+                                                    <option value="consulting" data-i18n="contact_page.request_type_consulting">Consulting IT</option>
+                                                    <option value="staffing" data-i18n="contact_page.request_type_staffing">Staffing IT</option>
+                                                    <option value="candidature" data-i18n="contact_page.request_type_application">Candidature</option>
+                                                    <option value="autre" data-i18n="contact_page.request_type_other">Autre</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-xl-12">
                                             <div class="contact-page__input-box text-message-box">
-                                                <textarea name="message" placeholder="Decrivez votre projet ou votre besoin" required=""></textarea>
+                                                <textarea name="message" data-i18n-placeholder="contact_page.message_placeholder" placeholder="Decrivez votre projet ou votre besoin" required=""></textarea>
                                             </div>
                                             <div class="contact-page__btn-box">
                                                 <button type="submit" class="thm-btn contact-page__btn"
-                                                    data-loading-text="Veuillez patienter...">Envoyer votre demande
+                                                    data-loading-text="Veuillez patienter..."><span data-i18n="contact_page.submit_button">Envoyer votre demande</span>
                                                     <span class="fas fa-arrow-right"></span>
                                                 </button>
                                             </div>
@@ -441,17 +446,17 @@
                         <img src="assets/images/resources/newsletter-two-img-1.png" alt="">
                     </div>
                     <div class="newsletter-two__left">
-                        <h2 class="newsletter-two__title">Recevez nos actualites technologiques</h2>
-                        <p class="newsletter-two__text">Suivez nos reflexions sur la securite, les infrastructures et
+                        <h2 class="newsletter-two__title" data-i18n="contact_page.newsletter_title">Recevez nos actualites technologiques</h2>
+                        <p class="newsletter-two__text" data-i18n="contact_page.newsletter_text">Suivez nos reflexions sur la securite, les infrastructures et
                             la transformation digitale.</p>
                     </div>
                     <div class="newsletter-two__right">
                         <form class="contact-form-validated newsletter-two__form" action="assets/inc/sendemail.php"
                             method="post">
                             <div class="newsletter-two__input">
-                                <input type="email" placeholder="Entrez votre email" name="email" required>
+                                <input type="email" data-i18n-placeholder="contact_page.newsletter_placeholder" placeholder="Entrez votre email" name="email" required>
                             </div>
-                            <button type="submit" class="thm-btn">S'abonner
+                            <button type="submit" class="thm-btn"><span data-i18n="contact_page.newsletter_button">S'abonner</span>
                                 <span class="fas fa-arrow-right"></span>
                             </button>
                         </form>
@@ -679,6 +684,7 @@
 
     <!-- template js -->
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/i18n.js"></script>
 </body>
 
 </html>

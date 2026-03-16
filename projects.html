@@ -65,6 +65,7 @@
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="assets/css/language-switcher.css" />
 </head>
 
 <body class="custom-cursor">
@@ -89,19 +90,19 @@
         <div class="popup-inner">
             <div class="close-chat"><i class="fa fa-times"></i></div>
             <div class="chat-form">
-                <p>Remplissez le formulaire ci-dessous et nous vous repondrons dans les plus brefs delais.</p>
+                <p data-i18n="chat.description">Remplissez le formulaire ci-dessous et nous vous repondrons dans les plus brefs delais.</p>
                 <form action="assets/inc/sendemail.php" method="POST" class="contact-form-validated">
                     <div class="form-group">
-                        <input type="text" name="name" placeholder="Votre nom" required>
+                        <input type="text" name="name" data-i18n-placeholder="chat.name_placeholder" placeholder="Votre nom" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" placeholder="contact@mhtechnology.com" required>
+                        <input type="email" name="email" data-i18n-placeholder="chat.email_placeholder" placeholder="contact@mhtechnology.com" required>
                     </div>
                     <div class="form-group">
-                        <textarea name="message" placeholder="Votre message" required></textarea>
+                        <textarea name="message" data-i18n-placeholder="chat.message_placeholder" placeholder="Votre message" required></textarea>
                     </div>
                     <div class="form-group message-btn">
-                        <button type="submit" class="thm-btn"> Envoyer
+                        <button type="submit" class="thm-btn" data-i18n="chat.send_button"> Envoyer
                             <span class="fas fa-arrow-right"></span>
                         </button>
                     </div>
@@ -128,28 +129,28 @@
                                 <a href="index.html"><img src="assets/images/resources/logo-2.png" alt="" /></a>
                             </div>
                             <div class="content-box">
-                                <h4>A propos de MHTECH</h4>
+                                <h4 data-i18n="sidebar.about_title">A propos de MHTECH</h4>
                                 <div class="inner-text">
-                                     <p>MHTECH Consulting accompagne les entreprises dans leur transformation digitale
+                                     <p data-i18n="sidebar.about_text">MHTECH Consulting accompagne les entreprises dans leur transformation digitale
                                          avec des solutions modernes, performantes et securisees.
                                      </p>
                                 </div>
                             </div>
 
                             <div class="form-inner">
-                                <h4>Demandez une consultation</h4>
+                                <h4 data-i18n="sidebar.consultation_title">Demandez une consultation</h4>
                                 <form action="assets/inc/sendemail.php" method="POST" class="contact-form-validated">
                                     <div class="form-group">
-                                        <input type="text" name="name" placeholder="Name" required="">
+                                        <input type="text" name="name" data-i18n-placeholder="sidebar.name_placeholder" placeholder="Name" required="">
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" name="email" placeholder="Email" required="">
+                                        <input type="email" name="email" data-i18n-placeholder="sidebar.email_placeholder" placeholder="Email" required="">
                                     </div>
                                     <div class="form-group">
-                                        <textarea name="message" placeholder="Message..." required=""></textarea>
+                                        <textarea name="message" data-i18n-placeholder="sidebar.message_placeholder" placeholder="Message..." required=""></textarea>
                                     </div>
                                     <div class="form-group message-btn">
-                                        <button class="thm-btn" data-text="Envoyer +" type="submit"
+                                        <button class="thm-btn" data-text="Envoyer +" type="submit" data-i18n="sidebar.send_button"
                                             data-loading-text="Veuillez patienter...">Envoyer
                                             <span class="fas fa-arrow-right"></span>
                                         </button>
@@ -159,7 +160,7 @@
                             </div>
 
                             <div class="sidebar-contact-info">
-                                <h4>Coordonnees</h4>
+                                <h4 data-i18n="sidebar.contact_title">Coordonnees</h4>
                                 <ul class="list-unstyled">
                                     <li>
                                         <span class="icon-pin"></span> 88 broklyn street, New York
@@ -246,29 +247,33 @@
                             <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                             <ul class="main-menu__list">
                                 <li>
-                                    <a href="index.html">Accueil</a>
+                                    <a href="index.html" data-i18n="nav.home">Accueil</a>
                                 </li>
                                 <li>
-                                    <a href="about.html">A propos</a>
+                                    <a href="about.html" data-i18n="nav.about">A propos</a>
                                 </li>
                                 <li>
-                                    <a href="services.html">Services IT</a>
+                                    <a href="services.html" data-i18n="nav.services">Services IT</a>
                                 </li>
                                 <li>
-                                    <a href="staffing.html">Staffing IT</a>
+                                    <a href="staffing.html" data-i18n="nav.staffing">Staffing IT</a>
                                 </li>
                                 <li>
-                                    <a href="testimonials.html">Temoignages</a>
+                                    <a href="testimonials.html" data-i18n="nav.testimonials">Temoignages</a>
                                 </li>
                                 <li>
-                                    <a href="blog.html">Blog</a>
+                                    <a href="blog.html" data-i18n="nav.blog">Blog</a>
                                 </li>
                                 <li>
-                                    <a href="contact.html">Contact</a>
+                                    <a href="contact.html" data-i18n="nav.contact">Contact</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="main-menu__right">
+                            <div class="language-switcher">
+                                <button class="lang-btn active" data-lang="fr">FR</button>
+                                <button class="lang-btn" data-lang="en">EN</button>
+                            </div>
                             <div class="main-menu__call">
                                 <div class="main-menu__call-icon">
                                     <i class="icon-call"></i>
@@ -308,12 +313,12 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h3>Projets</h3>
+                    <h3 data-i18n="projects_page.page_title">Projets</h3>
                     <div class="thm-breadcrumb__inner">
                         <ul class="thm-breadcrumb list-unstyled">
-                            <li><a href="index.html">Accueil</a></li>
+                            <li><a href="index.html" data-i18n="projects_page.breadcrumb_home">Accueil</a></li>
                             <li><span class="icon-arrow-angle-pointing-to-right"></span></li>
-                            <li>Projets</li>
+                            <li data-i18n="projects_page.breadcrumb_current">Projets</li>
                         </ul>
                     </div>
                 </div>
@@ -337,9 +342,9 @@
                                     </div>
                                 </div>
                                 <div class="project-two__content">
-                                    <h3 class="project-two__title"><a href="project-details.html">Developpement de plateforme web</a>
+                                    <h3 class="project-two__title"><a href="project-details.html" data-i18n="projects_page.project1_title">Developpement de plateforme web</a>
                                     </h3>
-                                    <p class="project-two__sub-title">Solutions digitales</p>
+                                    <p class="project-two__sub-title" data-i18n="projects_page.project1_category">Solutions digitales</p>
                                 </div>
                             </div>
                         </div>
@@ -357,9 +362,9 @@
                                     </div>
                                 </div>
                                 <div class="project-two__content">
-                                    <h3 class="project-two__title"><a href="project-details.html">Securisation d'infrastructures informatiques</a>
+                                    <h3 class="project-two__title"><a href="project-details.html" data-i18n="projects_page.project2_title">Securisation d'infrastructures informatiques</a>
                                     </h3>
-                                    <p class="project-two__sub-title">Cybersécurite</p>
+                                    <p class="project-two__sub-title" data-i18n="projects_page.project2_category">Cybersécurite</p>
                                 </div>
                             </div>
                         </div>
@@ -377,9 +382,9 @@
                                     </div>
                                 </div>
                                 <div class="project-two__content">
-                                    <h3 class="project-two__title"><a href="project-details.html">Solutions digitales personnalisees</a>
+                                    <h3 class="project-two__title"><a href="project-details.html" data-i18n="projects_page.project3_title">Solutions digitales personnalisees</a>
                                     </h3>
-                                    <p class="project-two__sub-title">Developpement</p>
+                                    <p class="project-two__sub-title" data-i18n="projects_page.project3_category">Developpement</p>
                                 </div>
                             </div>
                         </div>
@@ -397,9 +402,9 @@
                                     </div>
                                 </div>
                                 <div class="project-two__content">
-                                    <h3 class="project-two__title"><a href="project-details.html">Design et infographies professionnelles</a>
+                                    <h3 class="project-two__title"><a href="project-details.html" data-i18n="projects_page.project4_title">Design et infographies professionnelles</a>
                                     </h3>
-                                    <p class="project-two__sub-title">Design digital</p>
+                                    <p class="project-two__sub-title" data-i18n="projects_page.project4_category">Design digital</p>
                                 </div>
                             </div>
                         </div>
@@ -417,9 +422,9 @@
                                     </div>
                                 </div>
                                 <div class="project-two__content">
-                                    <h3 class="project-two__title"><a href="project-details.html">Amelioration de la performance</a>
+                                    <h3 class="project-two__title"><a href="project-details.html" data-i18n="projects_page.project5_title">Amelioration de la performance</a>
                                     </h3>
-                                    <p class="project-two__sub-title">Impact business</p>
+                                    <p class="project-two__sub-title" data-i18n="projects_page.project5_category">Impact business</p>
                                 </div>
                             </div>
                         </div>
@@ -437,9 +442,9 @@
                                     </div>
                                 </div>
                                 <div class="project-two__content">
-                                    <h3 class="project-two__title"><a href="project-details.html">Renforcement de la securite informatique</a>
+                                    <h3 class="project-two__title"><a href="project-details.html" data-i18n="projects_page.project6_title">Renforcement de la securite informatique</a>
                                     </h3>
-                                    <p class="project-two__sub-title">Protection</p>
+                                    <p class="project-two__sub-title" data-i18n="projects_page.project6_category">Protection</p>
                                 </div>
                             </div>
                         </div>
@@ -457,9 +462,9 @@
                                     </div>
                                 </div>
                                 <div class="project-two__content">
-                                    <h3 class="project-two__title"><a href="project-details.html">Optimisation des infrastructures numeriques</a>
+                                    <h3 class="project-two__title"><a href="project-details.html" data-i18n="projects_page.project7_title">Optimisation des infrastructures numeriques</a>
                                     </h3>
-                                    <p class="project-two__sub-title">Infrastructure</p>
+                                    <p class="project-two__sub-title" data-i18n="projects_page.project7_category">Infrastructure</p>
                                 </div>
                             </div>
                         </div>
@@ -477,9 +482,9 @@
                                     </div>
                                 </div>
                                 <div class="project-two__content">
-                                    <h3 class="project-two__title"><a href="project-details.html">Communication visuelle renforcee</a>
+                                    <h3 class="project-two__title"><a href="project-details.html" data-i18n="projects_page.project8_title">Communication visuelle renforcee</a>
                                     </h3>
-                                    <p class="project-two__sub-title">Identite visuelle</p>
+                                    <p class="project-two__sub-title" data-i18n="projects_page.project8_category">Identite visuelle</p>
                                 </div>
                             </div>
                         </div>
@@ -502,17 +507,17 @@
                         <img src="assets/images/resources/newsletter-two-img-1.png" alt="">
                     </div>
                     <div class="newsletter-two__left">
-                        <h2 class="newsletter-two__title">Recevez nos actualites technologiques</h2>
-                        <p class="newsletter-two__text">Suivez nos reflexions sur la securite, les infrastructures et
+                        <h2 class="newsletter-two__title" data-i18n="projects_page.newsletter_title">Recevez nos actualites technologiques</h2>
+                        <p class="newsletter-two__text" data-i18n="projects_page.newsletter_text">Suivez nos reflexions sur la securite, les infrastructures et
                             la transformation digitale.</p>
                     </div>
                     <div class="newsletter-two__right">
                         <form class="contact-form-validated newsletter-two__form" action="assets/inc/sendemail.php"
                             method="post">
                             <div class="newsletter-two__input">
-                                <input type="email" placeholder="Entrez votre email" name="email" required>
+                                <input type="email" data-i18n-placeholder="projects_page.newsletter_placeholder" placeholder="Entrez votre email" name="email" required>
                             </div>
-                            <button type="submit" class="thm-btn">S'abonner <span class="fas fa-arrow-right"></span>
+                            <button type="submit" class="thm-btn"><span data-i18n="projects_page.newsletter_button">S'abonner</span> <span class="fas fa-arrow-right"></span>
                             </button>
                             <div class="result"></div>
                         </form>
@@ -739,6 +744,7 @@
 
     <!-- template js -->
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/i18n.js"></script>
 </body>
 
 </html>

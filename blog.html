@@ -65,6 +65,7 @@
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="assets/css/language-switcher.css" />
 </head>
 
 <body class="custom-cursor">
@@ -89,19 +90,19 @@
         <div class="popup-inner">
             <div class="close-chat"><i class="fa fa-times"></i></div>
             <div class="chat-form">
-                <p>Please fill out the form below and we will get back to you as soon as possible.</p>
+                <p data-i18n="chat.description">Please fill out the form below and we will get back to you as soon as possible.</p>
                 <form action="assets/inc/sendemail.php" method="POST" class="contact-form-validated">
                     <div class="form-group">
-                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="text" name="name" data-i18n-placeholder="chat.name_placeholder" placeholder="Your Name" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" placeholder="Your Email" required>
+                        <input type="email" name="email" data-i18n-placeholder="chat.email_placeholder" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
-                        <textarea name="message" placeholder="Your Text" required></textarea>
+                        <textarea name="message" data-i18n-placeholder="chat.message_placeholder" placeholder="Your Text" required></textarea>
                     </div>
                     <div class="form-group message-btn">
-                        <button type="submit" class="thm-btn"> Submit Now
+                        <button type="submit" class="thm-btn" data-i18n="chat.send_button"> Submit Now
                             <span class="fas fa-arrow-right"></span>
                         </button>
                     </div>
@@ -128,9 +129,9 @@
                                 <a href="index.html"><img src="assets/images/resources/logo-2.png" alt="" /></a>
                             </div>
                             <div class="content-box">
-                                <h4>About Us</h4>
+                                <h4 data-i18n="sidebar.about_title">About Us</h4>
                                 <div class="inner-text">
-                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has
+                                    <p data-i18n="sidebar.about_text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has
                                         roots in a piece of classical Latin literature from 45 BC, making it over
                                         2000 years old.
                                     </p>
@@ -138,19 +139,19 @@
                             </div>
 
                             <div class="form-inner">
-                                <h4>Get a free quote</h4>
+                                <h4 data-i18n="sidebar.consultation_title">Get a free quote</h4>
                                 <form action="assets/inc/sendemail.php" method="POST" class="contact-form-validated">
                                     <div class="form-group">
-                                        <input type="text" name="name" placeholder="Name" required="">
+                                        <input type="text" name="name" data-i18n-placeholder="sidebar.name_placeholder" placeholder="Name" required="">
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" name="email" placeholder="Email" required="">
+                                        <input type="email" name="email" data-i18n-placeholder="sidebar.email_placeholder" placeholder="Email" required="">
                                     </div>
                                     <div class="form-group">
-                                        <textarea name="message" placeholder="Message..." required=""></textarea>
+                                        <textarea name="message" data-i18n-placeholder="sidebar.message_placeholder" placeholder="Message..." required=""></textarea>
                                     </div>
                                     <div class="form-group message-btn">
-                                        <button class="thm-btn" data-text="Submit Now +" type="submit"
+                                        <button class="thm-btn" data-text="Submit Now +" type="submit" data-i18n="sidebar.send_button"
                                             data-loading-text="Please wait...">Submit Now
                                             <span class="fas fa-arrow-right"></span>
                                         </button>
@@ -160,7 +161,7 @@
                             </div>
 
                             <div class="sidebar-contact-info">
-                                <h4>Contact Info</h4>
+                                <h4 data-i18n="sidebar.contact_title">Contact Info</h4>
                                 <ul class="list-unstyled">
                                     <li>
                                         <span class="icon-pin"></span> 88 broklyn street, New York
@@ -248,29 +249,33 @@
                             <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                             <ul class="main-menu__list">
                                 <li>
-                                    <a href="index.html">Accueil</a>
+                                    <a href="index.html" data-i18n="nav.home">Accueil</a>
                                 </li>
                                 <li>
-                                    <a href="about.html">A propos</a>
+                                    <a href="about.html" data-i18n="nav.about">A propos</a>
                                 </li>
                                 <li>
-                                    <a href="services.html">Services IT</a>
+                                    <a href="services.html" data-i18n="nav.services">Services IT</a>
                                 </li>
                                 <li>
-                                    <a href="staffing.html">Staffing IT</a>
+                                    <a href="staffing.html" data-i18n="nav.staffing">Staffing IT</a>
                                 </li>
                                 <li>
-                                    <a href="testimonials.html">Temoignages</a>
+                                    <a href="testimonials.html" data-i18n="nav.testimonials">Temoignages</a>
                                 </li>
                                 <li>
-                                    <a href="blog.html">Blog</a>
+                                    <a href="blog.html" data-i18n="nav.blog">Blog</a>
                                 </li>
                                 <li>
-                                    <a href="contact.html">Contact</a>
+                                    <a href="contact.html" data-i18n="nav.contact">Contact</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="main-menu__right">
+                            <div class="language-switcher">
+                                <button class="lang-btn active" data-lang="fr">FR</button>
+                                <button class="lang-btn" data-lang="en">EN</button>
+                            </div>
                             <div class="main-menu__call">
                                 <div class="main-menu__call-icon">
                                     <i class="icon-call"></i>
@@ -311,12 +316,12 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h3>Blog</h3>
+                    <h3 data-i18n="blog_page.page_title">Blog</h3>
                     <div class="thm-breadcrumb__inner">
                         <ul class="thm-breadcrumb list-unstyled">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html" data-i18n="blog_page.breadcrumb_home">Home</a></li>
                             <li><span class="icon-arrow-angle-pointing-to-right"></span></li>
-                            <li>Blog</li>
+                            <li data-i18n="blog_page.breadcrumb_current">Blog</li>
                         </ul>
                     </div>
                 </div>
@@ -334,8 +339,8 @@
                             <div class="blog-one__img">
                                 <img src="assets/images/blog/blog-2-1.jpg" alt="">
                                 <div class="blog-one__tags">
-                                    <span>Digital</span>
-                                    <span>Technology</span>
+                                    <span data-i18n="blog_page.tag_digital">Digital</span>
+                                    <span data-i18n="blog_page.tag_technology">Technology</span>
                                 </div>
                             </div>
                             <div class="blog-one__content">
@@ -351,8 +356,8 @@
                                             2025</a>
                                     </li>
                                     <li>
-                                        <a href="blog-details.html"><span class="fal fa-comments"></span>80
-                                            Comments</a>
+                                        <a href="blog-details.html"><span class="fal fa-comments"></span><span data-i18n="blog_page.comments_label">80
+                                            Comments</span></a>
                                     </li>
                                 </ul>
                                 <h3 class="blog-one__title"><a href="blog-details.html">Improving Business
@@ -373,8 +378,8 @@
                             <div class="blog-one__img">
                                 <img src="assets/images/blog/blog-2-2.jpg" alt="">
                                 <div class="blog-one__tags">
-                                    <span>Digital</span>
-                                    <span>Technology</span>
+                                    <span data-i18n="blog_page.tag_digital">Digital</span>
+                                    <span data-i18n="blog_page.tag_technology">Technology</span>
                                 </div>
                             </div>
                             <div class="blog-one__content">
@@ -390,15 +395,15 @@
                                             2025</a>
                                     </li>
                                     <li>
-                                        <a href="blog-details.html"><span class="fal fa-comments"></span>80
-                                            Comments</a>
+                                        <a href="blog-details.html"><span class="fal fa-comments"></span><span data-i18n="blog_page.comments_label">80
+                                            Comments</span></a>
                                     </li>
                                 </ul>
-                                <h3 class="blog-one__title"><a href="blog-details.html">Regional Manager &
+                                <h3 class="blog-one__title"><a href="blog-details.html" data-i18n="blog_page.post2_title">Regional Manager &
                                         limited
                                         management.</a></h3>
                                 <div class="blog-one__btn-box">
-                                    <a href="blog-details.html" class="thm-btn">Reed More
+                                    <a href="blog-details.html" class="thm-btn"><span data-i18n="blog_page.read_more_button">Reed More</span>
                                         <span class="fas fa-arrow-right"></span>
                                     </a>
                                 </div>
@@ -412,8 +417,8 @@
                             <div class="blog-one__img">
                                 <img src="assets/images/blog/blog-2-3.jpg" alt="">
                                 <div class="blog-one__tags">
-                                    <span>Digital</span>
-                                    <span>Technology</span>
+                                    <span data-i18n="blog_page.tag_digital">Digital</span>
+                                    <span data-i18n="blog_page.tag_technology">Technology</span>
                                 </div>
                             </div>
                             <div class="blog-one__content">
@@ -429,8 +434,8 @@
                                             2025</a>
                                     </li>
                                     <li>
-                                        <a href="blog-details.html"><span class="fal fa-comments"></span>80
-                                            Comments</a>
+                                        <a href="blog-details.html"><span class="fal fa-comments"></span><span data-i18n="blog_page.comments_label">80
+                                            Comments</span></a>
                                     </li>
                                 </ul>
                                 <h3 class="blog-one__title"><a href="blog-details.html">Easy and Most Powerful
@@ -451,8 +456,8 @@
                             <div class="blog-one__img">
                                 <img src="assets/images/blog/blog-2-4.jpg" alt="">
                                 <div class="blog-one__tags">
-                                    <span>Digital</span>
-                                    <span>Technology</span>
+                                    <span data-i18n="blog_page.tag_digital">Digital</span>
+                                    <span data-i18n="blog_page.tag_technology">Technology</span>
                                 </div>
                             </div>
                             <div class="blog-one__content">
@@ -469,8 +474,8 @@
                                             2025</a>
                                     </li>
                                     <li>
-                                        <a href="blog-details.html"><span class="fal fa-comments"></span>80
-                                            Comments</a>
+                                        <a href="blog-details.html"><span class="fal fa-comments"></span><span data-i18n="blog_page.comments_label">80
+                                            Comments</span></a>
                                     </li>
                                 </ul>
                                 <h3 class="blog-one__title"><a href="blog-details.html">Improving Business
@@ -491,8 +496,8 @@
                             <div class="blog-one__img">
                                 <img src="assets/images/blog/blog-2-5.jpg" alt="">
                                 <div class="blog-one__tags">
-                                    <span>Digital</span>
-                                    <span>Technology</span>
+                                    <span data-i18n="blog_page.tag_digital">Digital</span>
+                                    <span data-i18n="blog_page.tag_technology">Technology</span>
                                 </div>
                             </div>
                             <div class="blog-one__content">
@@ -509,8 +514,8 @@
                                             2025</a>
                                     </li>
                                     <li>
-                                        <a href="blog-details.html"><span class="fal fa-comments"></span>80
-                                            Comments</a>
+                                        <a href="blog-details.html"><span class="fal fa-comments"></span><span data-i18n="blog_page.comments_label">80
+                                            Comments</span></a>
                                     </li>
                                 </ul>
                                 <h3 class="blog-one__title"><a href="blog-details.html">The Role of AI in IT
@@ -530,8 +535,8 @@
                             <div class="blog-one__img">
                                 <img src="assets/images/blog/blog-2-6.jpg" alt="">
                                 <div class="blog-one__tags">
-                                    <span>Digital</span>
-                                    <span>Technology</span>
+                                    <span data-i18n="blog_page.tag_digital">Digital</span>
+                                    <span data-i18n="blog_page.tag_technology">Technology</span>
                                 </div>
                             </div>
                             <div class="blog-one__content">
@@ -547,8 +552,8 @@
                                             2025</a>
                                     </li>
                                     <li>
-                                        <a href="blog-details.html"><span class="fal fa-comments"></span>80
-                                            Comments</a>
+                                        <a href="blog-details.html"><span class="fal fa-comments"></span><span data-i18n="blog_page.comments_label">80
+                                            Comments</span></a>
                                     </li>
                                 </ul>
                                 <h3 class="blog-one__title"><a href="blog-details.html">Cloud vs. On-Premise Is
@@ -587,17 +592,17 @@
                         <img src="assets/images/resources/newsletter-two-img-1.png" alt="">
                     </div>
                     <div class="newsletter-two__left">
-                        <h2 class="newsletter-two__title">Subcribe to Our Newsletter</h2>
-                        <p class="newsletter-two__text">Get the latest SEO tips and software insights straight to your
+                        <h2 class="newsletter-two__title" data-i18n="blog_page.newsletter_title">Subcribe to Our Newsletter</h2>
+                        <p class="newsletter-two__text" data-i18n="blog_page.newsletter_text">Get the latest SEO tips and software insights straight to your
                             inbox.</p>
                     </div>
                     <div class="newsletter-two__right">
                         <form class="contact-form-validated newsletter-two__form" action="assets/inc/sendemail.php"
                             method="post">
                             <div class="newsletter-two__input">
-                                <input type="email" placeholder="Enter email address" name="email" required>
+                                <input type="email" data-i18n-placeholder="blog_page.newsletter_placeholder" placeholder="Enter email address" name="email" required>
                             </div>
-                            <button type="submit" class="thm-btn">Subscribe Now <span class="fas fa-arrow-right"></span>
+                            <button type="submit" class="thm-btn"><span data-i18n="blog_page.newsletter_button">Subscribe Now</span> <span class="fas fa-arrow-right"></span>
                             </button>
                             <div class="result"></div>
                         </form>
@@ -830,6 +835,7 @@
 
     <!-- template js -->
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/i18n.js"></script>
 </body>
 
 </html>

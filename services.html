@@ -65,6 +65,7 @@
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="assets/css/language-switcher.css" />
 </head>
 
 <body class="custom-cursor">
@@ -89,19 +90,19 @@
         <div class="popup-inner">
             <div class="close-chat"><i class="fa fa-times"></i></div>
             <div class="chat-form">
-                <p>Remplissez le formulaire ci-dessous et nous vous repondrons dans les plus brefs delais.</p>
+                <p data-i18n="chat.description">Remplissez le formulaire ci-dessous et nous vous repondrons dans les plus brefs delais.</p>
                 <form action="assets/inc/sendemail.php" method="POST" class="contact-form-validated">
                     <div class="form-group">
-                        <input type="text" name="name" placeholder="Votre nom" required>
+                        <input type="text" name="name" placeholder="Votre nom" data-i18n-placeholder="chat.name_placeholder" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" placeholder="contact@mhtechnology.com" required>
+                        <input type="email" name="email" placeholder="contact@mhtechnology.com" data-i18n-placeholder="chat.email_placeholder" required>
                     </div>
                     <div class="form-group">
-                        <textarea name="message" placeholder="Votre message" required></textarea>
+                        <textarea name="message" placeholder="Votre message" data-i18n-placeholder="chat.message_placeholder" required></textarea>
                     </div>
                     <div class="form-group message-btn">
-                        <button type="submit" class="thm-btn"> Envoyer
+                        <button type="submit" class="thm-btn"><span data-i18n="chat.send_button">Envoyer</span>
                             <span class="fas fa-arrow-right"></span>
                         </button>
                     </div>
@@ -128,29 +129,29 @@
                                 <a href="index.html"><img src="assets/images/resources/logo-2.png" alt="" /></a>
                             </div>
                             <div class="content-box">
-                                <h4>A propos de MHTECH</h4>
+                                <h4 data-i18n="sidebar.about_title">A propos de MHTECH</h4>
                                 <div class="inner-text">
-                                     <p>MHTECH Consulting accompagne les entreprises dans leur transformation digitale
+                                     <p data-i18n="sidebar.about_text">MHTECH Consulting accompagne les entreprises dans leur transformation digitale
                                          avec des solutions modernes, performantes et securisees.
                                      </p>
                                 </div>
                             </div>
 
                             <div class="form-inner">
-                                <h4>Demandez une consultation</h4>
+                                <h4 data-i18n="sidebar.consultation_title">Demandez une consultation</h4>
                                 <form action="assets/inc/sendemail.php" method="POST" class="contact-form-validated">
                                     <div class="form-group">
-                                        <input type="text" name="name" placeholder="Name" required="">
+                                        <input type="text" name="name" placeholder="Name" data-i18n-placeholder="sidebar.name_placeholder" required="">
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" name="email" placeholder="Email" required="">
+                                        <input type="email" name="email" placeholder="Email" data-i18n-placeholder="sidebar.email_placeholder" required="">
                                     </div>
                                     <div class="form-group">
-                                        <textarea name="message" placeholder="Message..." required=""></textarea>
+                                        <textarea name="message" placeholder="Message..." data-i18n-placeholder="sidebar.message_placeholder" required=""></textarea>
                                     </div>
                                     <div class="form-group message-btn">
                                         <button class="thm-btn" data-text="Envoyer +" type="submit"
-                                            data-loading-text="Veuillez patienter...">Envoyer
+                                            data-loading-text="Veuillez patienter..."><span data-i18n="sidebar.send_button">Envoyer</span>
                                             <span class="fas fa-arrow-right"></span>
                                         </button>
                                     </div>
@@ -159,7 +160,7 @@
                             </div>
 
                             <div class="sidebar-contact-info">
-                                <h4>Coordonnees</h4>
+                                <h4 data-i18n="sidebar.contact_title">Coordonnees</h4>
                                 <ul class="list-unstyled">
                                     <li>
                                         <span class="icon-pin"></span> 88 broklyn street, New York
@@ -246,29 +247,33 @@
                             <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                             <ul class="main-menu__list">
                                 <li>
-                                    <a href="index.html">Accueil</a>
+                                    <a href="index.html" data-i18n="nav.home">Accueil</a>
                                 </li>
                                 <li>
-                                    <a href="about.html">A propos</a>
+                                    <a href="about.html" data-i18n="nav.about">A propos</a>
                                 </li>
                                 <li>
-                                    <a href="services.html">Services IT</a>
+                                    <a href="services.html" data-i18n="nav.services">Services IT</a>
                                 </li>
                                 <li>
-                                    <a href="staffing.html">Staffing IT</a>
+                                    <a href="staffing.html" data-i18n="nav.staffing">Staffing IT</a>
                                 </li>
                                 <li>
-                                    <a href="testimonials.html">Temoignages</a>
+                                    <a href="testimonials.html" data-i18n="nav.testimonials">Temoignages</a>
                                 </li>
                                 <li>
-                                    <a href="blog.html">Blog</a>
+                                    <a href="blog.html" data-i18n="nav.blog">Blog</a>
                                 </li>
                                 <li>
-                                    <a href="contact.html">Contact</a>
+                                    <a href="contact.html" data-i18n="nav.contact">Contact</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="main-menu__right">
+                            <div class="language-switcher">
+                                <button class="lang-btn active" data-lang="fr">FR</button>
+                                <button class="lang-btn" data-lang="en">EN</button>
+                            </div>
                             <div class="main-menu__call">
                                 <div class="main-menu__call-icon">
                                     <i class="icon-call"></i>
@@ -308,12 +313,12 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h3>Services IT</h3>
+                    <h3 data-i18n="services_page.page_title">Services IT</h3>
                     <div class="thm-breadcrumb__inner">
                         <ul class="thm-breadcrumb list-unstyled">
-                            <li><a href="index.html">Accueil</a></li>
+                            <li><a href="index.html" data-i18n="services_page.breadcrumb_home">Accueil</a></li>
                             <li><span class="icon-arrow-angle-pointing-to-right"></span></li>
-                            <li>Services IT</li>
+                            <li data-i18n="services_page.breadcrumb_current">Services IT</li>
                         </ul>
                     </div>
                 </div>
@@ -327,10 +332,10 @@
                 <!-- Introduction Section -->
                 <div class="section-title text-center sec-title-animation animation-style2 mb-5">
                     <div class="section-title__tagline-box">
-                        <span class="section-title__tagline">Nos Services IT</span>
+                        <span class="section-title__tagline" data-i18n="services_page.intro_tagline">Nos Services IT</span>
                     </div>
-                    <h2 class="section-title__title title-animation">Des solutions IT sur mesure pour votre entreprise</h2>
-                    <p class="section-title__text">MH Tech Consulting vous accompagne dans tous vos projets technologiques avec expertise et innovation</p>
+                    <h2 class="section-title__title title-animation" data-i18n="services_page.intro_title">Des solutions IT sur mesure pour votre entreprise</h2>
+                    <p class="section-title__text" data-i18n="services_page.intro_description">MH Tech Consulting vous accompagne dans tous vos projets technologiques avec expertise et innovation</p>
                 </div>
 
                 <div class="row justify-content-center">
@@ -346,8 +351,8 @@
                                 </div>
                             </div>
                             <div class="services-two__content">
-                                <h3 class="services-two__title">Cybersecurite</h3>
-                                <p class="services-two__text">
+                                <h3 class="services-two__title" data-i18n="services_page.service1_title">Cybersecurite</h3>
+                                <p class="services-two__text" data-i18n="services_page.service1_desc">
                                     <strong>Protection complete de vos systemes:</strong><br>
                                     • Audit de securite et analyse des vulnerabilites<br>
                                     • Mise en place de solutions de protection<br>
@@ -372,8 +377,8 @@
                                 </div>
                             </div>
                             <div class="services-two__content">
-                                <h3 class="services-two__title">DevOps & Cloud</h3>
-                                <p class="services-two__text">
+                                <h3 class="services-two__title" data-i18n="services_page.service2_title">DevOps & Cloud</h3>
+                                <p class="services-two__text" data-i18n="services_page.service2_desc">
                                     <strong>Optimisez vos infrastructures:</strong><br>
                                     • Migration et gestion cloud (AWS, Azure, GCP)<br>
                                     • Automatisation CI/CD<br>
@@ -398,8 +403,8 @@
                                 </div>
                             </div>
                             <div class="services-two__content">
-                                <h3 class="services-two__title">Design & Creation digitale</h3>
-                                <p class="services-two__text">
+                                <h3 class="services-two__title" data-i18n="services_page.service3_title">Design & Creation digitale</h3>
+                                <p class="services-two__text" data-i18n="services_page.service3_desc">
                                     <strong>Des interfaces modernes et performantes:</strong><br>
                                     • Conception UI/UX et design d'interfaces<br>
                                     • Developpement web et applications mobiles<br>
@@ -424,8 +429,8 @@
                                 </div>
                             </div>
                             <div class="services-two__content">
-                                <h3 class="services-two__title">Operations IT & Help Desk</h3>
-                                <p class="services-two__text">
+                                <h3 class="services-two__title" data-i18n="services_page.service4_title">Operations IT & Help Desk</h3>
+                                <p class="services-two__text" data-i18n="services_page.service4_desc">
                                     <strong>Support et maintenance de vos systemes:</strong><br>
                                     • Support technique niveau 1, 2 et 3<br>
                                     • Administration systemes et reseaux<br>
@@ -442,9 +447,9 @@
                 <!-- CTA Section -->
                 <div class="row mt-5">
                     <div class="col-12 text-center">
-                        <p style="font-size: 18px; margin-bottom: 30px;">Besoin d'une solution IT personnalisee pour votre entreprise ?</p>
+                        <p style="font-size: 18px; margin-bottom: 30px;" data-i18n="services_page.cta_text">Besoin d'une solution IT personnalisee pour votre entreprise ?</p>
                         <a href="contact.html" class="thm-btn" style="padding: 15px 40px; font-size: 18px;">
-                            Demandez un devis gratuit
+                            <span data-i18n="services_page.cta_button">Demandez un devis gratuit</span>
                             <span class="fas fa-arrow-right"></span>
                         </a>
                     </div>
@@ -461,13 +466,13 @@
             </div>
             <ul class="contact-three__sliding-text-list list-unstyled marquee_mode-3">
                 <li>
-                    <h2 data-hover="Identite visuelle" class="contact-three__sliding-text-title">CONTACTEZ-NOUS *</h2>
+                    <h2 data-hover="Identite visuelle" class="contact-three__sliding-text-title" data-i18n="services_page.contact_sliding_text">CONTACTEZ-NOUS *</h2>
                 </li>
                 <li>
-                    <h2 data-hover="Identite visuelle" class="contact-three__sliding-text-title">CONTACTEZ-NOUS *</h2>
+                    <h2 data-hover="Identite visuelle" class="contact-three__sliding-text-title" data-i18n="services_page.contact_sliding_text">CONTACTEZ-NOUS *</h2>
                 </li>
                 <li>
-                    <h2 data-hover="Identite visuelle" class="contact-three__sliding-text-title">CONTACTEZ-NOUS *</h2>
+                    <h2 data-hover="Identite visuelle" class="contact-three__sliding-text-title" data-i18n="services_page.contact_sliding_text">CONTACTEZ-NOUS *</h2>
                 </li>
             </ul>
             <div class="container">
@@ -476,13 +481,13 @@
                         <div class="contact-three__left">
                             <div class="section-title text-left sec-title-animation animation-style2">
                                 <div class="section-title__tagline-box">
-                                    <span class="section-title__tagline">Contact</span>
+                                    <span class="section-title__tagline" data-i18n="services_page.contact_tagline">Contact</span>
                                 </div>
-                                <h2 class="section-title__title title-animation">Construisons votre prochaine
+                                <h2 class="section-title__title title-animation" data-i18n="services_page.contact_title">Construisons votre prochaine
                                     <span>Technologie Solution</span>
                                 </h2>
                             </div>
-                            <p class="contact-three__text">Vous avez un projet technologique ou souhaitez moderniser
+                            <p class="contact-three__text" data-i18n="services_page.contact_description">Vous avez un projet technologique ou souhaitez moderniser
                                 votre infrastructure informatique ? L'equipe MHTECH Consulting est prete a vous
                                 accompagner avec des solutions adaptees a vos besoins.</p>
                             <ul class="contact-three__contact-list list-unstyled">
@@ -491,7 +496,7 @@
                                         <span class="icon-email"></span>
                                     </div>
                                     <div class="content">
-                                        <span>Email</span>
+                                        <span data-i18n="services_page.contact_email_label">Email</span>
                                         <p><a href="mailto:contact@mhtechnology.com">contact@mhtechnology.com</a></p>
                                     </div>
                                 </li>
@@ -500,7 +505,7 @@
                                         <span class="icon-call"></span>
                                     </div>
                                     <div class="content">
-                                        <span>Telephone</span>
+                                        <span data-i18n="services_page.contact_phone_label">Telephone</span>
                                         <p><a href="tel:+000000000">+XXX XXX XXX</a></p>
                                     </div>
                                 </li>
@@ -509,7 +514,7 @@
                                         <span class="icon-pin"></span>
                                     </div>
                                     <div class="content">
-                                        <span>Adresse</span>
+                                        <span data-i18n="services_page.contact_address_label">Adresse</span>
                                         <p>Votre localisation</p>
                                     </div>
                                 </li>
@@ -526,55 +531,55 @@
                                     method="post">
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-6 col-md-6">
-                                            <h4 class="contact-one__input-title">Nom complet</h4>
+                                            <h4 class="contact-one__input-title" data-i18n="services_page.form_name_label">Nom complet</h4>
                                             <div class="contact-one__input-box">
                                                 <div class="contact-one__input-icon">
                                                     <span class="icon-user"></span>
                                                 </div>
-                                                <input type="text" name="name" placeholder="Votre nom" required="">
+                                                <input type="text" name="name" data-i18n-placeholder="services_page.form_name_placeholder" placeholder="Votre nom" required="">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-6 col-md-6">
-                                            <h4 class="contact-one__input-title">Adresse email</h4>
+                                            <h4 class="contact-one__input-title" data-i18n="services_page.form_email_label">Adresse email</h4>
                                             <div class="contact-one__input-box">
                                                 <div class="contact-one__input-icon">
                                                     <span class="icon-mail"></span>
                                                 </div>
-                                                <input type="email" name="email" placeholder="contact@mhtechnology.com"
+                                                <input type="email" name="email" data-i18n-placeholder="services_page.form_email_placeholder" placeholder="contact@mhtechnology.com"
                                                     required="">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-6 col-md-6">
-                                            <h4 class="contact-one__input-title">Telephone</h4>
+                                            <h4 class="contact-one__input-title" data-i18n="services_page.form_phone_label">Telephone</h4>
                                             <div class="contact-one__input-box">
                                                 <div class="contact-one__input-icon">
                                                     <span class="icon-phone-call"></span>
                                                 </div>
-                                                <input type="text" name="Phone" placeholder="+XXX XXX XXX"
+                                                <input type="text" name="Phone" data-i18n-placeholder="services_page.form_phone_placeholder" placeholder="+XXX XXX XXX"
                                                     required="">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-6 col-md-6">
-                                            <h4 class="contact-one__input-title">Sujet</h4>
+                                            <h4 class="contact-one__input-title" data-i18n="services_page.form_subject_label">Sujet</h4>
                                             <div class="contact-one__input-box">
                                                 <div class="contact-one__input-icon">
                                                     <span class="icon-edit"></span>
                                                 </div>
-                                                <input type="text" name="subject" placeholder="Objet de votre demande" required="">
+                                                <input type="text" name="subject" data-i18n-placeholder="services_page.form_subject_placeholder" placeholder="Objet de votre demande" required="">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-12">
-                                        <h4 class="contact-one__input-title">Demande de consultation</h4>
+                                        <h4 class="contact-one__input-title" data-i18n="services_page.form_message_label">Demande de consultation</h4>
                                         <div class="contact-one__input-box text-message-box">
                                             <div class="contact-one__input-icon">
                                                 <span class="icon-edit"></span>
                                             </div>
-                                            <textarea name="message" placeholder="Decrivez votre projet ou votre besoin"
+                                            <textarea name="message" data-i18n-placeholder="services_page.form_message_placeholder" placeholder="Decrivez votre projet ou votre besoin"
                                                 required=""></textarea>
                                         </div>
                                         <div class="contact-one__btn-box">
-                                            <button type="submit" class="thm-btn">Envoyer votre demande
+                                            <button type="submit" class="thm-btn"><span data-i18n="services_page.form_submit_button">Envoyer votre demande</span>
                                                 <span class="fas fa-arrow-right"></span></button>
                                         </div>
                                     </div>
@@ -595,9 +600,9 @@
             <div class="container">
                 <div class="section-title text-center sec-title-animation animation-style1">
                     <div class="section-title__tagline-box">
-                        <span class="section-title__tagline">Processus de travail</span>
+                        <span class="section-title__tagline" data-i18n="services_page.process_tagline">Processus de travail</span>
                     </div>
-                    <h2 class="section-title__title title-animation">Comment nous <span>intervenons</span>
+                    <h2 class="section-title__title title-animation" data-i18n="services_page.process_title">Comment nous <span>intervenons</span>
                     </h2>
                 </div>
                 <ul class="row list-unstyled">
@@ -611,8 +616,8 @@
                                 <span class="icon-self-service"></span>
                             </div>
                             <div class="process-two__count"></div>
-                            <h3 class="process-two__title">Identifier votre besoin</h3>
-                            <p class="process-two__text">Nous analysons vos enjeux pour cibler la solution la plus
+                            <h3 class="process-two__title" data-i18n="services_page.process_step1_title">Identifier votre besoin</h3>
+                            <p class="process-two__text" data-i18n="services_page.process_step1_text">Nous analysons vos enjeux pour cibler la solution la plus
                                 adaptee.</p>
                         </div>
                     </li>
@@ -627,8 +632,8 @@
                                 <span class="icon-conference"></span>
                             </div>
                             <div class="process-two__count"></div>
-                            <h3 class="process-two__title">Planifier une consultation</h3>
-                            <p class="process-two__text">Nous echangeons avec vous pour comprendre vos objectifs
+                            <h3 class="process-two__title" data-i18n="services_page.process_step2_title">Planifier une consultation</h3>
+                            <p class="process-two__text" data-i18n="services_page.process_step2_text">Nous echangeons avec vous pour comprendre vos objectifs
                                 metier et techniques.</p>
                         </div>
                     </li>
@@ -643,8 +648,8 @@
                                 <span class="icon-execution"></span>
                             </div>
                             <div class="process-two__count"></div>
-                            <h3 class="process-two__title">Recevoir une proposition</h3>
-                            <p class="process-two__text">Vous obtenez une feuille de route claire, coherente et
+                            <h3 class="process-two__title" data-i18n="services_page.process_step3_title">Recevoir une proposition</h3>
+                            <p class="process-two__text" data-i18n="services_page.process_step3_text">Vous obtenez une feuille de route claire, coherente et
                                 personnalisee.</p>
                         </div>
                     </li>
@@ -659,8 +664,8 @@
                                 <span class="icon-results"></span>
                             </div>
                             <div class="process-two__count"></div>
-                            <h3 class="process-two__title">Mettre en oeuvre la solution</h3>
-                            <p class="process-two__text">Nous deployons, securisons et faisons evoluer votre solution
+                            <h3 class="process-two__title" data-i18n="services_page.process_step4_title">Mettre en oeuvre la solution</h3>
+                            <p class="process-two__text" data-i18n="services_page.process_step4_text">Nous deployons, securisons et faisons evoluer votre solution
                                 dans la duree.</p>
                         </div>
                     </li>
@@ -679,9 +684,9 @@
             <div class="container">
                 <div class="section-title text-center sec-title-animation animation-style1">
                     <div class="section-title__tagline-box">
-                        <span class="section-title__tagline">Nos offres</span>
+                        <span class="section-title__tagline" data-i18n="services_page.pricing_tagline">Nos offres</span>
                     </div>
-                    <h2 class="section-title__title title-animation">Formules <span>d'accompagnement</span>
+                    <h2 class="section-title__title title-animation" data-i18n="services_page.pricing_title">Formules <span>d'accompagnement</span>
                     </h2>
                 </div>
                 <div class="row">
@@ -863,17 +868,17 @@
                         <img src="assets/images/resources/newsletter-two-img-1.png" alt="">
                     </div>
                     <div class="newsletter-two__left">
-                        <h2 class="newsletter-two__title">Recevez nos actualites technologiques</h2>
-                        <p class="newsletter-two__text">Suivez nos reflexions sur la securite, les infrastructures et
+                        <h2 class="newsletter-two__title" data-i18n="services_page.newsletter_title">Recevez nos actualites technologiques</h2>
+                        <p class="newsletter-two__text" data-i18n="services_page.newsletter_text">Suivez nos reflexions sur la securite, les infrastructures et
                             la transformation digitale.</p>
                     </div>
                     <div class="newsletter-two__right">
                         <form class="contact-form-validated newsletter-two__form" action="assets/inc/sendemail.php"
                             method="post">
                             <div class="newsletter-two__input">
-                                <input type="email" placeholder="Entrez votre email" name="email" required>
+                                <input type="email" data-i18n-placeholder="services_page.newsletter_placeholder" placeholder="Entrez votre email" name="email" required>
                             </div>
-                            <button type="submit" class="thm-btn">S'abonner <span class="fas fa-arrow-right"></span>
+                            <button type="submit" class="thm-btn"><span data-i18n="services_page.newsletter_button">S'abonner</span> <span class="fas fa-arrow-right"></span>
                             </button>
                             <div class="result"></div>
                         </form>
@@ -1100,6 +1105,7 @@
 
     <!-- template js -->
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/i18n.js"></script>
 </body>
 
 </html>
