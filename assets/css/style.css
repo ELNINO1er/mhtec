@@ -55,20 +55,24 @@
 # Common
 --------------------------------------------------------------*/
 :root {
-  --itzone-font: "Nunito", sans-serif;
-  --itzone-font-two: "Barlow", sans-serif;
+  --itzone-font: "Roboto", sans-serif;
+  --itzone-font-two: "Open Sans", sans-serif;
   --itzone-gray: #666666;
   --itzone-gray-rgb: 102, 102, 102;
-  --itzone-base: #6e54f3;
-  --itzone-base-rgb: 110, 84, 243;
-  --itzone-black: #070d1a;
-  --itzone-black-rgb: 7, 13, 26;
-  --itzone-extra: #edf0fa;
-  --itzone-extra-rgb: 237, 240, 250;
-  --itzone-secondary: #F0F4FF;
-  --itzone-secondary-rgb: 240, 244, 255;
+  --itzone-base: #1a5f7a;
+  --itzone-base-rgb: 26, 95, 122;
+  --itzone-black: #2c3e50;
+  --itzone-black-rgb: 44, 62, 80;
+  --itzone-extra: #ecf0f1;
+  --itzone-extra-rgb: 236, 240, 241;
+  --itzone-secondary: #e3f2fd;
+  --itzone-secondary-rgb: 227, 242, 253;
   --itzone-white: #ffffff;
   --itzone-white-rgb: 255, 255, 255;
+  --itzone-accent: #00bcd4;
+  --itzone-accent-rgb: 0, 188, 212;
+  --itzone-blue-light: #2196F3;
+  --itzone-blue-light-rgb: 33, 150, 243;
   --itzone-bdr-radius: 5px
 }
 

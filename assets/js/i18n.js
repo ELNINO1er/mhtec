@@ -70,6 +70,14 @@ class I18n {
             }
         });
 
+        // Mise à jour des placeholders avec data-i18n-placeholder
+        const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
+        placeholderElements.forEach(element => {
+            const key = element.getAttribute('data-i18n-placeholder');
+            const translation = this.translate(key);
+            element.setAttribute('placeholder', translation);
+        });
+
         // Mise à jour des éléments avec data-i18n-html (pour le HTML)
         const htmlElements = document.querySelectorAll('[data-i18n-html]');
         htmlElements.forEach(element => {

@@ -32,10 +32,10 @@
 }
 
 .lang-btn.active {
-    background: #ff6b35;
-    border-color: #ff6b35;
+    background: #00bcd4;
+    border-color: #00bcd4;
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 188, 212, 0.4);
 }
 
 /* Pour le menu mobile */
@@ -68,10 +68,10 @@
 }
 
 .stricky-header .lang-btn.active {
-    background: #ff6b35;
-    border-color: #ff6b35;
+    background: #00bcd4;
+    border-color: #00bcd4;
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 188, 212, 0.4);
 }
 
 /* Animation de transition de langue */

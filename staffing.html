@@ -15,11 +15,11 @@
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
         rel="stylesheet">
 
 
@@ -96,7 +96,7 @@
                         <input type="text" name="name" placeholder="Votre nom" data-i18n-placeholder="chat.name_placeholder" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" placeholder="contact@mhtechnology.com" data-i18n-placeholder="chat.email_placeholder" required>
+                        <input type="email" name="email" placeholder="contact@mhtechconsulting.com" data-i18n-placeholder="chat.email_placeholder" required>
                     </div>
                     <div class="form-group">
                         <textarea name="message" placeholder="Votre message" data-i18n-placeholder="chat.message_placeholder" required></textarea>
@@ -210,7 +210,7 @@
                                 <i class="icon-email"></i>
                             </div>
                             <div class="text">
-                                <p><a href="mailto:contact@mhtechnology.com">contact@mhtechnology.com</a>
+                                <p><a href="mailto:contact@mhtechconsulting.com">contact@mhtechconsulting.com</a>
                                 </p>
                             </div>
                         </li>
@@ -252,8 +252,16 @@
                                 <li>
                                     <a href="about.html" data-i18n="nav.about">A propos</a>
                                 </li>
-                                <li>
+                                <li class="dropdown">
                                     <a href="services.html" data-i18n="nav.services">Services IT</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="software-development.html" data-i18n="nav.software_dev">Developpement Logiciel</a></li>
+                                        <li><a href="web-development.html" data-i18n="nav.web_dev">Developpement Web</a></li>
+                                        <li><a href="ui-ux-design.html" data-i18n="nav.ui_ux">Design UI/UX</a></li>
+                                        <li><a href="digital-marketing.html" data-i18n="nav.digital_marketing">Marketing Digital</a></li>
+                                        <li><a href="business-analysis.html" data-i18n="nav.business_analysis">Analyse Metier</a></li>
+                                        <li><a href="product-design.html" data-i18n="nav.product_design">Conception Produit</a></li>
+                                    </ul>
                                 </li>
                                 <li>
                                     <a href="staffing.html" data-i18n="nav.staffing">Staffing IT</a>
@@ -274,15 +282,6 @@
                                 <button class="lang-btn active" data-lang="fr">FR</button>
                                 <button class="lang-btn" data-lang="en">EN</button>
                             </div>
-                            <div class="main-menu__call">
-                                <div class="main-menu__call-icon">
-                                    <i class="icon-call"></i>
-                                </div>
-                                <div class="main-menu__call-content">
-                                    <p class="main-menu__call-sub-title">Contact</p>
-                                    <h5 class="main-menu__call-number"><a href="tel:+000000000">+XXX XXX XXX</a></h5>
-                                </div>
-                            </div>
                             <div class="main-menu__nav-sidebar-icon">
                                 <a class="navSidebar-button" href="#">
                                     <span class="icon-dots-menu-one"></span>
@@ -291,7 +290,7 @@
                                 </a>
                             </div>
                             <div class="main-menu__btn-box">
-                                <a href="about.html" class="thm-btn">En savoir plus
+                                <a href="about.html" class="thm-btn" data-i18n="common.learn_more">En savoir plus
                                     <span class="fas fa-arrow-right"></span>
                                 </a>
                             </div>
@@ -510,18 +509,161 @@
                     </div>
                 </div>
 
-                <!-- CTA Candidats -->
+                <!-- CTA Candidats et Entreprises -->
                 <div class="row mt-5">
-                    <div class="col-12 text-center">
-                        <a href="contact.html" class="thm-btn" style="padding: 15px 40px; font-size: 18px;">
-                            <span data-i18n="staffing_page.cta_candidates_button">Postulez maintenant</span>
+                    <div class="col-md-6 text-center mb-3">
+                        <button class="thm-btn" style="padding: 15px 40px; font-size: 18px;" onclick="openCVModal()">
+                            <span data-i18n="staffing_page.cta_candidates_button">Deposez votre CV</span>
                             <span class="fas fa-arrow-right"></span>
-                        </a>
+                        </button>
+                    </div>
+                    <div class="col-md-6 text-center mb-3">
+                        <button class="thm-btn" style="padding: 15px 40px; font-size: 18px;" onclick="openRecruitModal()">
+                            <span data-i18n="staffing_page.cta_companies_button">Demande de recrutement</span>
+                            <span class="fas fa-arrow-right"></span>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
         <!--Staffing IT Page End -->
+
+        <!-- CV Modal -->
+        <div id="cvModal" class="modal-staffing">
+            <div class="modal-staffing-content">
+                <span class="modal-staffing-close" onclick="closeCVModal()">&times;</span>
+                <div class="modal-staffing-header">
+                    <h2 data-i18n="staffing_page.cv_section_title">Deposez votre <span>CV</span></h2>
+                    <p data-i18n="staffing_page.cv_section_description">Rejoignez notre vivier de talents IT et accedez a des opportunites chez nos clients.</p>
+                </div>
+                <form class="contact-form-validated" action="assets/inc/upload-cv.php" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="modal-input-title" data-i18n="staffing_page.cv_name_label">Nom complet*</h4>
+                            <div class="modal-input-box">
+                                <span class="icon-user"></span>
+                                <input type="text" name="name" placeholder="Votre nom complet" data-i18n-placeholder="staffing_page.cv_name_placeholder" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="modal-input-title" data-i18n="staffing_page.cv_email_label">Email*</h4>
+                            <div class="modal-input-box">
+                                <span class="icon-mail"></span>
+                                <input type="email" name="email" placeholder="votre.email@exemple.com" data-i18n-placeholder="staffing_page.cv_email_placeholder" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="modal-input-title" data-i18n="staffing_page.cv_phone_label">Telephone*</h4>
+                            <div class="modal-input-box">
+                                <span class="icon-phone-call"></span>
+                                <input type="text" name="phone" placeholder="+XXX XXX XXX" data-i18n-placeholder="staffing_page.cv_phone_placeholder" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="modal-input-title" data-i18n="staffing_page.cv_position_label">Poste recherche*</h4>
+                            <div class="modal-input-box">
+                                <span class="icon-briefcase"></span>
+                                <input type="text" name="position" placeholder="Ex: Developpeur Full Stack" data-i18n-placeholder="staffing_page.cv_position_placeholder" required="">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <h4 class="modal-input-title" data-i18n="staffing_page.cv_upload_label">Votre CV (PDF, DOC, DOCX)*</h4>
+                            <div class="modal-input-box">
+                                <input type="file" name="cv" accept=".pdf,.doc,.docx" required="">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <h4 class="modal-input-title" data-i18n="staffing_page.cv_message_label">Message (optionnel)</h4>
+                            <div class="modal-input-box">
+                                <textarea name="message" rows="4" placeholder="Parlez-nous de votre experience et de vos competences..." data-i18n-placeholder="staffing_page.cv_message_placeholder"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="thm-btn" data-i18n="staffing_page.cv_submit_button">Envoyer mon CV
+                                <span class="fas fa-arrow-right"></span>
+                            </button>
+                        </div>
+                        <div class="result"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Recruitment Modal -->
+        <div id="recruitModal" class="modal-staffing">
+            <div class="modal-staffing-content">
+                <span class="modal-staffing-close" onclick="closeRecruitModal()">&times;</span>
+                <div class="modal-staffing-header">
+                    <h2 data-i18n="staffing_page.recruit_section_title">Demande de <span>recrutement</span></h2>
+                    <p data-i18n="staffing_page.recruit_section_description">Confiez-nous vos besoins en talents IT. Nous vous proposons des profils qualifies et adaptes a vos projets.</p>
+                </div>
+                <form class="contact-form-validated" action="assets/inc/recruitment-request.php" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="modal-input-title" data-i18n="staffing_page.recruit_company_label">Entreprise*</h4>
+                            <div class="modal-input-box">
+                                <span class="icon-briefcase"></span>
+                                <input type="text" name="company" placeholder="Nom de votre entreprise" data-i18n-placeholder="staffing_page.recruit_company_placeholder" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="modal-input-title" data-i18n="staffing_page.recruit_contact_label">Personne de contact*</h4>
+                            <div class="modal-input-box">
+                                <span class="icon-user"></span>
+                                <input type="text" name="contact_name" placeholder="Votre nom complet" data-i18n-placeholder="staffing_page.recruit_contact_placeholder" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="modal-input-title" data-i18n="staffing_page.recruit_email_label">Email professionnel*</h4>
+                            <div class="modal-input-box">
+                                <span class="icon-mail"></span>
+                                <input type="email" name="email" placeholder="contact@votreentreprise.com" data-i18n-placeholder="staffing_page.recruit_email_placeholder" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="modal-input-title" data-i18n="staffing_page.recruit_phone_label">Telephone*</h4>
+                            <div class="modal-input-box">
+                                <span class="icon-phone-call"></span>
+                                <input type="text" name="phone" placeholder="+XXX XXX XXX" data-i18n-placeholder="staffing_page.recruit_phone_placeholder" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="modal-input-title" data-i18n="staffing_page.recruit_profile_label">Profil recherche*</h4>
+                            <div class="modal-input-box">
+                                <span class="icon-search"></span>
+                                <input type="text" name="profile" placeholder="Ex: DevOps Engineer, Data Analyst" data-i18n-placeholder="staffing_page.recruit_profile_placeholder" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="modal-input-title" data-i18n="staffing_page.recruit_duration_label">Duree de la mission*</h4>
+                            <div class="modal-input-box">
+                                <span class="icon-calendar"></span>
+                                <select name="duration" required="">
+                                    <option value="" data-i18n="staffing_page.recruit_duration_option_default">Selectionnez une duree</option>
+                                    <option value="1-3" data-i18n="staffing_page.recruit_duration_option_1">1-3 mois</option>
+                                    <option value="3-6" data-i18n="staffing_page.recruit_duration_option_2">3-6 mois</option>
+                                    <option value="6-12" data-i18n="staffing_page.recruit_duration_option_3">6-12 mois</option>
+                                    <option value="12+" data-i18n="staffing_page.recruit_duration_option_4">12+ mois</option>
+                                    <option value="permanent" data-i18n="staffing_page.recruit_duration_option_5">CDI</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <h4 class="modal-input-title" data-i18n="staffing_page.recruit_description_label">Description du besoin*</h4>
+                            <div class="modal-input-box">
+                                <textarea name="message" rows="4" placeholder="Decrivez le profil recherche, les competences requises, le contexte du projet..." data-i18n-placeholder="staffing_page.recruit_description_placeholder" required=""></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="thm-btn" data-i18n="staffing_page.recruit_submit_button">Envoyer la demande
+                                <span class="fas fa-arrow-right"></span>
+                            </button>
+                        </div>
+                        <div class="result"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
 
         <!-- Contact Three Start -->
         <section class="contact-three">
@@ -562,7 +704,7 @@
                                     </div>
                                     <div class="content">
                                         <span>Email</span>
-                                        <p><a href="mailto:contact@mhtechnology.com">contact@mhtechnology.com</a></p>
+                                        <p><a href="mailto:contact@mhtechconsulting.com">contact@mhtechconsulting.com</a></p>
                                     </div>
                                 </li>
                                 <li>
@@ -610,7 +752,7 @@
                                                 <div class="contact-one__input-icon">
                                                     <span class="icon-mail"></span>
                                                 </div>
-                                                <input type="email" name="email" placeholder="contact@mhtechnology.com"
+                                                <input type="email" name="email" placeholder="contact@mhtechconsulting.com"
                                                     required="">
                                             </div>
                                         </div>
@@ -1038,7 +1180,7 @@
                                             <div class="icon">
                                                 <span class="icon-email"></span>
                                             </div>
-                                            <p><a href="mailto:contact@mhtechnology.com">contact@mhtechnology.com</a></p>
+                                            <p><a href="mailto:contact@mhtechconsulting.com">contact@mhtechconsulting.com</a></p>
                                         </li>
                                     </ul>
                                 </div>
@@ -1092,7 +1234,7 @@
             <ul class="mobile-nav__contact list-unstyled">
                 <li>
                     <i class="fa fa-envelope"></i>
-                    <a href="mailto:contact@mhtechnology.com">contact@mhtechnology.com</a>
+                    <a href="mailto:contact@mhtechconsulting.com">contact@mhtechconsulting.com</a>
                 </li>
                 <li>
                     <i class="fas fa-phone"></i>
@@ -1171,6 +1313,209 @@
     <!-- template js -->
     <script src="assets/js/script.js"></script>
     <script src="assets/js/i18n.js"></script>
+
+    <!-- Modal Styles -->
+    <style>
+        .modal-staffing {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        .modal-staffing-content {
+            background-color: #fefefe;
+            margin: 3% auto;
+            padding: 40px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: slideDown 0.4s;
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .modal-staffing-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .modal-staffing-content {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-staffing-close {
+            color: #aaa;
+            float: right;
+            font-size: 32px;
+            font-weight: bold;
+            line-height: 20px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-staffing-close:hover,
+        .modal-staffing-close:focus {
+            color: var(--itzone-base);
+        }
+
+        .modal-staffing-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-staffing-header h2 {
+            color: var(--itzone-black);
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .modal-staffing-header h2 span {
+            color: var(--itzone-base);
+        }
+
+        .modal-staffing-header p {
+            color: var(--itzone-gray);
+            font-size: 16px;
+        }
+
+        .modal-input-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--itzone-black);
+            margin-bottom: 10px;
+            margin-top: 15px;
+        }
+
+        .modal-input-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .modal-input-box span[class^="icon-"] {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--itzone-base);
+            font-size: 18px;
+        }
+
+        .modal-input-box input[type="text"],
+        .modal-input-box input[type="email"],
+        .modal-input-box input[type="file"],
+        .modal-input-box select,
+        .modal-input-box textarea {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border: 1px solid #e5e5e5;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .modal-input-box input[type="file"] {
+            padding: 12px 15px;
+        }
+
+        .modal-input-box textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .modal-input-box input:focus,
+        .modal-input-box select:focus,
+        .modal-input-box textarea:focus {
+            outline: none;
+            border-color: var(--itzone-base);
+            box-shadow: 0 0 0 3px rgba(26, 95, 122, 0.1);
+        }
+
+        .modal-staffing-content .thm-btn {
+            margin-top: 20px;
+            padding: 15px 40px;
+        }
+
+        @media (max-width: 768px) {
+            .modal-staffing-content {
+                width: 95%;
+                padding: 30px 20px;
+                margin: 5% auto;
+            }
+
+            .modal-staffing-header h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+
+    <!-- Modal Scripts -->
+    <script>
+        function openCVModal() {
+            document.getElementById('cvModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCVModal() {
+            document.getElementById('cvModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function openRecruitModal() {
+            document.getElementById('recruitModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeRecruitModal() {
+            document.getElementById('recruitModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const cvModal = document.getElementById('cvModal');
+            const recruitModal = document.getElementById('recruitModal');
+            if (event.target == cvModal) {
+                closeCVModal();
+            }
+            if (event.target == recruitModal) {
+                closeRecruitModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeCVModal();
+                closeRecruitModal();
+            }
+        });
+    </script>
 </body>
 
 </html>
