@@ -1,0 +1,80 @@
+/* Language Switcher Styles */
+.language-switcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.lang-btn {
+    background: #ffffff;
+    border: 2px solid #1a5f7a;
+    color: #1a5f7a;
+    padding: 8px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    font-family: var(--thm-font);
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.lang-btn:hover {
+    background: #1a5f7a;
+    border-color: #1a5f7a;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 95, 122, 0.3);
+}
+
+.lang-btn.active {
+    background: #ff6b35;
+    border-color: #ff6b35;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+}
+
+/* Pour le menu mobile */
+@media (max-width: 991px) {
+    .language-switcher {
+        margin: 15px 0;
+        justify-content: center;
+    }
+
+    .lang-btn {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}
+
+/* Style pour le header sticky */
+.stricky-header .lang-btn {
+    background: #ffffff;
+    border-color: #1a5f7a;
+    color: #1a5f7a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.stricky-header .lang-btn:hover {
+    background: #1a5f7a;
+    border-color: #1a5f7a;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 95, 122, 0.3);
+}
+
+.stricky-header .lang-btn.active {
+    background: #ff6b35;
+    border-color: #ff6b35;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+}
+
+/* Animation de transition de langue */
+body {
+    transition: opacity 0.2s ease;
+}

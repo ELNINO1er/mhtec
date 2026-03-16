@@ -62,6 +62,7 @@
     <!-- template styles -->
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="assets/css/language-switcher.css" />
 </head>
 
 <body class="custom-cursor">
@@ -85,19 +86,19 @@
         <div class="popup-inner">
             <div class="close-chat"><i class="fa fa-times"></i></div>
             <div class="chat-form">
-                <p>Remplissez le formulaire ci-dessous et nous vous repondrons dans les plus brefs delais.</p>
+                <p data-i18n="chat.description">Remplissez le formulaire ci-dessous et nous vous repondrons dans les plus brefs delais.</p>
                 <form action="assets/inc/sendemail.php" method="POST" class="contact-form-validated">
                     <div class="form-group">
-                        <input type="text" name="name" placeholder="Votre nom" required>
+                        <input type="text" name="name" placeholder="Votre nom" data-i18n="chat.name_placeholder" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" placeholder="contact@mhtechnology.com" required>
+                        <input type="email" name="email" placeholder="contact@mhtechnology.com" data-i18n="chat.email_placeholder" required>
                     </div>
                     <div class="form-group">
-                        <textarea name="message" placeholder="Votre message" required></textarea>
+                        <textarea name="message" placeholder="Votre message" data-i18n="chat.message_placeholder" required></textarea>
                     </div>
                     <div class="form-group message-btn">
-                        <button type="submit" class="thm-btn"> Envoyer
+                        <button type="submit" class="thm-btn" data-i18n="chat.send_button"> Envoyer
                             <span class="fas fa-arrow-right"></span>
                         </button>
                     </div>
@@ -124,29 +125,29 @@
                                 <a href="index.html"><img src="assets/images/resources/logo-2.png" alt="" /></a>
                             </div>
                             <div class="content-box">
-                                <h4>A propos de MHTECH</h4>
+                                <h4 data-i18n="sidebar.about_title">A propos de MHTECH</h4>
                                 <div class="inner-text">
-                                     <p>MHTECH Consulting accompagne les entreprises dans leur transformation digitale
+                                     <p data-i18n="sidebar.about_text">MHTECH Consulting accompagne les entreprises dans leur transformation digitale
                                          avec des solutions modernes, performantes et securisees.
                                      </p>
                                 </div>
                             </div>
 
                             <div class="form-inner">
-                                <h4>Demandez une consultation</h4>
+                                <h4 data-i18n="sidebar.consultation_title">Demandez une consultation</h4>
                                 <form action="assets/inc/sendemail.php" method="POST" class="contact-form-validated">
                                     <div class="form-group">
-                                        <input type="text" name="name" placeholder="Name" required="">
+                                        <input type="text" name="name" placeholder="Name" data-i18n="sidebar.name_placeholder" required="">
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" name="email" placeholder="Email" required="">
+                                        <input type="email" name="email" placeholder="Email" data-i18n="sidebar.email_placeholder" required="">
                                     </div>
                                     <div class="form-group">
-                                        <textarea name="message" placeholder="Message..." required=""></textarea>
+                                        <textarea name="message" placeholder="Message..." data-i18n="sidebar.message_placeholder" required=""></textarea>
                                     </div>
                                     <div class="form-group message-btn">
                                         <button class="thm-btn" data-text="Envoyer +" type="submit"
-                                            data-loading-text="Veuillez patienter...">Envoyer
+                                            data-loading-text="Veuillez patienter..." data-i18n="sidebar.send_button">Envoyer
                                             <span class="fas fa-arrow-right"></span>
                                         </button>
                                     </div>
@@ -155,7 +156,7 @@
                             </div>
 
                             <div class="sidebar-contact-info">
-                                <h4>Coordonnees</h4>
+                                <h4 data-i18n="sidebar.contact_title">Coordonnees</h4>
                                 <ul class="list-unstyled">
                                     <li>
                                         <span class="icon-pin"></span> 88 broklyn street, New York
@@ -242,25 +243,25 @@
                             <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                             <ul class="main-menu__list">
                                 <li>
-                                    <a href="index.html">Accueil</a>
+                                    <a href="index.html" data-i18n="nav.home">Accueil</a>
                                 </li>
                                 <li>
-                                    <a href="about.html">A propos</a>
+                                    <a href="about.html" data-i18n="nav.about">A propos</a>
                                 </li>
                                 <li>
-                                    <a href="services.html">Services IT</a>
+                                    <a href="services.html" data-i18n="nav.services">Services IT</a>
                                 </li>
                                 <li>
-                                    <a href="staffing.html">Staffing IT</a>
+                                    <a href="staffing.html" data-i18n="nav.staffing">Staffing IT</a>
                                 </li>
                                 <li>
-                                    <a href="testimonials.html">Temoignages</a>
+                                    <a href="testimonials.html" data-i18n="nav.testimonials">Temoignages</a>
                                 </li>
                                 <li>
-                                    <a href="blog.html">Blog</a>
+                                    <a href="blog.html" data-i18n="nav.blog">Blog</a>
                                 </li>
                                 <li>
-                                    <a href="contact.html">Contact</a>
+                                    <a href="contact.html" data-i18n="nav.contact">Contact</a>
                                 </li>
                             </ul>
                         </div>
@@ -274,6 +275,10 @@
                                     <h5 class="main-menu__call-number"><a href="tel:+000000000">+XXX XXX XXX</a></h5>
                                 </div>
                             </div>
+                            <div class="language-switcher">
+                                <button class="lang-btn active" data-lang="fr">FR</button>
+                                <button class="lang-btn" data-lang="en">EN</button>
+                            </div>
                             <div class="main-menu__nav-sidebar-icon">
                                 <a class="navSidebar-button" href="#">
                                     <span class="icon-dots-menu-one"></span>
@@ -282,7 +287,7 @@
                                 </a>
                             </div>
                             <div class="main-menu__btn-box">
-                                <a href="about.html" class="thm-btn">En savoir plus
+                                <a href="about.html" class="thm-btn" data-i18n="common.learn_more">En savoir plus
                                     <span class="fas fa-arrow-right"></span>
                                 </a>
                             </div>
@@ -332,20 +337,20 @@
                                 MHTECH Consulting</p>
                         </div>
                         <h2 class="banner-one__title" data-aos="fade-left" data-aos-duration="1000"
-                            data-aos-delay="500">MH Tech Consulting – Votre partenaire en <span>conseil IT</span><br> et staffing technologique
+                            data-aos-delay="500" data-i18n="hero.main_title">MH Tech Consulting – Votre partenaire en <span>conseil IT</span><br> et staffing technologique
                         </h2>
-                        <p class="banner-one__text" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
+                        <p class="banner-one__text" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800" data-i18n="hero.description">
                             MH Tech Consulting accompagne les entreprises dans leurs projets technologiques en proposant des services de conseil IT, cybersecurite, DevOps, design digital et operations IT. Nous mettons egalement a disposition des talents IT qualifies pour repondre aux besoins de recrutement des organisations.
                         </p>
                         <div class="banner-one__btn-box" data-aos="fade-up" data-aos-duration="1000"
                             data-aos-delay="1000">
                             <div class="banner-one__btn">
-                                <a href="services.html" class="thm-btn">Decouvrir nos services IT
+                                <a href="services.html" class="thm-btn" data-i18n="hero.button_services">Decouvrir nos services IT
                                     <span class="fas fa-arrow-right"></span>
                                 </a>
                             </div>
                             <div class="banner-one__btn">
-                                <a href="staffing.html" class="thm-btn">Trouver un talent IT
+                                <a href="staffing.html" class="thm-btn" data-i18n="hero.button_staffing">Trouver un talent IT
                                     <span class="fas fa-arrow-right"></span>
                                 </a>
                             </div>
@@ -378,21 +383,21 @@
                         <div class="about-one__left">
                             <div class="section-title text-left sec-title-animation animation-style2">
                                 <div class="section-title__tagline-box">
-                                    <span class="section-title__tagline">Qui sommes-nous</span>
+                                    <span class="section-title__tagline" data-i18n="about.tagline">Qui sommes-nous</span>
                                 </div>
-                                <h2 class="section-title__title title-animation">Des solutions technologiques modernes
+                                <h2 class="section-title__title title-animation" data-i18n="about.title">Des solutions technologiques modernes
                                     <br><span>pour accompagner votre croissance</span>
                                 </h2>
                             </div>
-                            <p class="about-one__text">MH Tech Consulting accompagne les entreprises dans leurs projets technologiques en proposant des services de conseil IT, cybersecurite, DevOps, design digital et operations IT. Nous mettons egalement a disposition des talents IT qualifies pour repondre aux besoins de recrutement des organisations.</p>
+                            <p class="about-one__text" data-i18n="about.description">MH Tech Consulting accompagne les entreprises dans leurs projets technologiques en proposant des services de conseil IT, cybersecurite, DevOps, design digital et operations IT. Nous mettons egalement a disposition des talents IT qualifies pour repondre aux besoins de recrutement des organisations.</p>
                             <ul class="about-one__points list-unstyled">
                                 <li>
                                     <div class="icon">
                                         <span class="icon-award"></span>
                                     </div>
                                     <div class="content">
-                                        <h4>Nos domaines d'expertise</h4>
-                                        <p>Informatique et solutions IT, developpement web et applications,
+                                        <h4 data-i18n="about.expertise_title">Nos domaines d'expertise</h4>
+                                        <p data-i18n="about.expertise_text">Informatique et solutions IT, developpement web et applications,
                                             cybersécurite, design digital et transformation digitale.</p>
                                     </div>
                                 </li>
@@ -401,15 +406,15 @@
                                         <span class="icon-certified"></span>
                                     </div>
                                     <div class="content">
-                                        <h4>Pourquoi choisir MHTECH</h4>
-                                        <p>Expertise technologique moderne, solutions adaptees, securite, fiabilite et
+                                        <h4 data-i18n="about.why_choose_title">Pourquoi choisir MHTECH</h4>
+                                        <p data-i18n="about.why_choose_text">Expertise technologique moderne, solutions adaptees, securite, fiabilite et
                                             accompagnement strategique oriente resultats.</p>
                                     </div>
                                 </li>
                             </ul>
                             <div class="about-one__btn-and-client-info">
                                 <div class="about-one__btn-box">
-                                    <a href="about.html" class="thm-btn">En savoir plus
+                                    <a href="about.html" class="thm-btn" data-i18n="about.button">En savoir plus
                                         <span class="fas fa-arrow-right"></span>
                                     </a>
                                 </div>
@@ -422,7 +427,7 @@
                                         </div>
                                         <div class="about-one__client-details">
                                             <h5>MHTECH Consulting</h5>
-                                            <p>Partenaire technologique strategique</p>
+                                            <p data-i18n="about.partner_subtitle">Partenaire technologique strategique</p>
                                         </div>
                                     </div>
                                     <div class="about-one__client-sign">
@@ -476,14 +481,14 @@
                                     </ul>
                                     <p class="about-one__client-text"><span class="odometer"
                                             data-count="120">00</span><span
-                                            class="about-one__client-text-letter">K</span> Clients satisfaits</p>
+                                            class="about-one__client-text-letter">K</span> <span data-i18n="about.satisfied_clients">Clients satisfaits</span></p>
                                 </div>
                                 <div class="about-one__experience-box">
                                     <div class="about-one__experience-count-box">
                                         <h3 class="odometer" data-count="25">00</h3>
                                         <span>+</span>
                                     </div>
-                                    <p class="about-one__experience-text">Annees
+                                    <p class="about-one__experience-text" data-i18n="about.years_experience">Annees
                                         d'experience</p>
                                 </div>
                             </div>
@@ -503,9 +508,9 @@
             <div class="container">
                 <div class="section-title text-center sec-title-animation animation-style1">
                     <div class="section-title__tagline-box">
-                        <span class="section-title__tagline">Nos domaines d'expertise</span>
+                        <span class="section-title__tagline" data-i18n="services.tagline">Nos domaines d'expertise</span>
                     </div>
-                    <h2 class="section-title__title title-animation">4 domaines d'expertise
+                    <h2 class="section-title__title title-animation" data-i18n="services.title">4 domaines d'expertise
                         <br> <span>pour reussir vos projets IT</span>
                     </h2>
                 </div>
@@ -519,12 +524,12 @@
                                     <div class="service-one__icon">
                                         <span class="icon-product-design"></span>
                                     </div>
-                                    <h3 class="service-one__title"><a href="services.html">Cybersecurite</a></h3>
-                                    <p class="service-one__text">Protection complete de vos systemes, audit de securite, analyse des vulnerabilites et conformite.</p>
+                                    <h3 class="service-one__title"><a href="services.html" data-i18n="services.cybersecurity_title">Cybersecurite</a></h3>
+                                    <p class="service-one__text" data-i18n="services.cybersecurity_desc">Protection complete de vos systemes, audit de securite, analyse des vulnerabilites et conformite.</p>
                                 </div>
                             </div>
                             <div class="service-one__btn-box">
-                                <a href="software-development.html" class="thm-btn">Voir plus
+                                <a href="software-development.html" class="thm-btn" data-i18n="services.button">Voir plus
                                     <span class="fas fa-arrow-right"></span>
                                 </a>
                             </div>
@@ -540,12 +545,12 @@
                                     <div class="service-one__icon">
                                         <span class="icon-software-development"></span>
                                     </div>
-                                    <h3 class="service-one__title"><a href="services.html">DevOps & Cloud</a></h3>
-                                    <p class="service-one__text">Migration cloud, CI/CD, Infrastructure as Code, containerisation et optimisation des performances.</p>
+                                    <h3 class="service-one__title"><a href="services.html" data-i18n="services.devops_title">DevOps & Cloud</a></h3>
+                                    <p class="service-one__text" data-i18n="services.devops_desc">Migration cloud, CI/CD, Infrastructure as Code, containerisation et optimisation des performances.</p>
                                 </div>
                             </div>
                             <div class="service-one__btn-box">
-                                <a href="web-development.html" class="thm-btn">Voir plus
+                                <a href="web-development.html" class="thm-btn" data-i18n="services.button">Voir plus
                                     <span class="fas fa-arrow-right"></span>
                                 </a>
                             </div>
@@ -561,12 +566,12 @@
                                     <div class="service-one__icon">
                                         <span class="icon-ux-design"></span>
                                     </div>
-                                    <h3 class="service-one__title"><a href="services.html">Design & creation digitale</a></h3>
-                                    <p class="service-one__text">Conception UI/UX, developpement web et mobile, design graphique et optimisation de l'experience utilisateur.</p>
+                                    <h3 class="service-one__title"><a href="services.html" data-i18n="services.design_title">Design & creation digitale</a></h3>
+                                    <p class="service-one__text" data-i18n="services.design_desc">Conception UI/UX, developpement web et mobile, design graphique et optimisation de l'experience utilisateur.</p>
                                 </div>
                             </div>
                             <div class="service-one__btn-box">
-                                <a href="ui-ux-design.html" class="thm-btn">Voir plus
+                                <a href="ui-ux-design.html" class="thm-btn" data-i18n="services.button">Voir plus
                                     <span class="fas fa-arrow-right"></span>
                                 </a>
                             </div>
@@ -582,12 +587,12 @@
                                     <div class="service-one__icon">
                                         <span class="icon-code"></span>
                                     </div>
-                                    <h3 class="service-one__title"><a href="services.html">Operations IT & Help Desk</a></h3>
-                                    <p class="service-one__text">Support technique multi-niveaux, administration systemes, gestion des incidents et maintenance preventive.</p>
+                                    <h3 class="service-one__title"><a href="services.html" data-i18n="services.operations_title">Operations IT & Help Desk</a></h3>
+                                    <p class="service-one__text" data-i18n="services.operations_desc">Support technique multi-niveaux, administration systemes, gestion des incidents et maintenance preventive.</p>
                                 </div>
                             </div>
                             <div class="service-one__btn-box">
-                                <a href="digital-marketing.html" class="thm-btn">Voir plus
+                                <a href="digital-marketing.html" class="thm-btn" data-i18n="services.button">Voir plus
                                     <span class="fas fa-arrow-right"></span>
                                 </a>
                             </div>
@@ -610,7 +615,7 @@
                                 </div>
                             </div>
                             <div class="service-one__btn-box">
-                                <a href="software-development.html" class="thm-btn">Voir plus
+                                <a href="software-development.html" class="thm-btn" data-i18n="services.button">Voir plus
                                     <span class="fas fa-arrow-right"></span>
                                 </a>
                             </div>
@@ -634,7 +639,7 @@
                                 </div>
                             </div>
                             <div class="service-one__btn-box">
-                                <a href="business-analysis.html" class="thm-btn">Voir plus
+                                <a href="business-analysis.html" class="thm-btn" data-i18n="services.button">Voir plus
                                     <span class="fas fa-arrow-right"></span>
                                 </a>
                             </div>
@@ -656,18 +661,18 @@
                         <div class="why-choose-one__left">
                             <div class="section-title text-left sec-title-animation animation-style2">
                                 <div class="section-title__tagline-box">
-                                    <span class="section-title__tagline">POURQUOI MH TECH CONSULTING</span>
+                                    <span class="section-title__tagline" data-i18n="why_choose.tagline">POURQUOI MH TECH CONSULTING</span>
                                 </div>
-                                <h2 class="section-title__title title-animation">4 raisons de nous choisir
+                                <h2 class="section-title__title title-animation" data-i18n="why_choose.title">4 raisons de nous choisir
                                     <span>pour vos projets IT</span>
                                 </h2>
                             </div>
-                            <p class="why-choose-one__text">Grace a notre expertise technique et notre approche personnalisee, nous accompagnons les entreprises dans leur reussite technologique avec des solutions adaptees et des talents qualifies.</p>
+                            <p class="why-choose-one__text" data-i18n="why_choose.description">Grace a notre expertise technique et notre approche personnalisee, nous accompagnons les entreprises dans leur reussite technologique avec des solutions adaptees et des talents qualifies.</p>
                             <div class="why-choose-one__progress-box">
                                 <ul class="why-choose-one__progress-list list-unstyled">
                                     <li>
                                         <div class="why-choose-one__progress">
-                                            <h4 class="why-choose-one__progress-title">Reactivite et disponibilite</h4>
+                                            <h4 class="why-choose-one__progress-title" data-i18n="why_choose.reason1">Reactivite et disponibilite</h4>
                                             <div class="bar">
                                                 <div class="bar-inner count-bar" data-percent="95%">
                                                     <div class="count-text">95%</div>
@@ -677,7 +682,7 @@
                                     </li>
                                     <li>
                                         <div class="why-choose-one__progress">
-                                            <h4 class="why-choose-one__progress-title">Expertise technique reconnue</h4>
+                                            <h4 class="why-choose-one__progress-title" data-i18n="why_choose.reason2">Expertise technique reconnue</h4>
                                             <div class="bar">
                                                 <div class="bar-inner count-bar" data-percent="92%">
                                                     <div class="count-text">92%</div>
@@ -687,7 +692,7 @@
                                     </li>
                                     <li>
                                         <div class="why-choose-one__progress">
-                                            <h4 class="why-choose-one__progress-title">Flexibilite des solutions</h4>
+                                            <h4 class="why-choose-one__progress-title" data-i18n="why_choose.reason3">Flexibilite des solutions</h4>
                                             <div class="bar">
                                                 <div class="bar-inner count-bar" data-percent="88%">
                                                     <div class="count-text">88%</div>
@@ -697,7 +702,7 @@
                                     </li>
                                     <li>
                                         <div class="why-choose-one__progress">
-                                            <h4 class="why-choose-one__progress-title">Accompagnement personnalise</h4>
+                                            <h4 class="why-choose-one__progress-title" data-i18n="why_choose.reason4">Accompagnement personnalise</h4>
                                             <div class="bar">
                                                 <div class="bar-inner count-bar" data-percent="96%">
                                                     <div class="count-text">96%</div>
@@ -709,7 +714,7 @@
                             </div>
                             <div class="why-choose-one__btn-and-call-box">
                                 <div class="why-choose-one__btn-box">
-                                    <a href="about.html" class="thm-btn">En savoir plus
+                                    <a href="about.html" class="thm-btn" data-i18n="why_choose.button">En savoir plus
                                         <span class="fas fa-arrow-right"></span>
                                     </a>
                                 </div>
@@ -718,7 +723,7 @@
                                         <span class="icon-call"></span>
                                     </div>
                                     <div class="why-choose-one__call-content">
-                                        <p>Contactez-nous</p>
+                                        <p data-i18n="why_choose.contact_label">Contactez-nous</p>
                                         <h5><a href="tel:+000000000">+XXX XXX XXX</a></h5>
                                     </div>
                                 </div>
@@ -740,7 +745,7 @@
                                     <div class="why-choose-one__cstomer-services-bg float-bob-x"
                                         style="background-image: url(assets/images/shapes/why-choose-one-cstomer-services-bg-shape.png);">
                                     </div>
-                                    <h4>Assistance client 24/7</h4>
+                                    <h4 data-i18n="why_choose.support_247">Assistance client 24/7</h4>
                                 </div>
                                 <div class="why-choose-one__client-active">
                                     <div class="why-choose-one__client-count-box">
@@ -748,7 +753,7 @@
                                         <span>K</span>
                                         <span>+</span>
                                     </div>
-                                    <p class="why-choose-one__client-text">Clients actifs</p>
+                                    <p class="why-choose-one__client-text" data-i18n="why_choose.active_clients">Clients actifs</p>
                                 </div>
                             </div>
                         </div>
@@ -764,9 +769,9 @@
             <div class="container">
                 <div class="section-title text-center sec-title-animation animation-style1">
                     <div class="section-title__tagline-box">
-                        <span class="section-title__tagline">Processus de travail</span>
+                        <span class="section-title__tagline" data-i18n="process.tagline">Processus de travail</span>
                     </div>
-                    <h2 class="section-title__title title-animation">Comment nous <span>travaillons</span>
+                    <h2 class="section-title__title title-animation" data-i18n="process.title">Comment nous <span>travaillons</span>
                     </h2>
                 </div>
                 <div class="row">
@@ -777,8 +782,8 @@
                                 <div class="process-one__icon">
                                     <span class="icon-complete"></span>
                                 </div>
-                                <h3 class="process-one__title">Choisir un projet</h3>
-                                <p class="process-one__text">Une fois la strategie definie, nous passons a
+                                <h3 class="process-one__title" data-i18n="process.step1_title">Choisir un projet</h3>
+                                <p class="process-one__text" data-i18n="process.step1_desc">Une fois la strategie definie, nous passons a
                                     la conception et au deploiement de votre solution.</p>
                             </div>
                             <div class="process-one__count"></div>
@@ -792,8 +797,8 @@
                                 <div class="process-one__icon">
                                     <span class="icon-social-media-marketing"></span>
                                 </div>
-                                <h3 class="process-one__title">Analyser le besoin</h3>
-                                <p class="process-one__text">Une fois la strategie definie, nous passons a
+                                <h3 class="process-one__title" data-i18n="process.step2_title">Analyser le besoin</h3>
+                                <p class="process-one__text" data-i18n="process.step2_desc">Une fois la strategie definie, nous passons a
                                     la conception et au deploiement de votre solution.</p>
                             </div>
                             <div class="process-one__count"></div>
@@ -807,8 +812,8 @@
                                 <div class="process-one__icon">
                                     <span class="icon-execution"></span>
                                 </div>
-                                <h3 class="process-one__title">Planifier et executer</h3>
-                                <p class="process-one__text">Une fois la strategie definie, nous passons a
+                                <h3 class="process-one__title" data-i18n="process.step3_title">Planifier et executer</h3>
+                                <p class="process-one__text" data-i18n="process.step3_desc">Une fois la strategie definie, nous passons a
                                     la conception et au deploiement de votre solution.</p>
                             </div>
                             <div class="process-one__count"></div>
@@ -822,8 +827,8 @@
                                 <div class="process-one__icon">
                                     <span class="icon-results"></span>
                                 </div>
-                                <h3 class="process-one__title">Livrer le resultat</h3>
-                                <p class="process-one__text">Une fois la strategie definie, nous passons a
+                                <h3 class="process-one__title" data-i18n="process.step4_title">Livrer le resultat</h3>
+                                <p class="process-one__text" data-i18n="process.step4_desc">Une fois la strategie definie, nous passons a
                                     la conception et au deploiement de votre solution.</p>
                             </div>
                             <div class="process-one__count"></div>
@@ -840,35 +845,35 @@
             <div class="sliding-text-one__wrap">
                 <ul class="sliding-text-one__list list-unstyled marquee_mode-1">
                     <li>
-                        <h2 data-hover="Design UI/UX" class="sliding-text-one__title">Design UI/UX</h2>
+                        <h2 data-hover="Design UI/UX" class="sliding-text-one__title" data-i18n="sliding.item1">Design UI/UX</h2>
                         <span class="icon-star"></span>
                     </li>
                     <li>
-                        <h2 data-hover="Conception Produit" class="sliding-text-one__title">Conception Produit</h2>
+                        <h2 data-hover="Conception Produit" class="sliding-text-one__title" data-i18n="sliding.item2">Conception Produit</h2>
                         <span class="icon-star"></span>
                     </li>
                     <li>
-                        <h2 data-hover="Developpement Web" class="sliding-text-one__title">Developpement Web</h2>
+                        <h2 data-hover="Developpement Web" class="sliding-text-one__title" data-i18n="sliding.item3">Developpement Web</h2>
                         <span class="icon-star"></span>
                     </li>
                     <li>
-                        <h2 data-hover="IDENTITE VISUELLE" class="sliding-text-one__title">IDENTITE VISUELLE</h2>
+                        <h2 data-hover="IDENTITE VISUELLE" class="sliding-text-one__title" data-i18n="sliding.item4">IDENTITE VISUELLE</h2>
                         <span class="icon-star"></span>
                     </li>
                     <li>
-                        <h2 data-hover="Cybersecurite" class="sliding-text-one__title">Cybersecurite</h2>
+                        <h2 data-hover="Cybersecurite" class="sliding-text-one__title" data-i18n="sliding.item5">Cybersecurite</h2>
                         <span class="icon-star"></span>
                     </li>
                     <li>
-                        <h2 data-hover="Website design" class="sliding-text-one__title">Website design</h2>
+                        <h2 data-hover="Website design" class="sliding-text-one__title" data-i18n="sliding.item6">Website design</h2>
                         <span class="icon-star"></span>
                     </li>
                     <li>
-                        <h2 data-hover="Marketing Digital" class="sliding-text-one__title">Marketing Digital</h2>
+                        <h2 data-hover="Marketing Digital" class="sliding-text-one__title" data-i18n="sliding.item7">Marketing Digital</h2>
                         <span class="icon-star"></span>
                     </li>
                     <li>
-                        <h2 data-hover="Website design" class="sliding-text-one__title">Website design</h2>
+                        <h2 data-hover="Website design" class="sliding-text-one__title" data-i18n="sliding.item8">Website design</h2>
                         <span class="icon-star"></span>
                     </li>
                 </ul>
@@ -881,9 +886,9 @@
             <div class="container">
                 <div class="section-title text-center sec-title-animation animation-style1">
                     <div class="section-title__tagline-box">
-                        <span class="section-title__tagline">Portfolio</span>
+                        <span class="section-title__tagline" data-i18n="portfolio.tagline">Portfolio</span>
                     </div>
-                    <h2 class="section-title__title title-animation">Decouvrez nos derniers
+                    <h2 class="section-title__title title-animation" data-i18n="portfolio.title">Decouvrez nos derniers
                         <span>Projets</span>
                     </h2>
                 </div>
@@ -899,7 +904,7 @@
                                                 style="background-image: url(assets/images/project/project-1-1.jpg);">
                                             </div>
                                             <div class="project-one__title">
-                                                <h3><a href="project-details.html">Solutions innovantes,<br> Powerful
+                                                <h3><a href="project-details.html" data-i18n="portfolio.project1_title">Solutions innovantes,<br> Powerful
                                                         Results</a></h3>
                                             </div>
                                             <div class="project-one__content-box">
@@ -909,10 +914,10 @@
                                                 </div>
                                                 <div class="project-one__title-box">
                                                     <h3 class="project-one__title-2"><a
-                                                            href="project-details.html">Solutions innovantes,<br>
+                                                            href="project-details.html" data-i18n="portfolio.project1_title">Solutions innovantes,<br>
                                                             Powerful
                                                             Results</a></h3>
-                                                    <p class="project-one__text">Explore How We've Empowered
+                                                    <p class="project-one__text" data-i18n="portfolio.project1_desc">Explore How We've Empowered
                                                         Businesses with solutions technologiques innovantes</p>
                                                 </div>
                                             </div>
@@ -924,7 +929,7 @@
                                                 style="background-image: url(assets/images/project/project-1-2.jpg);">
                                             </div>
                                             <div class="project-one__title">
-                                                <h3><a href="project-details.html">Transformer les idees en<br> Digital
+                                                <h3><a href="project-details.html" data-i18n="portfolio.project2_title">Transformer les idees en<br> Digital
                                                         Excellence</a></h3>
                                             </div>
                                             <div class="project-one__content-box">
@@ -934,9 +939,9 @@
                                                 </div>
                                                 <div class="project-one__title-box">
                                                     <h3 class="project-one__title-2"><a
-                                                            href="project-details.html">Transformer les idees en
+                                                            href="project-details.html" data-i18n="portfolio.project2_title">Transformer les idees en
                                                             excellence digitale</a></h3>
-                                                    <p class="project-one__text">Explore How We've Empowered
+                                                    <p class="project-one__text" data-i18n="portfolio.project2_desc">Explore How We've Empowered
                                                         Businesses with solutions technologiques innovantes</p>
                                                 </div>
                                             </div>
@@ -948,7 +953,7 @@
                                                 style="background-image: url(assets/images/project/project-1-3.jpg);">
                                             </div>
                                             <div class="project-one__title">
-                                                <h3><a href="project-details.html">Reussir grace a la<br>
+                                                <h3><a href="project-details.html" data-i18n="portfolio.project3_title">Reussir grace a la<br>
                                                         technologie</a></h3>
                                             </div>
                                             <div class="project-one__content-box">
@@ -958,9 +963,9 @@
                                                 </div>
                                                 <div class="project-one__title-box">
                                                     <h3 class="project-one__title-2"><a
-                                                            href="project-details.html">Reussir grace a la
+                                                            href="project-details.html" data-i18n="portfolio.project3_title">Reussir grace a la
                                                             technologie</a></h3>
-                                                    <p class="project-one__text">Explore How We've Empowered
+                                                    <p class="project-one__text" data-i18n="portfolio.project3_desc">Explore How We've Empowered
                                                         Businesses with solutions technologiques innovantes</p>
                                                 </div>
                                             </div>
@@ -972,7 +977,7 @@
                                                 style="background-image: url(assets/images/project/project-1-4.jpg);">
                                             </div>
                                             <div class="project-one__title">
-                                                <h3><a href="project-details.html">Accompagner les entreprises<br> with
+                                                <h3><a href="project-details.html" data-i18n="portfolio.project4_title">Accompagner les entreprises<br> with
                                                         Cutting-Edge IT</a></h3>
                                             </div>
                                             <div class="project-one__content-box">
@@ -982,9 +987,9 @@
                                                 </div>
                                                 <div class="project-one__title-box">
                                                     <h3 class="project-one__title-2"><a
-                                                            href="project-details.html">Accompagner les entreprises with
+                                                            href="project-details.html" data-i18n="portfolio.project4_title">Accompagner les entreprises with
                                                             Cutting-Edge IT</a></h3>
-                                                    <p class="project-one__text">Explore How We've Empowered
+                                                    <p class="project-one__text" data-i18n="portfolio.project4_desc">Explore How We've Empowered
                                                         Businesses with solutions technologiques innovantes</p>
                                                 </div>
                                             </div>
@@ -1004,7 +1009,7 @@
                                                 style="background-image: url(assets/images/project/project-1-1.jpg);">
                                             </div>
                                             <div class="project-one__title">
-                                                <h3><a href="project-details.html">Solutions innovantes,<br> Powerful
+                                                <h3><a href="project-details.html" data-i18n="portfolio.project1_title">Solutions innovantes,<br> Powerful
                                                         Results</a></h3>
                                             </div>
                                             <div class="project-one__content-box">
@@ -1014,10 +1019,10 @@
                                                 </div>
                                                 <div class="project-one__title-box">
                                                     <h3 class="project-one__title-2"><a
-                                                            href="project-details.html">Solutions innovantes,<br>
+                                                            href="project-details.html" data-i18n="portfolio.project1_title">Solutions innovantes,<br>
                                                             Powerful
                                                             Results</a></h3>
-                                                    <p class="project-one__text">Explore How We've Empowered
+                                                    <p class="project-one__text" data-i18n="portfolio.project1_desc">Explore How We've Empowered
                                                         Businesses with solutions technologiques innovantes</p>
                                                 </div>
                                             </div>
@@ -1029,7 +1034,7 @@
                                                 style="background-image: url(assets/images/project/project-1-2.jpg);">
                                             </div>
                                             <div class="project-one__title">
-                                                <h3><a href="project-details.html">Transformer les idees en<br> Digital
+                                                <h3><a href="project-details.html" data-i18n="portfolio.project2_title">Transformer les idees en<br> Digital
                                                         Excellence</a></h3>
                                             </div>
                                             <div class="project-one__content-box">
@@ -1039,9 +1044,9 @@
                                                 </div>
                                                 <div class="project-one__title-box">
                                                     <h3 class="project-one__title-2"><a
-                                                            href="project-details.html">Transformer les idees en
+                                                            href="project-details.html" data-i18n="portfolio.project2_title">Transformer les idees en
                                                             excellence digitale</a></h3>
-                                                    <p class="project-one__text">Explore How We've Empowered
+                                                    <p class="project-one__text" data-i18n="portfolio.project2_desc">Explore How We've Empowered
                                                         Businesses with solutions technologiques innovantes</p>
                                                 </div>
                                             </div>
@@ -1053,7 +1058,7 @@
                                                 style="background-image: url(assets/images/project/project-1-3.jpg);">
                                             </div>
                                             <div class="project-one__title">
-                                                <h3><a href="project-details.html">Reussir grace a la<br>
+                                                <h3><a href="project-details.html" data-i18n="portfolio.project3_title">Reussir grace a la<br>
                                                         technologie</a></h3>
                                             </div>
                                             <div class="project-one__content-box">
@@ -1063,9 +1068,9 @@
                                                 </div>
                                                 <div class="project-one__title-box">
                                                     <h3 class="project-one__title-2"><a
-                                                            href="project-details.html">Reussir grace a la
+                                                            href="project-details.html" data-i18n="portfolio.project3_title">Reussir grace a la
                                                             technologie</a></h3>
-                                                    <p class="project-one__text">Explore How We've Empowered
+                                                    <p class="project-one__text" data-i18n="portfolio.project3_desc">Explore How We've Empowered
                                                         Businesses with solutions technologiques innovantes</p>
                                                 </div>
                                             </div>
@@ -1077,7 +1082,7 @@
                                                 style="background-image: url(assets/images/project/project-1-4.jpg);">
                                             </div>
                                             <div class="project-one__title">
-                                                <h3><a href="project-details.html">Accompagner les entreprises<br> with
+                                                <h3><a href="project-details.html" data-i18n="portfolio.project4_title">Accompagner les entreprises<br> with
                                                         Cutting-Edge IT</a></h3>
                                             </div>
                                             <div class="project-one__content-box">
@@ -1087,9 +1092,9 @@
                                                 </div>
                                                 <div class="project-one__title-box">
                                                     <h3 class="project-one__title-2"><a
-                                                            href="project-details.html">Accompagner les entreprises with
+                                                            href="project-details.html" data-i18n="portfolio.project4_title">Accompagner les entreprises with
                                                             Cutting-Edge IT</a></h3>
-                                                    <p class="project-one__text">Explore How We've Empowered
+                                                    <p class="project-one__text" data-i18n="portfolio.project4_desc">Explore How We've Empowered
                                                         Businesses with solutions technologiques innovantes</p>
                                                 </div>
                                             </div>
@@ -1109,7 +1114,7 @@
                                                 style="background-image: url(assets/images/project/project-1-1.jpg);">
                                             </div>
                                             <div class="project-one__title">
-                                                <h3><a href="project-details.html">Solutions innovantes,<br> Powerful
+                                                <h3><a href="project-details.html" data-i18n="portfolio.project1_title">Solutions innovantes,<br> Powerful
                                                         Results</a></h3>
                                             </div>
                                             <div class="project-one__content-box">
@@ -1119,10 +1124,10 @@
                                                 </div>
                                                 <div class="project-one__title-box">
                                                     <h3 class="project-one__title-2"><a
-                                                            href="project-details.html">Solutions innovantes,<br>
+                                                            href="project-details.html" data-i18n="portfolio.project1_title">Solutions innovantes,<br>
                                                             Powerful
                                                             Results</a></h3>
-                                                    <p class="project-one__text">Explore How We've Empowered
+                                                    <p class="project-one__text" data-i18n="portfolio.project1_desc">Explore How We've Empowered
                                                         Businesses with solutions technologiques innovantes</p>
                                                 </div>
                                             </div>
@@ -1134,7 +1139,7 @@
                                                 style="background-image: url(assets/images/project/project-1-2.jpg);">
                                             </div>
                                             <div class="project-one__title">
-                                                <h3><a href="project-details.html">Transformer les idees en<br> Digital
+                                                <h3><a href="project-details.html" data-i18n="portfolio.project2_title">Transformer les idees en<br> Digital
                                                         Excellence</a></h3>
                                             </div>
                                             <div class="project-one__content-box">
@@ -1144,9 +1149,9 @@
                                                 </div>
                                                 <div class="project-one__title-box">
                                                     <h3 class="project-one__title-2"><a
-                                                            href="project-details.html">Transformer les idees en
+                                                            href="project-details.html" data-i18n="portfolio.project2_title">Transformer les idees en
                                                             excellence digitale</a></h3>
-                                                    <p class="project-one__text">Explore How We've Empowered
+                                                    <p class="project-one__text" data-i18n="portfolio.project2_desc">Explore How We've Empowered
                                                         Businesses with solutions technologiques innovantes</p>
                                                 </div>
                                             </div>
@@ -1158,7 +1163,7 @@
                                                 style="background-image: url(assets/images/project/project-1-3.jpg);">
                                             </div>
                                             <div class="project-one__title">
-                                                <h3><a href="project-details.html">Reussir grace a la<br>
+                                                <h3><a href="project-details.html" data-i18n="portfolio.project3_title">Reussir grace a la<br>
                                                         technologie</a></h3>
                                             </div>
                                             <div class="project-one__content-box">
@@ -1168,9 +1173,9 @@
                                                 </div>
                                                 <div class="project-one__title-box">
                                                     <h3 class="project-one__title-2"><a
-                                                            href="project-details.html">Reussir grace a la
+                                                            href="project-details.html" data-i18n="portfolio.project3_title">Reussir grace a la
                                                             technologie</a></h3>
-                                                    <p class="project-one__text">Explore How We've Empowered
+                                                    <p class="project-one__text" data-i18n="portfolio.project3_desc">Explore How We've Empowered
                                                         Businesses with solutions technologiques innovantes</p>
                                                 </div>
                                             </div>
@@ -1182,7 +1187,7 @@
                                                 style="background-image: url(assets/images/project/project-1-4.jpg);">
                                             </div>
                                             <div class="project-one__title">
-                                                <h3><a href="project-details.html">Accompagner les entreprises<br> with
+                                                <h3><a href="project-details.html" data-i18n="portfolio.project4_title">Accompagner les entreprises<br> with
                                                         Cutting-Edge IT</a></h3>
                                             </div>
                                             <div class="project-one__content-box">
@@ -1192,9 +1197,9 @@
                                                 </div>
                                                 <div class="project-one__title-box">
                                                     <h3 class="project-one__title-2"><a
-                                                            href="project-details.html">Accompagner les entreprises with
+                                                            href="project-details.html" data-i18n="portfolio.project4_title">Accompagner les entreprises with
                                                             Cutting-Edge IT</a></h3>
-                                                    <p class="project-one__text">Explore How We've Empowered
+                                                    <p class="project-one__text" data-i18n="portfolio.project4_desc">Explore How We've Empowered
                                                         Businesses with solutions technologiques innovantes</p>
                                                 </div>
                                             </div>
@@ -1225,7 +1230,7 @@
                             <div class="counter-one__content count-box">
                                 <h3 class="counter-one__count"><span class="count-text" data-stop="1.9"
                                         data-speed="1500"></span>K</h3>
-                                <p class="counter-one__text">Projets realises</p>
+                                <p class="counter-one__text" data-i18n="counter.projects_completed">Projets realises</p>
                             </div>
                         </div>
                     </div>
@@ -1239,7 +1244,7 @@
                             <div class="counter-one__content count-box">
                                 <h3 class="counter-one__count"><span class="count-text" data-stop="25"
                                         data-speed="1500"></span>M</h3>
-                                <p class="counter-one__text">Avis clients satisfaits</p>
+                                <p class="counter-one__text" data-i18n="counter.satisfied_reviews">Avis clients satisfaits</p>
                             </div>
                         </div>
                     </div>
@@ -1253,7 +1258,7 @@
                             <div class="counter-one__content count-box">
                                 <h3 class="counter-one__count"><span class="count-text" data-stop="350"
                                         data-speed="1500"></span>+</h3>
-                                <p class="counter-one__text">Experts dans notre equipe</p>
+                                <p class="counter-one__text" data-i18n="counter.team_experts">Experts dans notre equipe</p>
                             </div>
                         </div>
                     </div>
@@ -1267,7 +1272,7 @@
                             <div class="counter-one__content count-box">
                                 <h3 class="counter-one__count"><span class="count-text" data-stop="458"
                                         data-speed="1500"></span>+</h3>
-                                <p class="counter-one__text">Prix innovation</p>
+                                <p class="counter-one__text" data-i18n="counter.innovation_awards">Prix innovation</p>
                             </div>
                         </div>
                     </div>
@@ -1279,173 +1284,7 @@
         <!--Counter One End -->
 
         <!--Team One Start -->
-        <section class="team-one">
-            <div class="team-one__shape-1 rotate-me">
-                <img src="assets/images/shapes/team-one-shape-1.png" alt="">
-            </div>
-            <div class="team-one__shape-2 float-bob-x">
-                <img src="assets/images/shapes/team-one-shape-2.png" alt="">
-            </div>
-            <div class="container">
-                <div class="section-title text-center sec-title-animation animation-style1">
-                    <div class="section-title__tagline-box">
-                        <span class="section-title__tagline">Our expert team</span>
-                    </div>
-                    <h2 class="section-title__title title-animation">Nous avons une equipe experte <span>team</span>
-                    </h2>
-                </div>
-                <div class="row">
-                    <!--Team One Single Start-->
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="100ms">
-                        <div class="team-one__single">
-                            <div class="team-one__img-box">
-                                <div class="team-one__img">
-                                    <img src="assets/images/team/team-1-1.jpg" alt="">
-                                </div>
-                                <div class="team-one__arrow-and-social">
-                                    <div class="team-one__arrow">
-                                        <span class="icon-share"></span>
-                                    </div>
-                                    <ul class="team-one__social list-unstyled">
-                                        <li>
-                                            <a href="#"><span class="icon-facebook-app-symbol"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span class="icon-twitter"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span class="icon-pinterest"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span class="icon-linkedin"></span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="team-one__content">
-                                <div class="team-one__content-bg-shape"
-                                    style="background-image: url(assets/images/shapes/team-one-content-bg-shape.png);">
-                                </div>
-                                <h3 class="team-one__name"><a href="team-details.html">James Carter</a></h3>
-                                <p class="team-one__sub-title">CEO & Founder</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Team One Single End-->
-                    <!--Team One Single Start-->
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="200ms">
-                        <div class="team-one__single">
-                            <div class="team-one__img-box">
-                                <div class="team-one__img">
-                                    <img src="assets/images/team/team-1-2.jpg" alt="">
-                                </div>
-                                <div class="team-one__arrow-and-social">
-                                    <div class="team-one__arrow">
-                                        <span class="icon-share"></span>
-                                    </div>
-                                    <ul class="team-one__social list-unstyled">
-                                        <li>
-                                            <a href="#"><span class="icon-facebook-app-symbol"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span class="icon-twitter"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span class="icon-pinterest"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span class="icon-linkedin"></span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="team-one__content">
-                                <div class="team-one__content-bg-shape"
-                                    style="background-image: url(assets/images/shapes/team-one-content-bg-shape.png);">
-                                </div>
-                                <h3 class="team-one__name"><a href="team-details.html">Emma Brooks </a></h3>
-                                <p class="team-one__sub-title">Chef de projet</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Team One Single End-->
-                    <!--Team One Single Start-->
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInRight" data-wow-delay="300ms">
-                        <div class="team-one__single">
-                            <div class="team-one__img-box">
-                                <div class="team-one__img">
-                                    <img src="assets/images/team/team-1-3.jpg" alt="">
-                                </div>
-                                <div class="team-one__arrow-and-social">
-                                    <div class="team-one__arrow">
-                                        <span class="icon-share"></span>
-                                    </div>
-                                    <ul class="team-one__social list-unstyled">
-                                        <li>
-                                            <a href="#"><span class="icon-facebook-app-symbol"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span class="icon-twitter"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span class="icon-pinterest"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span class="icon-linkedin"></span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="team-one__content">
-                                <div class="team-one__content-bg-shape"
-                                    style="background-image: url(assets/images/shapes/team-one-content-bg-shape.png);">
-                                </div>
-                                <h3 class="team-one__name"><a href="team-details.html">Jecika Brown</a></h3>
-                                <p class="team-one__sub-title">Expert principal</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Team One Single End-->
-                    <!--Team One Single Start-->
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInRight" data-wow-delay="400ms">
-                        <div class="team-one__single">
-                            <div class="team-one__img-box">
-                                <div class="team-one__img">
-                                    <img src="assets/images/team/team-1-4.jpg" alt="">
-                                </div>
-                                <div class="team-one__arrow-and-social">
-                                    <div class="team-one__arrow">
-                                        <span class="icon-share"></span>
-                                    </div>
-                                    <ul class="team-one__social list-unstyled">
-                                        <li>
-                                            <a href="#"><span class="icon-facebook-app-symbol"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span class="icon-twitter"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span class="icon-pinterest"></span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span class="icon-linkedin"></span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="team-one__content">
-                                <div class="team-one__content-bg-shape"
-                                    style="background-image: url(assets/images/shapes/team-one-content-bg-shape.png);">
-                                </div>
-                                <h3 class="team-one__name"><a href="team-details.html">Adam Smith</a></h3>
-                                <p class="team-one__sub-title">Designer UI/UX</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Team One Single End-->
-                </div>
-            </div>
-        </section>
+
         <!--Team One End -->
 
         <!--Brand One Start -->
@@ -1495,321 +1334,7 @@
         <!--Brand One End -->
 
         <!-- Testimonial One Start -->
-        <section class="testimonial-one">
-            <div class="testimonial-one__bg-color">
-                <div class="testimonial-one__bg"
-                    style="background-image: url(assets/images/backgrounds/testimonial-one-bg.jpg);"></div>
-            </div>
-            <div class="container">
-                <div class="section-title text-center sec-title-animation animation-style1">
-                    <div class="section-title__tagline-box">
-                        <span class="section-title__tagline">Temoignages
-                        </span>
-                    </div>
-                    <h2 class="section-title__title title-animation">Ce que disent nos clients <span>A propos </span>us
-                    </h2>
-                </div>
-                <div class="testimonial-one__carousel owl-theme owl-carousel">
-                    <!-- Testimonial One Single Start -->
-                    <div class="item">
-                        <div class="testimonial-one__single">
-                            <div class="testimonial-one__single-inner">
-                                <div class="testimonial-one__single-shape-1"></div>
-                                <div class="testimonial-one__star">
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star"></span>
-                                    <span class="icon-star"></span>
-                                </div>
-                                <p class="testimonial-one__text">Experience absolument fantastique ! L'equipe a depasse nos
-                                    attentes et a livre une solution qui repondait parfaitement a nos besoins. Leur attention
-                                    aux
-                                    details et leur engagement envers la qualite sont inegales.</p>
-                            </div>
-                            <div class="testimonial-one__client-info">
-                                <div class="testimonial-one__client-img">
-                                    <img src="assets/images/testimonial/testimonial-1-1.jpg" alt="">
-                                </div>
-                                <div class="testimonial-one__client-content">
-                                    <h4 class="testimonial-one__client-name"><a href="testimonials.html">Thomas
-                                            Alison</a></h4>
-                                    <p class="testimonial-one__sub-title">Designer UI/UX</p>
-                                </div>
-                            </div>
-                            <div class="testimonial-one__quote">
-                                <span class="fal fa-quote-right"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial One Single End -->
-                    <!-- Testimonial One Single Start -->
-                    <div class="item">
-                        <div class="testimonial-one__single">
-                            <div class="testimonial-one__single-inner">
-                                <div class="testimonial-one__single-shape-1"></div>
-                                <div class="testimonial-one__star">
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star"></span>
-                                    <span class="icon-star"></span>
-                                </div>
-                                <p class="testimonial-one__text">Experience absolument fantastique ! L'equipe a depasse nos
-                                    attentes et a livre une solution qui repondait parfaitement a nos besoins. Leur attention
-                                    aux
-                                    details et leur engagement envers la qualite sont inegales.</p>
-                            </div>
-                            <div class="testimonial-one__client-info">
-                                <div class="testimonial-one__client-img">
-                                    <img src="assets/images/testimonial/testimonial-1-2.jpg" alt="">
-                                </div>
-                                <div class="testimonial-one__client-content">
-                                    <h4 class="testimonial-one__client-name"><a href="testimonials.html">Sarah
-                                            Williams</a></h4>
-                                    <p class="testimonial-one__sub-title">Responsable marketing</p>
-                                </div>
-                            </div>
-                            <div class="testimonial-one__quote">
-                                <span class="fal fa-quote-right"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial One Single End -->
-                    <!-- Testimonial One Single Start -->
-                    <div class="item">
-                        <div class="testimonial-one__single">
-                            <div class="testimonial-one__single-inner">
-                                <div class="testimonial-one__single-shape-1"></div>
-                                <div class="testimonial-one__star">
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star"></span>
-                                    <span class="icon-star"></span>
-                                </div>
-                                <p class="testimonial-one__text">Experience absolument fantastique ! L'equipe a depasse nos
-                                    attentes et a livre une solution qui repondait parfaitement a nos besoins. Leur attention
-                                    aux
-                                    details et leur engagement envers la qualite sont inegales.</p>
-                            </div>
-                            <div class="testimonial-one__client-info">
-                                <div class="testimonial-one__client-img">
-                                    <img src="assets/images/testimonial/testimonial-1-3.jpg" alt="">
-                                </div>
-                                <div class="testimonial-one__client-content">
-                                    <h4 class="testimonial-one__client-name"><a href="testimonials.html">James
-                                            Anderson</a></h4>
-                                    <p class="testimonial-one__sub-title">PDG chez Anaton</p>
-                                </div>
-                            </div>
-                            <div class="testimonial-one__quote">
-                                <span class="fal fa-quote-right"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial One Single End -->
-                    <!-- Testimonial One Single Start -->
-                    <div class="item">
-                        <div class="testimonial-one__single">
-                            <div class="testimonial-one__single-inner">
-                                <div class="testimonial-one__single-shape-1"></div>
-                                <div class="testimonial-one__star">
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star"></span>
-                                    <span class="icon-star"></span>
-                                </div>
-                                <p class="testimonial-one__text">Experience absolument fantastique ! L'equipe a depasse nos
-                                    attentes et a livre une solution qui repondait parfaitement a nos besoins. Leur attention
-                                    aux
-                                    details et leur engagement envers la qualite sont inegales.</p>
-                            </div>
-                            <div class="testimonial-one__client-info">
-                                <div class="testimonial-one__client-img">
-                                    <img src="assets/images/testimonial/testimonial-1-1.jpg" alt="">
-                                </div>
-                                <div class="testimonial-one__client-content">
-                                    <h4 class="testimonial-one__client-name"><a href="testimonials.html">Thomas
-                                            Alison</a></h4>
-                                    <p class="testimonial-one__sub-title">Designer UI/UX</p>
-                                </div>
-                            </div>
-                            <div class="testimonial-one__quote">
-                                <span class="fal fa-quote-right"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial One Single End -->
-                    <!-- Testimonial One Single Start -->
-                    <div class="item">
-                        <div class="testimonial-one__single">
-                            <div class="testimonial-one__single-inner">
-                                <div class="testimonial-one__single-shape-1"></div>
-                                <div class="testimonial-one__star">
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star"></span>
-                                    <span class="icon-star"></span>
-                                </div>
-                                <p class="testimonial-one__text">Experience absolument fantastique ! L'equipe a depasse nos
-                                    attentes et a livre une solution qui repondait parfaitement a nos besoins. Leur attention
-                                    aux
-                                    details et leur engagement envers la qualite sont inegales.</p>
-                            </div>
-                            <div class="testimonial-one__client-info">
-                                <div class="testimonial-one__client-img">
-                                    <img src="assets/images/testimonial/testimonial-1-2.jpg" alt="">
-                                </div>
-                                <div class="testimonial-one__client-content">
-                                    <h4 class="testimonial-one__client-name"><a href="testimonials.html">Sarah
-                                            Williams</a></h4>
-                                    <p class="testimonial-one__sub-title">Responsable marketing</p>
-                                </div>
-                            </div>
-                            <div class="testimonial-one__quote">
-                                <span class="fal fa-quote-right"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial One Single End -->
-                    <!-- Testimonial One Single Start -->
-                    <div class="item">
-                        <div class="testimonial-one__single">
-                            <div class="testimonial-one__single-inner">
-                                <div class="testimonial-one__single-shape-1"></div>
-                                <div class="testimonial-one__star">
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star"></span>
-                                    <span class="icon-star"></span>
-                                </div>
-                                <p class="testimonial-one__text">Experience absolument fantastique ! L'equipe a depasse nos
-                                    attentes et a livre une solution qui repondait parfaitement a nos besoins. Leur attention
-                                    aux
-                                    details et leur engagement envers la qualite sont inegales.</p>
-                            </div>
-                            <div class="testimonial-one__client-info">
-                                <div class="testimonial-one__client-img">
-                                    <img src="assets/images/testimonial/testimonial-1-3.jpg" alt="">
-                                </div>
-                                <div class="testimonial-one__client-content">
-                                    <h4 class="testimonial-one__client-name"><a href="testimonials.html">James
-                                            Anderson</a></h4>
-                                    <p class="testimonial-one__sub-title">PDG chez Anaton</p>
-                                </div>
-                            </div>
-                            <div class="testimonial-one__quote">
-                                <span class="fal fa-quote-right"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial One Single End -->
-                    <!-- Testimonial One Single Start -->
-                    <div class="item">
-                        <div class="testimonial-one__single">
-                            <div class="testimonial-one__single-inner">
-                                <div class="testimonial-one__single-shape-1"></div>
-                                <div class="testimonial-one__star">
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star"></span>
-                                    <span class="icon-star"></span>
-                                </div>
-                                <p class="testimonial-one__text">Experience absolument fantastique ! L'equipe a depasse nos
-                                    attentes et a livre une solution qui repondait parfaitement a nos besoins. Leur attention
-                                    aux
-                                    details et leur engagement envers la qualite sont inegales.</p>
-                            </div>
-                            <div class="testimonial-one__client-info">
-                                <div class="testimonial-one__client-img">
-                                    <img src="assets/images/testimonial/testimonial-1-1.jpg" alt="">
-                                </div>
-                                <div class="testimonial-one__client-content">
-                                    <h4 class="testimonial-one__client-name"><a href="testimonials.html">Thomas
-                                            Alison</a></h4>
-                                    <p class="testimonial-one__sub-title">Designer UI/UX</p>
-                                </div>
-                            </div>
-                            <div class="testimonial-one__quote">
-                                <span class="fal fa-quote-right"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial One Single End -->
-                    <!-- Testimonial One Single Start -->
-                    <div class="item">
-                        <div class="testimonial-one__single">
-                            <div class="testimonial-one__single-inner">
-                                <div class="testimonial-one__single-shape-1"></div>
-                                <div class="testimonial-one__star">
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star"></span>
-                                    <span class="icon-star"></span>
-                                </div>
-                                <p class="testimonial-one__text">Experience absolument fantastique ! L'equipe a depasse nos
-                                    attentes et a livre une solution qui repondait parfaitement a nos besoins. Leur attention
-                                    aux
-                                    details et leur engagement envers la qualite sont inegales.</p>
-                            </div>
-                            <div class="testimonial-one__client-info">
-                                <div class="testimonial-one__client-img">
-                                    <img src="assets/images/testimonial/testimonial-1-2.jpg" alt="">
-                                </div>
-                                <div class="testimonial-one__client-content">
-                                    <h4 class="testimonial-one__client-name"><a href="testimonials.html">Sarah
-                                            Williams</a></h4>
-                                    <p class="testimonial-one__sub-title">Responsable marketing</p>
-                                </div>
-                            </div>
-                            <div class="testimonial-one__quote">
-                                <span class="fal fa-quote-right"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial One Single End -->
-                    <!-- Testimonial One Single Start -->
-                    <div class="item">
-                        <div class="testimonial-one__single">
-                            <div class="testimonial-one__single-inner">
-                                <div class="testimonial-one__single-shape-1"></div>
-                                <div class="testimonial-one__star">
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star-1"></span>
-                                    <span class="icon-star"></span>
-                                    <span class="icon-star"></span>
-                                </div>
-                                <p class="testimonial-one__text">Experience absolument fantastique ! L'equipe a depasse nos
-                                    attentes et a livre une solution qui repondait parfaitement a nos besoins. Leur attention
-                                    aux
-                                    details et leur engagement envers la qualite sont inegales.</p>
-                            </div>
-                            <div class="testimonial-one__client-info">
-                                <div class="testimonial-one__client-img">
-                                    <img src="assets/images/testimonial/testimonial-1-3.jpg" alt="">
-                                </div>
-                                <div class="testimonial-one__client-content">
-                                    <h4 class="testimonial-one__client-name"><a href="testimonials.html">James
-                                            Anderson</a></h4>
-                                    <p class="testimonial-one__sub-title">PDG chez Anaton</p>
-                                </div>
-                            </div>
-                            <div class="testimonial-one__quote">
-                                <span class="fal fa-quote-right"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial One Single End -->
-                </div>
-            </div>
-        </section>
+      
         <!-- Testimonial One End -->
 
         <!-- Contact One Start -->
@@ -1825,9 +1350,9 @@
                         <div class="contact-one__left">
                             <div class="section-title text-left sec-title-animation animation-style2">
                                 <div class="section-title__tagline-box">
-                                    <span class="section-title__tagline">Contact</span>
+                                    <span class="section-title__tagline" data-i18n="contact.tagline">Contact</span>
                                 </div>
-                                <h2 class="section-title__title title-animation">Let’s Talk A propos Business
+                                <h2 class="section-title__title title-animation" data-i18n="contact.title">Let's Talk A propos Business
                                     <span>Solutions</span> technologique
                                 </h2>
                             </div>
@@ -1836,7 +1361,7 @@
                                     <img src="assets/images/resources/contact-one-img-1.jpg" alt="">
                                 </div>
                                 <div class="contact-one__content">
-                                    <p class="contact-one__text">Vous avez un projet technologique ou souhaitez
+                                    <p class="contact-one__text" data-i18n="contact.description">Vous avez un projet technologique ou souhaitez
                                         moderniser votre infrastructure informatique ? L'equipe MHTECH Consulting est
                                         prete a vous accompagner avec des solutions adaptees a vos besoins.</p>
                                     <div class="contact-one__call-box">
@@ -1844,7 +1369,7 @@
                                             <span class="icon-call"></span>
                                         </div>
                                         <div class="content">
-                                            <p>Telephone</p>
+                                            <p data-i18n="contact.phone_label">Telephone</p>
                                             <h3><a href="tel:+000000000">+XXX XXX XXX</a></h3>
                                         </div>
                                     </div>
@@ -1860,55 +1385,55 @@
                                 method="post">
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-6 col-md-6">
-                                        <h4 class="contact-one__input-title">Nom complet</h4>
+                                        <h4 class="contact-one__input-title" data-i18n="contact.fullname_label">Nom complet</h4>
                                         <div class="contact-one__input-box">
                                             <div class="contact-one__input-icon">
                                                 <span class="icon-user"></span>
                                             </div>
-                                            <input type="text" name="name" placeholder="Votre nom" required="">
+                                            <input type="text" name="name" placeholder="Votre nom" data-i18n="contact.name_placeholder" required="">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-6">
-                                        <h4 class="contact-one__input-title">Adresse email</h4>
+                                        <h4 class="contact-one__input-title" data-i18n="contact.email_label">Adresse email</h4>
                                         <div class="contact-one__input-box">
                                             <div class="contact-one__input-icon">
                                                 <span class="icon-mail"></span>
                                             </div>
-                                            <input type="email" name="email" placeholder="contact@mhtechnology.com"
+                                            <input type="email" name="email" placeholder="contact@mhtechnology.com" data-i18n="contact.email_placeholder"
                                                 required="">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-6">
-                                        <h4 class="contact-one__input-title">Telephone</h4>
+                                        <h4 class="contact-one__input-title" data-i18n="contact.phone_label">Telephone</h4>
                                         <div class="contact-one__input-box">
                                             <div class="contact-one__input-icon">
                                                 <span class="icon-phone-call"></span>
                                             </div>
-                                            <input type="text" name="Phone" placeholder="+XXX XXX XXX"
+                                            <input type="text" name="Phone" placeholder="+XXX XXX XXX" data-i18n="contact.phone_placeholder"
                                                 required="">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-6">
-                                        <h4 class="contact-one__input-title">Sujet</h4>
+                                        <h4 class="contact-one__input-title" data-i18n="contact.subject_label">Sujet</h4>
                                         <div class="contact-one__input-box">
                                             <div class="contact-one__input-icon">
                                                 <span class="icon-edit"></span>
                                             </div>
-                                            <input type="text" name="subject" placeholder="Objet de votre demande" required="">
+                                            <input type="text" name="subject" placeholder="Objet de votre demande" data-i18n="contact.subject_placeholder" required="">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
-                                    <h4 class="contact-one__input-title">Demande de consultation</h4>
+                                    <h4 class="contact-one__input-title" data-i18n="contact.message_label">Demande de consultation</h4>
                                     <div class="contact-one__input-box text-message-box">
                                         <div class="contact-one__input-icon">
                                             <span class="icon-edit"></span>
                                         </div>
-                                        <textarea name="message" placeholder="Decrivez votre projet ou votre besoin"
+                                        <textarea name="message" placeholder="Decrivez votre projet ou votre besoin" data-i18n="contact.message_placeholder"
                                             required=""></textarea>
                                     </div>
                                     <div class="contact-one__btn-box">
-                                        <button type="submit" class="thm-btn">Envoyer votre demande
+                                        <button type="submit" class="thm-btn" data-i18n="contact.send_button">Envoyer votre demande
                                             <span class="fas fa-arrow-right"></span></button>
                                     </div>
                                 </div>
@@ -1923,186 +1448,7 @@
         <!-- Contact One End -->
 
         <!-- Pricing One Start -->
-        <section class="pricing-one">
-            <div class="pricing-one__shape-1"></div>
-            <div class="pricing-one__shape-2 float-bob-y">
-                <img src="assets/images/shapes/pricing-one-shape-2.png" alt="">
-            </div>
-            <div class="container">
-                <div class="section-title text-center sec-title-animation animation-style1">
-                    <div class="section-title__tagline-box">
-                        <span class="section-title__tagline">Nos offres</span>
-                    </div>
-                    <h2 class="section-title__title title-animation">Formules <span>d'accompagnement</span>
-                    </h2>
-                </div>
-                <div class="row">
-                    <!--Pricing One Single Start-->
-                    <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInLeft" data-wow-delay="100ms">
-                        <div class="pricing-one__single">
-                            <div class="pricing-one__price-box">
-                                <div class="pricing-one__price-box-shape"
-                                    style="background-image: url(assets/images/shapes/pricing-one-price-box-shape-1.png);">
-                                </div>
-                                <span>Offre essentielle</span>
-                                <h3 class="pricing-one__price">$35.00</h3>
-                                <p class="pricing-one__price-sub-title">Choisissez la formule adaptee</p>
-                            </div>
-                            <div class="pricing-one__points-and-btn">
-                                <ul class="pricing-one__price-points list-unstyled">
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-check"></span>
-                                        </div>
-                                        <p>Contenus multilingues</p>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-check"></span>
-                                        </div>
-                                        <p>Chatbots parametrables</p>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-check"></span>
-                                        </div>
-                                        <p>Analyse digitale</p>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-check"></span>
-                                        </div>
-                                        <p>Marketing des reseaux sociaux</p>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-check"></span>
-                                        </div>
-                                        <p>Support technique</p>
-                                    </li>
-                                </ul>
-                                <div class="pricing-one__btn-box">
-                                    <a href="pricing.html" class="thm-btn">Choisir l'offre
-                                        <span class="fas fa-arrow-right"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Pricing One Single End-->
-                    <!--Pricing One Single Start-->
-                    <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="200ms">
-                        <div class="pricing-one__single">
-                            <div class="pricing-one__single-shape-1"></div>
-                            <div class="pricing-one__price-box">
-                                <div class="pricing-one__price-box-shape"
-                                    style="background-image: url(assets/images/shapes/pricing-one-price-box-shape-1.png);">
-                                </div>
-                                <div class="pricing-one__recomanded">
-                                    <span>Recommande</span>
-                                </div>
-                                <span>Offre standard</span>
-                                <h3 class="pricing-one__price">$75.00</h3>
-                                <p class="pricing-one__price-sub-title">Choisissez la formule adaptee</p>
-                            </div>
-                            <div class="pricing-one__points-and-btn">
-                                <ul class="pricing-one__price-points list-unstyled">
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-check"></span>
-                                        </div>
-                                        <p>Contenus multilingues</p>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-check"></span>
-                                        </div>
-                                        <p>Chatbots parametrables</p>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-check"></span>
-                                        </div>
-                                        <p>Analyse digitale</p>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-check"></span>
-                                        </div>
-                                        <p>Marketing des reseaux sociaux</p>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-check"></span>
-                                        </div>
-                                        <p>Support technique</p>
-                                    </li>
-                                </ul>
-                                <div class="pricing-one__btn-box">
-                                    <a href="pricing.html" class="thm-btn">Choisir l'offre
-                                        <span class="fas fa-arrow-right"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Pricing One Single End-->
-                    <!--Pricing One Single Start-->
-                    <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInRight" data-wow-delay="300ms">
-                        <div class="pricing-one__single">
-                            <div class="pricing-one__price-box">
-                                <div class="pricing-one__price-box-shape"
-                                    style="background-image: url(assets/images/shapes/pricing-one-price-box-shape-1.png);">
-                                </div>
-                                <span>Offre premium</span>
-                                <h3 class="pricing-one__price">$93.00</h3>
-                                <p class="pricing-one__price-sub-title">Choisissez la formule adaptee</p>
-                            </div>
-                            <div class="pricing-one__points-and-btn">
-                                <ul class="pricing-one__price-points list-unstyled">
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-check"></span>
-                                        </div>
-                                        <p>Contenus multilingues</p>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-check"></span>
-                                        </div>
-                                        <p>Chatbots parametrables</p>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-check"></span>
-                                        </div>
-                                        <p>Analyse digitale</p>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-check"></span>
-                                        </div>
-                                        <p>Marketing des reseaux sociaux</p>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <span class="icon-check"></span>
-                                        </div>
-                                        <p>Support technique</p>
-                                    </li>
-                                </ul>
-                                <div class="pricing-one__btn-box">
-                                    <a href="pricing.html" class="thm-btn">Choisir l'offre
-                                        <span class="fas fa-arrow-right"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Pricing One Single End-->
-                </div>
-            </div>
-        </section>
+
         <!-- Pricing One End -->
 
         <!-- FAQ One Start -->
@@ -2119,19 +1465,19 @@
                         <div class="faq-one__left">
                             <div class="section-title text-left sec-title-animation animation-style2">
                                 <div class="section-title__tagline-box">
-                                    <span class="section-title__tagline">Questions frequentes</span>
+                                    <span class="section-title__tagline" data-i18n="faq.tagline">Questions frequentes</span>
                                 </div>
-                                <h2 class="section-title__title title-animation">Vous avez des questions en <span>tete ?</span> Obtenez les reponses maintenant
+                                <h2 class="section-title__title title-animation" data-i18n="faq.title">Vous avez des questions en <span>tete ?</span> Obtenez les reponses maintenant
                                 </h2>
                             </div>
                             <div class="accrodion-grp" data-grp-name="faq-one-accrodion">
                                 <div class="accrodion">
                                     <div class="accrodion-title">
-                                        <h4>Comment se deroule l'accompagnement ?</h4>
+                                        <h4 data-i18n="faq.question1">Comment se deroule l'accompagnement ?</h4>
                                     </div>
                                     <div class="accrodion-content">
                                         <div class="inner">
-                                            <p>De l'analyse initiale a la mise en oeuvre, nous privilegions la qualite,
+                                            <p data-i18n="faq.answer1">De l'analyse initiale a la mise en oeuvre, nous privilegions la qualite,
                                                 la fiabilite et la satisfaction client dans chaque intervention. Faites de nous be
                                                 votre partenaire de confiance pour atteindre vos objectifs.
                                             </p>
@@ -2140,11 +1486,11 @@
                                 </div>
                                 <div class="accrodion active">
                                     <div class="accrodion-title">
-                                        <h4>La solution sera-t-elle adaptee a mon entreprise ?</h4>
+                                        <h4 data-i18n="faq.question2">La solution sera-t-elle adaptee a mon entreprise ?</h4>
                                     </div>
                                     <div class="accrodion-content">
                                         <div class="inner">
-                                            <p>De l'analyse initiale a la mise en oeuvre, nous privilegions la qualite,
+                                            <p data-i18n="faq.answer2">De l'analyse initiale a la mise en oeuvre, nous privilegions la qualite,
                                                 la fiabilite et la satisfaction client dans chaque intervention. Faites de nous be
                                                 votre partenaire de confiance pour atteindre vos objectifs.
                                             </p>
@@ -2153,11 +1499,11 @@
                                 </div>
                                 <div class="accrodion">
                                     <div class="accrodion-title">
-                                        <h4>Comment preparer le deploiement ?</h4>
+                                        <h4 data-i18n="faq.question3">Comment preparer le deploiement ?</h4>
                                     </div>
                                     <div class="accrodion-content">
                                         <div class="inner">
-                                            <p>De l'analyse initiale a la mise en oeuvre, nous privilegions la qualite,
+                                            <p data-i18n="faq.answer3">De l'analyse initiale a la mise en oeuvre, nous privilegions la qualite,
                                                 la fiabilite et la satisfaction client dans chaque intervention. Faites de nous be
                                                 votre partenaire de confiance pour atteindre vos objectifs.
                                             </p>
@@ -2166,11 +1512,11 @@
                                 </div>
                                 <div class="accrodion">
                                     <div class="accrodion-title">
-                                        <h4>Comment choisir la bonne solution ?</h4>
+                                        <h4 data-i18n="faq.question4">Comment choisir la bonne solution ?</h4>
                                     </div>
                                     <div class="accrodion-content">
                                         <div class="inner">
-                                            <p>De l'analyse initiale a la mise en oeuvre, nous privilegions la qualite,
+                                            <p data-i18n="faq.answer4">De l'analyse initiale a la mise en oeuvre, nous privilegions la qualite,
                                                 la fiabilite et la satisfaction client dans chaque intervention. Faites de nous be
                                                 votre partenaire de confiance pour atteindre vos objectifs.
                                             </p>
@@ -2216,9 +1562,9 @@
             <div class="container">
                 <div class="section-title text-center sec-title-animation animation-style1">
                     <div class="section-title__tagline-box">
-                        <span class="section-title__tagline">Notre blog</span>
+                        <span class="section-title__tagline" data-i18n="blog.tagline">Notre blog</span>
                     </div>
-                    <h2 class="section-title__title title-animation">Actualites et articles
+                    <h2 class="section-title__title title-animation" data-i18n="blog.title">Actualites et articles
                         <br> de notre <span>blog</span>
                     </h2>
                 </div>
@@ -2250,12 +1596,12 @@
                                             commentaires</a>
                                     </li>
                                 </ul>
-                                <h3 class="blog-one__title"><a href="blog-details.html">Accelerer la croissance avec
+                                <h3 class="blog-one__title"><a href="blog-details.html" data-i18n="blog.post1_title">Accelerer la croissance avec
                                         la<br>technologie</a></h3>
-                                <p class="blog-one__text">La transformation digitale demande une vision claire et une execution rigoureuse.
+                                <p class="blog-one__text" data-i18n="blog.post1_desc">La transformation digitale demande une vision claire et une execution rigoureuse.
                                     Nous accompagnons les entreprises avec des solutions technologiques modernes et adaptees.</p>
                                 <div class="blog-one__btn-box">
-                                    <a href="blog-details.html" class="thm-btn">Voir plus
+                                    <a href="blog-details.html" class="thm-btn" data-i18n="blog.read_more">Voir plus
                                         <span class="fas fa-arrow-right"></span>
                                     </a>
                                 </div>
@@ -2290,12 +1636,12 @@
                                             commentaires</a>
                                     </li>
                                 </ul>
-                                <h3 class="blog-one__title-two"><a href="blog-details.html">Pilotage regional et
+                                <h3 class="blog-one__title-two"><a href="blog-details.html" data-i18n="blog.post2_title">Pilotage regional et
                                         gestion operationnelle.</a></h3>
-                                <p class="blog-one__text-two">La transformation digitale demande une vision claire et une execution rigoureuse.
+                                <p class="blog-one__text-two" data-i18n="blog.post2_desc">La transformation digitale demande une vision claire et une execution rigoureuse.
                                     Une feuille de route adaptee a vos objectifs.</p>
                                 <div class="blog-one__btn-box-two">
-                                    <a href="blog-details.html" class="thm-btn">Voir plus
+                                    <a href="blog-details.html" class="thm-btn" data-i18n="blog.read_more">Voir plus
                                         <span class="fas fa-arrow-right"></span>
                                     </a>
                                 </div>
@@ -2328,12 +1674,12 @@
                                             commentaires</a>
                                     </li>
                                 </ul>
-                                <h3 class="blog-one__title-two"><a href="blog-details.html">Serveurs et plateformes
+                                <h3 class="blog-one__title-two"><a href="blog-details.html" data-i18n="blog.post3_title">Serveurs et plateformes
                                         performants et fiables.</a></h3>
-                                <p class="blog-one__text-two">La transformation digitale demande une vision claire et une execution rigoureuse.
+                                <p class="blog-one__text-two" data-i18n="blog.post3_desc">La transformation digitale demande une vision claire et une execution rigoureuse.
                                     Une feuille de route adaptee a vos objectifs.</p>
                                 <div class="blog-one__btn-box-two">
-                                    <a href="blog-details.html" class="thm-btn">Voir plus
+                                    <a href="blog-details.html" class="thm-btn" data-i18n="blog.read_more">Voir plus
                                         <span class="fas fa-arrow-right"></span>
                                     </a>
                                 </div>
@@ -2351,16 +1697,16 @@
             <div class="container">
                 <div class="newsletter-one__inner">
                     <div class="newsletter-one__left">
-                        <h2 class="newsletter-one__title">Recevez nos actualites technologiques</h2>
-                        <p class="newsletter-one__text">Suivez nos reflexions sur la transformation digitale, la
+                        <h2 class="newsletter-one__title" data-i18n="newsletter.title">Recevez nos actualites technologiques</h2>
+                        <p class="newsletter-one__text" data-i18n="newsletter.description">Suivez nos reflexions sur la transformation digitale, la
                             cybersécurite et les solutions IT pour entreprises.</p>
                     </div>
                     <div class="newsletter-one__right">
                         <form class="newsletter-one__form">
                             <div class="newsletter-one__input">
-                                <input type="email" placeholder="Entrez votre email">
+                                <input type="email" placeholder="Entrez votre email" data-i18n="newsletter.email_placeholder">
                             </div>
-                            <button type="submit" class="thm-btn">S'abonner <span class="fas fa-arrow-right"></span>
+                            <button type="submit" class="thm-btn" data-i18n="newsletter.subscribe_button">S'abonner <span class="fas fa-arrow-right"></span>
                             </button>
                             <div class="checked-box">
                                 <input type="checkbox" name="skipper1" id="skipper" checked="">
@@ -2390,7 +1736,7 @@
                                     <div class="footer-widget__about-logo">
                                         <a href="index.html"><img src="assets/images/resources/logo-2.png" alt=""></a>
                                     </div>
-                                    <p class="footer-widget__about-text">MHTECH Consulting accompagne les entreprises
+                                    <p class="footer-widget__about-text" data-i18n="footer.about_text">MHTECH Consulting accompagne les entreprises
                                         dans la conception, le developpement et la securisation de leurs solutions
                                         numeriques.</p>
                                     <div class="footer-widget__social">
@@ -2403,37 +1749,37 @@
                             </div>
                             <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
                                 <div class="footer-widget__links">
-                                    <h4 class="footer-widget__title">Liens rapides</h4>
+                                    <h4 class="footer-widget__title" data-i18n="footer.quick_links_title">Liens rapides</h4>
                                     <ul class="footer-widget__links-list list-unstyled">
-                                        <li><a href="index.html">Accueil</a></li>
-                                        <li><a href="about.html">A propos</a></li>
-                                        <li><a href="projects.html">Projets</a></li>
-                                        <li><a href="services.html">Services</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="index.html" data-i18n="footer.link_home">Accueil</a></li>
+                                        <li><a href="about.html" data-i18n="footer.link_about">A propos</a></li>
+                                        <li><a href="projects.html" data-i18n="footer.link_projects">Projets</a></li>
+                                        <li><a href="services.html" data-i18n="footer.link_services">Services</a></li>
+                                        <li><a href="contact.html" data-i18n="footer.link_contact">Contact</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
                                 <div class="footer-widget__services">
-                                    <h4 class="footer-widget__title">Services</h4>
+                                    <h4 class="footer-widget__title" data-i18n="footer.services_title">Services</h4>
                                     <ul class="footer-widget__links-list list-unstyled">
-                                        <li><a href="web-development.html">Developpement Web</a></li>
-                                        <li><a href="business-analysis.html">Developpement metier</a></li>
-                                        <li><a href="software-development.html">Services cloud</a></li>
-                                        <li><a href="product-design.html">Product Management</a></li>
-                                        <li><a href="ui-ux-design.html">Design UI/UX</a></li>
+                                        <li><a href="web-development.html" data-i18n="footer.service1">Developpement Web</a></li>
+                                        <li><a href="business-analysis.html" data-i18n="footer.service2">Developpement metier</a></li>
+                                        <li><a href="software-development.html" data-i18n="footer.service3">Services cloud</a></li>
+                                        <li><a href="product-design.html" data-i18n="footer.service4">Product Management</a></li>
+                                        <li><a href="ui-ux-design.html" data-i18n="footer.service5">Design UI/UX</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
                                 <div class="footer-widget__contact">
-                                    <h3 class="footer-widget__title">Contact</h3>
+                                    <h3 class="footer-widget__title" data-i18n="footer.contact_title">Contact</h3>
                                     <ul class="footer-widget__contact-list list-unstyled">
                                         <li>
                                             <div class="icon">
                                                 <span class="icon-pin"></span>
                                             </div>
-                                            <p>Votre localisation</p>
+                                            <p data-i18n="footer.location">Votre localisation</p>
                                         </li>
                                         <li>
                                             <div class="icon">
@@ -2460,12 +1806,12 @@
                         <div class="col-xl-12">
                             <div class="site-footer__bottom-inner">
                                 <div class="site-footer__copyright">
-                                    <p class="site-footer__copyright-text">� 2025 MHTECH Consulting. Tous droits reserves.</p>
+                                    <p class="site-footer__copyright-text" data-i18n="footer.copyright">� 2025 MHTECH Consulting. Tous droits reserves.</p>
                                 </div>
                                 <div class="site-footer__bottom-menu-box">
                                     <ul class="list-unstyled site-footer__bottom-menu">
-                                        <li><a href="about.html">Conditions d'utilisation</a></li>
-                                        <li><a href="about.html">Politique de confidentialite</a></li>
+                                        <li><a href="about.html" data-i18n="footer.terms">Conditions d'utilisation</a></li>
+                                        <li><a href="about.html" data-i18n="footer.privacy">Politique de confidentialite</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -2528,7 +1874,7 @@
         <button class="close-search"><span class="far fa-times fa-fw"></span></button>
         <form method="post" action="blog.html">
             <div class="form-group">
-                <input type="search" name="search-field" value="" placeholder="Rechercher" required="">
+                <input type="search" name="search-field" value="" placeholder="Rechercher" data-i18n="search.placeholder" required="">
                 <button type="submit"><i class="fas fa-search"></i></button>
             </div>
         </form>
@@ -2537,7 +1883,7 @@
 
     <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
         <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
-        <span class="scroll-to-top__text">Retour en haut</span>
+        <span class="scroll-to-top__text" data-i18n="scroll.back_to_top">Retour en haut</span>
     </a>
 
 
@@ -2578,6 +1924,9 @@
 
     <!-- template js -->
     <script src="assets/js/script.js"></script>
+
+    <!-- i18n translation system -->
+    <script src="assets/js/i18n.js"></script>
 </body>
 
 </html>

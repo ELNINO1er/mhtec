@@ -1,0 +1,257 @@
+{
+  "meta": {
+    "page_title": "Accueil | MHTECH Consulting",
+    "description": "MHTECH Consulting accompagne les entreprises avec des solutions IT, digitales et securisees."
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "A propos",
+    "services": "Services IT",
+    "staffing": "Staffing IT",
+    "testimonials": "Temoignages",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "header": {
+    "location": "Votre localisation",
+    "welcome_text": "MHTECH Consulting accompagne votre transformation digitale",
+    "follow_us": "Suivez-nous :",
+    "contact_label": "Contact"
+  },
+  "hero": {
+    "main_title": "MH Tech Consulting – Votre partenaire en conseil IT et staffing technologique",
+    "description": "MH Tech Consulting accompagne les entreprises dans leurs projets technologiques en proposant des services de conseil IT, cybersecurite, DevOps, design digital et operations IT. Nous mettons egalement a disposition des talents IT qualifies pour repondre aux besoins de recrutement des organisations.",
+    "button_services": "Decouvrir nos services IT",
+    "button_staffing": "Trouver un talent IT"
+  },
+  "about": {
+    "tagline": "Qui sommes-nous",
+    "title": "Des solutions technologiques modernes pour accompagner votre croissance",
+    "title_part1": "Des solutions technologiques modernes",
+    "title_part2": "pour accompagner votre croissance",
+    "description": "MH Tech Consulting accompagne les entreprises dans leurs projets technologiques en proposant des services de conseil IT, cybersecurite, DevOps, design digital et operations IT. Nous mettons egalement a disposition des talents IT qualifies pour repondre aux besoins de recrutement des organisations.",
+    "expertise_title": "Nos domaines d'expertise",
+    "expertise_text": "Informatique et solutions IT, developpement web et applications, cybersecurite, design digital et transformation digitale.",
+    "why_choose_title": "Pourquoi choisir MHTECH",
+    "why_choose_text": "Expertise technologique moderne, solutions adaptees, securite, fiabilite et accompagnement strategique oriente resultats.",
+    "button": "En savoir plus",
+    "partner_subtitle": "Partenaire technologique strategique",
+    "satisfied_clients": "Clients satisfaits",
+    "years_experience": "Annees d'experience"
+  },
+  "services": {
+    "tagline": "Nos domaines d'expertise",
+    "title": "4 domaines d'expertise pour reussir vos projets IT",
+    "title_part1": "4 domaines d'expertise",
+    "title_part2": "pour reussir vos projets IT",
+    "cybersecurity_title": "Cybersecurite",
+    "cybersecurity_desc": "Protection complete de vos systemes, audit de securite, analyse des vulnerabilites et conformite.",
+    "devops_title": "DevOps & Cloud",
+    "devops_desc": "Migration cloud, CI/CD, Infrastructure as Code, containerisation et optimisation des performances.",
+    "design_title": "Design & creation digitale",
+    "design_desc": "Conception UI/UX, developpement web et mobile, design graphique et optimisation de l'experience utilisateur.",
+    "operations_title": "Operations IT & Help Desk",
+    "operations_desc": "Support technique multi-niveaux, administration systemes, gestion des incidents et maintenance preventive.",
+    "solutions_title": "Solutions Technologiques",
+    "solutions_desc": "Conseil IT, solutions cloud, automatisation des processus et plateformes technologiques modernes.",
+    "consulting_title": "Consulting Strategique",
+    "consulting_desc": "Analyse des besoins, cadrage des projets et accompagnement a la prise de decision technologique.",
+    "button": "Voir plus"
+  },
+  "why_choose": {
+    "tagline": "POURQUOI MH TECH CONSULTING",
+    "title": "4 raisons de nous choisir pour vos projets IT",
+    "title_part1": "4 raisons de nous choisir",
+    "title_part2": "pour vos projets IT",
+    "description": "Grace a notre expertise technique et notre approche personnalisee, nous accompagnons les entreprises dans leur reussite technologique avec des solutions adaptees et des talents qualifies.",
+    "reason1": "Reactivite et disponibilite",
+    "reason2": "Expertise technique reconnue",
+    "reason3": "Flexibilite des solutions",
+    "reason4": "Accompagnement personnalise",
+    "button": "En savoir plus",
+    "contact_label": "Contactez-nous",
+    "support_247": "Assistance client 24/7",
+    "active_clients": "Clients actifs",
+    "with": "Grace a"
+  },
+  "process": {
+    "tagline": "Processus de travail",
+    "title": "Comment nous travaillons",
+    "step1_title": "Choisir un projet",
+    "step1_desc": "Une fois la strategie definie, nous passons a la conception et au deploiement de votre solution.",
+    "step2_title": "Analyser le besoin",
+    "step2_desc": "Une fois la strategie definie, nous passons a la conception et au deploiement de votre solution.",
+    "step3_title": "Planifier et executer",
+    "step3_desc": "Une fois la strategie definie, nous passons a la conception et au deploiement de votre solution.",
+    "step4_title": "Livrer le resultat",
+    "step4_desc": "Une fois la strategie definie, nous passons a la conception et au deploiement de votre solution."
+  },
+  "sliding": {
+    "item1": "Design UI/UX",
+    "item2": "Conception Produit",
+    "item3": "Developpement Web",
+    "item4": "IDENTITE VISUELLE",
+    "item5": "Cybersecurite",
+    "item6": "Marketing Digital"
+  },
+  "portfolio": {
+    "tagline": "Portfolio",
+    "title": "Decouvrez nos derniers Projets",
+    "project1_title": "Solutions innovantes, Resultats performants",
+    "project1_desc": "Decouvrez comment nous avons accompagne les entreprises avec des solutions technologiques innovantes",
+    "project2_title": "Transformer les idees en excellence digitale",
+    "project3_title": "Reussir grace a la technologie",
+    "project4_title": "Accompagner les entreprises avec l'IT de pointe"
+  },
+  "counter": {
+    "projects_completed": "Projets realises",
+    "satisfied_reviews": "Avis clients satisfaits",
+    "team_experts": "Experts dans notre equipe",
+    "innovation_awards": "Prix innovation"
+  },
+  "team": {
+    "tagline": "Notre equipe experte",
+    "title": "Nous avons une equipe experte",
+    "member2_role": "Chef de projet",
+    "member3_role": "Expert principal",
+    "member4_role": "Designer UI/UX"
+  },
+  "testimonials": {
+    "tagline": "Temoignages",
+    "title": "Ce que disent nos clients",
+    "title_part1": "Ce que disent nos clients",
+    "title_part2": "a notre propos",
+    "review_text": "Experience absolument fantastique ! L'equipe a depasse nos attentes et a livre une solution qui repondait parfaitement a nos besoins. Leur attention aux details et leur engagement envers la qualite sont inegales.",
+    "role1": "Designer UI/UX",
+    "role2": "Responsable marketing",
+    "role3": "PDG chez Anaton"
+  },
+  "contact": {
+    "tagline": "Contact",
+    "title": "Parlons de vos solutions technologiques",
+    "title_part1": "Parlons",
+    "title_part2": "de vos solutions",
+    "title_part3": "technologiques",
+    "description": "Vous avez un projet technologique ou souhaitez moderniser votre infrastructure informatique ? L'equipe MHTECH Consulting est prete a vous accompagner avec des solutions adaptees a vos besoins.",
+    "phone_label": "Telephone",
+    "fullname_label": "Nom complet",
+    "name_placeholder": "Votre nom",
+    "email_label": "Adresse email",
+    "email_placeholder": "contact@example.com",
+    "phone_placeholder": "+33 X XX XX XX XX",
+    "subject_label": "Sujet",
+    "subject_placeholder": "Objet de votre demande",
+    "message_label": "Message",
+    "consultation_label": "Demande de consultation",
+    "message_placeholder": "Decrivez votre projet ou votre besoin",
+    "submit_button": "Envoyer votre demande",
+    "send_button": "Envoyer"
+  },
+  "pricing": {
+    "tagline": "Nos offres",
+    "title": "Formules d'accompagnement",
+    "plan1_name": "Offre essentielle",
+    "plan2_name": "Offre standard",
+    "plan3_name": "Offre premium",
+    "plan_subtitle": "Choisissez la formule adaptee",
+    "feature1": "Contenus multilingues",
+    "feature2": "Chatbots parametrables",
+    "feature3": "Analyse digitale",
+    "feature4": "Marketing des reseaux sociaux",
+    "feature5": "Support technique",
+    "choose_button": "Choisir l'offre",
+    "recommended": "Recommande"
+  },
+  "faq": {
+    "tagline": "Questions frequentes",
+    "title": "Vous avez des questions en tete ? Obtenez les reponses maintenant",
+    "question1": "Comment se deroule l'accompagnement ?",
+    "answer1": "De l'analyse initiale a la mise en oeuvre, nous privilegions la qualite, la fiabilite et la satisfaction client dans chaque intervention. Faites de nous votre partenaire de confiance pour atteindre vos objectifs.",
+    "question2": "La solution sera-t-elle adaptee a mon entreprise ?",
+    "answer2": "Absolument. Nous concevons chaque solution sur mesure en fonction des besoins specifiques de votre entreprise, de votre secteur d'activite et de vos objectifs strategiques.",
+    "question3": "Comment preparer le deploiement ?",
+    "answer3": "Nous vous accompagnons dans toutes les etapes de preparation : audit initial, planification detaillee, formation des equipes et mise en place progressive pour garantir une transition en douceur.",
+    "question4": "Comment choisir la bonne solution ?",
+    "answer4": "Notre equipe d'experts analyse vos besoins, votre infrastructure existante et vos objectifs futurs pour vous recommander la solution la plus adaptee et performante.",
+    "years_experience": "Annees d'experience"
+  },
+  "blog": {
+    "tagline": "Notre blog",
+    "title": "Actualites et articles de notre blog",
+    "tag1": "Digital",
+    "tag2": "Technologie",
+    "date1": "Avril 5, 2025",
+    "date2": "Fev 25, 2025",
+    "date3": "Mai 19, 2025",
+    "comments1": "80 commentaires",
+    "comments2": "22 commentaires",
+    "comments3": "15 commentaires",
+    "post1_title": "Accelerer la croissance avec la technologie",
+    "post1_excerpt": "La transformation digitale demande une vision claire et une execution rigoureuse. Nous accompagnons les entreprises avec des solutions technologiques modernes et adaptees.",
+    "post1_desc": "La transformation digitale demande une vision claire et une execution rigoureuse. Nous accompagnons les entreprises avec des solutions technologiques modernes et adaptees.",
+    "post2_title": "Pilotage regional et gestion operationnelle.",
+    "post2_excerpt": "La transformation digitale demande une vision claire et une execution rigoureuse. Une feuille de route adaptee a vos objectifs.",
+    "post2_desc": "La transformation digitale demande une vision claire et une execution rigoureuse. Une feuille de route adaptee a vos objectifs.",
+    "post3_title": "Serveurs et plateformes performants et fiables.",
+    "post3_excerpt": "La transformation digitale demande une vision claire et une execution rigoureuse. Une feuille de route adaptee a vos objectifs.",
+    "post3_desc": "La transformation digitale demande une vision claire et une execution rigoureuse. Une feuille de route adaptee a vos objectifs.",
+    "read_more": "Voir plus"
+  },
+  "newsletter": {
+    "title": "Recevez nos actualites technologiques",
+    "description": "Suivez nos reflexions sur la transformation digitale, la cybersecurite et les solutions IT pour entreprises.",
+    "email_placeholder": "Entrez votre email",
+    "subscribe_button": "S'abonner"
+  },
+  "footer": {
+    "about_text": "MHTECH Consulting accompagne les entreprises dans la conception, le developpement et la securisation de leurs solutions numeriques.",
+    "quick_links_title": "Liens rapides",
+    "link_home": "Accueil",
+    "link_about": "A propos",
+    "link_projects": "Projets",
+    "link_services": "Services",
+    "link_contact": "Contact",
+    "services_title": "Services",
+    "service1": "Developpement Web",
+    "service2": "Developpement metier",
+    "service3": "Services cloud",
+    "service4": "Product Management",
+    "service5": "Design UI/UX",
+    "contact_title": "Contact",
+    "location": "Votre localisation",
+    "copyright": "© 2025 MHTECH Consulting. Tous droits reserves.",
+    "terms": "Conditions d'utilisation",
+    "privacy": "Politique de confidentialite"
+  },
+  "chat": {
+    "description": "Remplissez le formulaire ci-dessous et nous vous repondrons dans les plus brefs delais.",
+    "name_placeholder": "Votre nom",
+    "email_placeholder": "contact@mhtechnology.com",
+    "message_placeholder": "Votre message",
+    "send_button": "Envoyer"
+  },
+  "sidebar": {
+    "about_title": "A propos de MHTECH",
+    "about_text": "MHTECH Consulting accompagne les entreprises dans leur transformation digitale avec des solutions modernes, performantes et securisees.",
+    "consultation_title": "Demandez une consultation",
+    "contact_title": "Coordonnees",
+    "name_placeholder": "Name",
+    "email_placeholder": "Email",
+    "message_placeholder": "Message...",
+    "send_button": "Envoyer"
+  },
+  "search": {
+    "placeholder": "Rechercher"
+  },
+  "scroll": {
+    "back_to_top": "Retour en haut"
+  },
+  "common": {
+    "read_more": "Lire la suite",
+    "learn_more": "En savoir plus",
+    "get_started": "Commencer",
+    "view_all": "Voir tout",
+    "loading": "Chargement...",
+    "see_more": "Voir plus"
+  }
+}

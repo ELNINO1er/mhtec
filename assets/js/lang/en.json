@@ -1,0 +1,257 @@
+{
+  "meta": {
+    "page_title": "Home | MHTECH Consulting",
+    "description": "MHTECH Consulting supports businesses with IT, digital and secure solutions."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "IT Services",
+    "staffing": "IT Staffing",
+    "testimonials": "Testimonials",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "header": {
+    "location": "Your location",
+    "welcome_text": "MHTECH Consulting supports your digital transformation",
+    "follow_us": "Follow us:",
+    "contact_label": "Contact"
+  },
+  "hero": {
+    "main_title": "MH Tech Consulting – Your partner in IT consulting and technology staffing",
+    "description": "MH Tech Consulting supports businesses in their technology projects by offering IT consulting, cybersecurity, DevOps, digital design and IT operations services. We also provide qualified IT talent to meet organizations' recruitment needs.",
+    "button_services": "Discover our IT services",
+    "button_staffing": "Find IT talent"
+  },
+  "about": {
+    "tagline": "Who we are",
+    "title": "Modern technology solutions to support your growth",
+    "title_part1": "Modern technology solutions",
+    "title_part2": "to support your growth",
+    "description": "MH Tech Consulting supports businesses in their technology projects by offering IT consulting, cybersecurity, DevOps, digital design and IT operations services. We also provide qualified IT talent to meet organizations' recruitment needs.",
+    "expertise_title": "Our areas of expertise",
+    "expertise_text": "IT and IT solutions, web and application development, cybersecurity, digital design and digital transformation.",
+    "why_choose_title": "Why choose MHTECH",
+    "why_choose_text": "Modern technological expertise, tailored solutions, security, reliability and results-oriented strategic support.",
+    "button": "Learn more",
+    "partner_subtitle": "Strategic technology partner",
+    "satisfied_clients": "Satisfied clients",
+    "years_experience": "Years of experience"
+  },
+  "services": {
+    "tagline": "Our areas of expertise",
+    "title": "4 areas of expertise to make your IT projects successful",
+    "title_part1": "4 areas of expertise",
+    "title_part2": "to make your IT projects successful",
+    "cybersecurity_title": "Cybersecurity",
+    "cybersecurity_desc": "Complete protection for your systems, security audit, vulnerability analysis and compliance.",
+    "devops_title": "DevOps & Cloud",
+    "devops_desc": "Cloud migration, CI/CD, Infrastructure as Code, containerization and performance optimization.",
+    "design_title": "Design & digital creation",
+    "design_desc": "UI/UX design, web and mobile development, graphic design and user experience optimization.",
+    "operations_title": "IT Operations & Help Desk",
+    "operations_desc": "Multi-level technical support, system administration, incident management and preventive maintenance.",
+    "solutions_title": "Technology Solutions",
+    "solutions_desc": "IT consulting, cloud solutions, process automation and modern technology platforms.",
+    "consulting_title": "Strategic Consulting",
+    "consulting_desc": "Needs analysis, project scoping and support for technology decision-making.",
+    "button": "See more"
+  },
+  "why_choose": {
+    "tagline": "WHY MH TECH CONSULTING",
+    "title": "4 reasons to choose us for your IT projects",
+    "title_part1": "4 reasons to choose us",
+    "title_part2": "for your IT projects",
+    "description": "With our technical expertise and personalized approach, we support businesses in their technological success with tailored solutions and qualified talent.",
+    "reason1": "Responsiveness and availability",
+    "reason2": "Recognized technical expertise",
+    "reason3": "Solution flexibility",
+    "reason4": "Personalized support",
+    "button": "Learn more",
+    "contact_label": "Contact us",
+    "support_247": "24/7 customer support",
+    "active_clients": "Active clients",
+    "with": "With"
+  },
+  "process": {
+    "tagline": "Work process",
+    "title": "How we work",
+    "step1_title": "Choose a project",
+    "step1_desc": "Once the strategy is defined, we move on to the design and deployment of your solution.",
+    "step2_title": "Analyze the need",
+    "step2_desc": "Once the strategy is defined, we move on to the design and deployment of your solution.",
+    "step3_title": "Plan and execute",
+    "step3_desc": "Once the strategy is defined, we move on to the design and deployment of your solution.",
+    "step4_title": "Deliver the result",
+    "step4_desc": "Once the strategy is defined, we move on to the design and deployment of your solution."
+  },
+  "sliding": {
+    "item1": "UI/UX Design",
+    "item2": "Product Design",
+    "item3": "Web Development",
+    "item4": "VISUAL IDENTITY",
+    "item5": "Cybersecurity",
+    "item6": "Digital Marketing"
+  },
+  "portfolio": {
+    "tagline": "Portfolio",
+    "title": "Discover our latest Projects",
+    "project1_title": "Innovative solutions, Powerful Results",
+    "project1_desc": "Explore how we have empowered businesses with innovative technology solutions",
+    "project2_title": "Transforming ideas into digital excellence",
+    "project3_title": "Succeeding through technology",
+    "project4_title": "Supporting businesses with cutting-edge IT"
+  },
+  "counter": {
+    "projects_completed": "Completed projects",
+    "satisfied_reviews": "Satisfied customer reviews",
+    "team_experts": "Experts in our team",
+    "innovation_awards": "Innovation awards"
+  },
+  "team": {
+    "tagline": "Our expert team",
+    "title": "We have an expert team",
+    "member2_role": "Project Manager",
+    "member3_role": "Senior Expert",
+    "member4_role": "UI/UX Designer"
+  },
+  "testimonials": {
+    "tagline": "Testimonials",
+    "title": "What our clients say",
+    "title_part1": "What our clients say",
+    "title_part2": "about us",
+    "review_text": "Absolutely fantastic experience! The team exceeded our expectations and delivered a solution that perfectly met our needs. Their attention to detail and commitment to quality are unmatched.",
+    "role1": "UI/UX Designer",
+    "role2": "Marketing Manager",
+    "role3": "CEO at Anaton"
+  },
+  "contact": {
+    "tagline": "Contact",
+    "title": "Let's talk about your technology solutions",
+    "title_part1": "Let's Talk",
+    "title_part2": "About Your",
+    "title_part3": "Technology Solutions",
+    "description": "Do you have a technology project or want to modernize your IT infrastructure? The MHTECH Consulting team is ready to support you with solutions tailored to your needs.",
+    "phone_label": "Phone",
+    "fullname_label": "Full name",
+    "name_placeholder": "Your name",
+    "email_label": "Email address",
+    "email_placeholder": "contact@example.com",
+    "phone_placeholder": "+1 XXX XXX XXXX",
+    "subject_label": "Subject",
+    "subject_placeholder": "Subject of your request",
+    "message_label": "Message",
+    "consultation_label": "Consultation request",
+    "message_placeholder": "Describe your project or your need",
+    "submit_button": "Send your request",
+    "send_button": "Send"
+  },
+  "pricing": {
+    "tagline": "Our offers",
+    "title": "Support packages",
+    "plan1_name": "Essential package",
+    "plan2_name": "Standard package",
+    "plan3_name": "Premium package",
+    "plan_subtitle": "Choose the right package",
+    "feature1": "Multilingual content",
+    "feature2": "Customizable chatbots",
+    "feature3": "Digital analytics",
+    "feature4": "Social media marketing",
+    "feature5": "Technical support",
+    "choose_button": "Choose the package",
+    "recommended": "Recommended"
+  },
+  "faq": {
+    "tagline": "Frequently asked questions",
+    "title": "Do you have questions in mind? Get the answers now",
+    "question1": "How does the support work?",
+    "answer1": "From initial analysis to implementation, we prioritize quality, reliability and customer satisfaction in every intervention. Make us your trusted partner to achieve your goals.",
+    "question2": "Will the solution be tailored to my business?",
+    "answer2": "Absolutely. We design each custom solution based on your company's specific needs, industry sector and strategic objectives.",
+    "question3": "How to prepare for deployment?",
+    "answer3": "We support you through all preparation stages: initial audit, detailed planning, team training and progressive implementation to ensure a smooth transition.",
+    "question4": "How to choose the right solution?",
+    "answer4": "Our team of experts analyzes your needs, existing infrastructure and future goals to recommend the most suitable and efficient solution.",
+    "years_experience": "Years of experience"
+  },
+  "blog": {
+    "tagline": "Our blog",
+    "title": "News and articles from our blog",
+    "tag1": "Digital",
+    "tag2": "Technology",
+    "date1": "April 5, 2025",
+    "date2": "Feb 25, 2025",
+    "date3": "May 19, 2025",
+    "comments1": "80 comments",
+    "comments2": "22 comments",
+    "comments3": "15 comments",
+    "post1_title": "Accelerating growth with technology",
+    "post1_excerpt": "Digital transformation requires clear vision and rigorous execution. We support businesses with modern and tailored technology solutions.",
+    "post1_desc": "Digital transformation requires clear vision and rigorous execution. We support businesses with modern and tailored technology solutions.",
+    "post2_title": "Regional management and operational management.",
+    "post2_excerpt": "Digital transformation requires clear vision and rigorous execution. A roadmap tailored to your goals.",
+    "post2_desc": "Digital transformation requires clear vision and rigorous execution. A roadmap tailored to your goals.",
+    "post3_title": "High-performance and reliable servers and platforms.",
+    "post3_excerpt": "Digital transformation requires clear vision and rigorous execution. A roadmap tailored to your goals.",
+    "post3_desc": "Digital transformation requires clear vision and rigorous execution. A roadmap tailored to your goals.",
+    "read_more": "Read more"
+  },
+  "newsletter": {
+    "title": "Receive our technology news",
+    "description": "Follow our insights on digital transformation, cybersecurity and IT solutions for businesses.",
+    "email_placeholder": "Enter your email",
+    "subscribe_button": "Subscribe"
+  },
+  "footer": {
+    "about_text": "MHTECH Consulting supports businesses in the design, development and security of their digital solutions.",
+    "quick_links_title": "Quick links",
+    "link_home": "Home",
+    "link_about": "About",
+    "link_projects": "Projects",
+    "link_services": "Services",
+    "link_contact": "Contact",
+    "services_title": "Services",
+    "service1": "Web Development",
+    "service2": "Business Development",
+    "service3": "Cloud Services",
+    "service4": "Product Management",
+    "service5": "UI/UX Design",
+    "contact_title": "Contact",
+    "location": "Your location",
+    "copyright": "© 2025 MHTECH Consulting. All rights reserved.",
+    "terms": "Terms of use",
+    "privacy": "Privacy policy"
+  },
+  "chat": {
+    "description": "Fill out the form below and we will respond to you as soon as possible.",
+    "name_placeholder": "Your name",
+    "email_placeholder": "contact@mhtechnology.com",
+    "message_placeholder": "Your message",
+    "send_button": "Send"
+  },
+  "sidebar": {
+    "about_title": "About MHTECH",
+    "about_text": "MHTECH Consulting supports businesses in their digital transformation with modern, high-performance and secure solutions.",
+    "consultation_title": "Request a consultation",
+    "contact_title": "Contact Information",
+    "name_placeholder": "Name",
+    "email_placeholder": "Email",
+    "message_placeholder": "Message...",
+    "send_button": "Send"
+  },
+  "search": {
+    "placeholder": "Search"
+  },
+  "scroll": {
+    "back_to_top": "Back to top"
+  },
+  "common": {
+    "read_more": "Read more",
+    "learn_more": "Learn more",
+    "get_started": "Get started",
+    "view_all": "View all",
+    "loading": "Loading...",
+    "see_more": "See more"
+  }
+}
