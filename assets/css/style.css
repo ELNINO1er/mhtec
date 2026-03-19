@@ -2969,12 +2969,34 @@ xs sidebar
 --------------------------------------------------------------*/
 
 .home-page-media .banner-one__img img {
-  width: 600px;
+  width: 540px;
   max-width: 100%;
-  height: 600px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 32px;
+  height: auto;
+  object-fit: contain;
+  object-position: center bottom;
+  border-radius: 0;
+}
+
+.home-page-media .banner-one__content {
+  max-width: 760px;
+}
+
+.home-page-media .banner-one__title {
+  max-width: 860px;
+  margin-top: 16px;
+  font-size: 64px;
+  line-height: 1.15;
+}
+
+.home-page-media .banner-one__text {
+  max-width: 700px;
+  margin: 22px 0 30px;
+  font-size: 19px;
+  line-height: 1.7;
+}
+
+.home-page-media .banner-one__btn-box {
+  flex-wrap: wrap;
 }
 
 .home-page-media .about-one__img-2 img {
@@ -3022,4 +3044,20 @@ xs sidebar
   height: 370px;
   object-fit: cover;
   object-position: center;
+}
+
+@media only screen and (max-width: 991px) {
+  .home-page-media .banner-one__title {
+    max-width: 100%;
+    font-size: 52px;
+  }
+
+  .home-page-media .banner-one__text {
+    max-width: 100%;
+    font-size: 17px;
+  }
+
+  .home-page-media .banner-one__img img {
+    width: 440px;
+  }
 }

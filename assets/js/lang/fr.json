@@ -25,8 +25,8 @@
                    "contact_label":  "Contact"
                },
     "hero":  {
-                 "main_title":  "MH Tech Consulting - Votre partenaire en conseil IT et staffing technologique",
-                 "description":  "MH Tech Consulting accompagne les entreprises dans leurs projets technologiques en proposant des services de conseil IT, cybersecurite, DevOps, design digital et operations IT. Nous mettons egalement a disposition des talents IT qualifies pour repondre aux besoins de recrutement des organisations.",
+                 "main_title_html":  "Acc\u00e9l\u00e9rez votre croissance avec un <span>partenaire IT fiable</span>",
+                 "description":  "Conseil IT, cybers\u00e9curit\u00e9, cloud et staffing technologique pour structurer vos projets, s\u00e9curiser vos op\u00e9rations et mobiliser les bons talents.",
                  "button_services":  "Decouvrir nos services IT",
                  "button_staffing":  "Trouver un talent IT"
              },

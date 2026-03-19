@@ -25,8 +25,8 @@
                    "contact_label":  "Contact"
                },
     "hero":  {
-                 "main_title":  "MH Tech Consulting - Your partner in IT consulting and technology staffing",
-                 "description":  "MH Tech Consulting supports businesses in their technology projects by offering IT consulting, cybersecurity, DevOps, digital design and IT operations services. We also provide qualified IT talent to meet organizations\u0027 recruitment needs.",
+                 "main_title_html":  "Accelerate your growth with a <span>trusted IT partner</span>",
+                 "description":  "IT consulting, cybersecurity, cloud and technology staffing to structure your projects, secure your operations and bring in the right talent.",
                  "button_services":  "Discover our IT services",
                  "button_staffing":  "Find IT talent"
              },
