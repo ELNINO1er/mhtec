@@ -8,6 +8,11 @@
     z-index: 1;
 }
 
+.pricing-one,
+.pricing-two {
+    display: none !important;
+}
+
 .pricing-one__shape-1 {
     position: absolute;
     width: 481px;
