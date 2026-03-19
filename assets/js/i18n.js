@@ -5,7 +5,7 @@
 
 class I18n {
     constructor() {
-        this.currentLang = localStorage.getItem('mhtech_lang') || 'fr';
+        this.currentLang = localStorage.getItem('mhtech_lang') || 'en';
         this.translations = {};
         this.init();
     }
@@ -28,8 +28,8 @@ class I18n {
             this.updateLanguageButton();
         } catch (error) {
             console.error('Erreur lors du chargement des traductions:', error);
-            if (lang !== 'fr') {
-                await this.loadTranslations('fr');
+            if (lang !== 'en') {
+                await this.loadTranslations('en');
             }
         }
     }
