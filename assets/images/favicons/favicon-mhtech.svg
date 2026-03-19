@@ -1,0 +1,19 @@
+﻿<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M32 2L56 13V34C56 48.3 46.4 59 32 62C17.6 59 8 48.3 8 34V13L32 2Z" fill="#08111E"/>
+  <path d="M32 8L49 16V34C49 44.1 42.5 52.4 32 55.3C21.5 52.4 15 44.1 15 34V16L32 8Z" stroke="#1AAEFF" stroke-width="3"/>
+  <path d="M18.5 45V19H25L32 28.2L39 19H45.5V45H39V29.8L34 36.4H30L25 29.8V45H18.5Z" fill="url(#metalMark)"/>
+  <path d="M25.3 20.8L39.8 25.7M23.8 28.3L39.3 31.4M22.4 36.2L37.2 38.3" stroke="#EAF2FA" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="25.3" cy="20.8" r="2.5" fill="#F4F9FE"/>
+  <circle cx="39.8" cy="25.7" r="2.5" fill="#F4F9FE"/>
+  <circle cx="23.8" cy="28.3" r="2.5" fill="#F4F9FE"/>
+  <circle cx="39.3" cy="31.4" r="2.5" fill="#F4F9FE"/>
+  <circle cx="22.4" cy="36.2" r="2.5" fill="#F4F9FE"/>
+  <circle cx="37.2" cy="38.3" r="2.5" fill="#F4F9FE"/>
+  <defs>
+    <linearGradient id="metalMark" x1="18.5" y1="19" x2="45.5" y2="45" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset=".45" stop-color="#C5D1DF"/>
+      <stop offset="1" stop-color="#EDF3F9"/>
+    </linearGradient>
+  </defs>
+</svg>

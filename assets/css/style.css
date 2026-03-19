@@ -1419,6 +1419,13 @@ xs sidebar
   padding: 25px 0;
 }
 
+.main-menu__logo img {
+  display: block;
+  width: auto;
+  height: 58px;
+  max-width: 100%;
+}
+
 .main-menu__main-menu-box {
   display: block;
 }
@@ -2076,6 +2083,15 @@ xs sidebar
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.mobile-nav__content .logo-box img,
+.sidebar-info-contents .logo img,
+.footer-widget__about-logo img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: 56px;
 }
 
 .mobile-nav__close {

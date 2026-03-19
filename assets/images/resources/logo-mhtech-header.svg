@@ -1,0 +1,25 @@
+﻿<svg width="300" height="78" viewBox="0 0 300 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(4 4)">
+    <path d="M35 1L61 13V37C61 52.5 50.6 64.5 35 68C19.4 64.5 9 52.5 9 37V13L35 1Z" fill="#0A1627"/>
+    <path d="M35 8L54 17V37C54 48.2 46.8 56.8 35 60C23.2 56.8 16 48.2 16 37V17L35 8Z" stroke="#149CFF" stroke-width="3"/>
+    <path d="M19 49V20H26.1L35 31.6L43.9 20H51V49H43.9V30.5L37.5 39H32.5L26.1 30.5V49H19Z" fill="url(#mhMetalHeader)"/>
+    <path d="M27.5 22L46 28M25.5 31.5L45.5 35.2M23.8 41.5L42.8 44" stroke="#E6EEF8" stroke-width="1.7" stroke-linecap="round" opacity=".96"/>
+    <circle cx="27.5" cy="22" r="3" fill="#F5F9FD"/>
+    <circle cx="46" cy="28" r="3" fill="#F5F9FD"/>
+    <circle cx="25.5" cy="31.5" r="3" fill="#F5F9FD"/>
+    <circle cx="45.5" cy="35.2" r="3" fill="#F5F9FD"/>
+    <circle cx="23.8" cy="41.5" r="3" fill="#F5F9FD"/>
+    <circle cx="42.8" cy="44" r="3" fill="#F5F9FD"/>
+  </g>
+  <g transform="translate(82 14)">
+    <text x="0" y="24" fill="#1E3550" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="800">MH Tech</text>
+    <text x="0" y="50" fill="#136EF6" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" letter-spacing="1">Consulting</text>
+  </g>
+  <defs>
+    <linearGradient id="mhMetalHeader" x1="19" y1="20" x2="51" y2="49" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset=".45" stop-color="#C5D1DF"/>
+      <stop offset="1" stop-color="#EDF3F9"/>
+    </linearGradient>
+  </defs>
+</svg>
