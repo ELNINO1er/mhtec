@@ -18,7 +18,7 @@ class I18n {
 
     async loadTranslations(lang) {
         try {
-            const response = await fetch(`assets/js/lang/${lang}.json?v=2`);
+            const response = await fetch(`assets/js/lang/${lang}.json?v=3`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -28,7 +28,6 @@ class I18n {
             this.updateLanguageButton();
         } catch (error) {
             console.error('Erreur lors du chargement des traductions:', error);
-            // Fallback vers français si erreur
             if (lang !== 'fr') {
                 await this.loadTranslations('fr');
             }
@@ -52,93 +51,122 @@ class I18n {
     }
 
     updatePageLanguage() {
-        // Mise à jour de l'attribut lang du HTML
+        this.resetAnimatedTitles();
+
         document.documentElement.lang = this.currentLang;
 
-        // Mise à jour de tous les éléments avec data-i18n
         const elements = document.querySelectorAll('[data-i18n]');
-        elements.forEach(element => {
+        elements.forEach((element) => {
             const key = element.getAttribute('data-i18n');
             const translation = this.translate(key);
 
-            // Vérifier si c'est un placeholder, value ou text content
             if (element.hasAttribute('placeholder')) {
                 element.setAttribute('placeholder', translation);
             } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 element.value = translation;
+            } else if (this.containsHtml(translation)) {
+                element.innerHTML = translation;
+            } else if (element.children.length > 0) {
+                this.updateElementTextPreservingChildren(element, translation);
             } else {
                 element.textContent = translation;
             }
         });
 
-        // Mise à jour des placeholders avec data-i18n-placeholder
         const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
-        placeholderElements.forEach(element => {
+        placeholderElements.forEach((element) => {
             const key = element.getAttribute('data-i18n-placeholder');
             const translation = this.translate(key);
             element.setAttribute('placeholder', translation);
         });
 
-        // Mise à jour des éléments avec data-i18n-html (pour le HTML)
         const htmlElements = document.querySelectorAll('[data-i18n-html]');
-        htmlElements.forEach(element => {
+        htmlElements.forEach((element) => {
             const key = element.getAttribute('data-i18n-html');
             const translation = this.translate(key);
             element.innerHTML = translation;
         });
 
-        // Mise à jour du titre de la page
         this.updatePageTitle();
-
-        // Mise à jour du bouton de langue actif
         this.updateLanguageButton();
+        this.refreshAnimatedTitles();
+    }
+
+    containsHtml(value) {
+        return /<\/?[a-z][\s\S]*>/i.test(value);
+    }
+
+    resetAnimatedTitles() {
+        const animatedTitles = document.querySelectorAll('.sec-title-animation .title-animation');
+        animatedTitles.forEach((title) => {
+            if (title.animation) {
+                title.animation.progress(1).kill();
+                title.animation = null;
+            }
+
+            if (title.split && typeof title.split.revert === 'function') {
+                title.split.revert();
+                title.split = null;
+            }
+        });
+    }
+
+    refreshAnimatedTitles() {
+        if (window.ScrollTrigger && typeof window.ScrollTrigger.refresh === 'function') {
+            window.ScrollTrigger.refresh();
+        }
+    }
+
+    updateElementTextPreservingChildren(element, translation) {
+        const textNodes = Array.from(element.childNodes).filter(
+            (node) => node.nodeType === Node.TEXT_NODE
+        );
+
+        if (textNodes.length > 0) {
+            textNodes[0].textContent = `${translation} `;
+            textNodes.slice(1).forEach((node) => {
+                if (node.textContent.trim()) {
+                    node.textContent = '';
+                }
+            });
+            return;
+        }
+
+        element.prepend(document.createTextNode(`${translation} `));
     }
 
     updatePageTitle() {
-        const pageTitleMap = {
-            'index.html': {
-                'fr': 'Accueil | MHTECH Consulting',
-                'en': 'Home | MHTECH Consulting'
-            },
-            'about.html': {
-                'fr': 'A propos | MHTECH Consulting',
-                'en': 'About | MHTECH Consulting'
-            },
-            'services.html': {
-                'fr': 'Services IT | MHTECH Consulting',
-                'en': 'IT Services | MHTECH Consulting'
-            },
-            'staffing.html': {
-                'fr': 'Staffing IT | MHTECH Consulting',
-                'en': 'IT Staffing | MHTECH Consulting'
-            },
-            'contact.html': {
-                'fr': 'Contact | MHTECH Consulting',
-                'en': 'Contact | MHTECH Consulting'
-            },
-            'blog.html': {
-                'fr': 'Blog | MHTECH Consulting',
-                'en': 'Blog | MHTECH Consulting'
-            },
-            'testimonials.html': {
-                'fr': 'Temoignages | MHTECH Consulting',
-                'en': 'Testimonials | MHTECH Consulting'
-            },
-            'projects.html': {
-                'fr': 'Projets | MHTECH Consulting',
-                'en': 'Projects | MHTECH Consulting'
-            }
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const pageKeyMap = {
+            'index.html': 'meta',
+            'about.html': 'about_page',
+            'services.html': 'services_page',
+            'staffing.html': 'staffing_page',
+            'contact.html': 'contact_page',
+            'blog.html': 'blog_page',
+            'testimonials.html': 'testimonials_page',
+            'projects.html': 'projects_page',
+            'software-development.html': 'software_dev',
+            'web-development.html': 'web_dev',
+            'ui-ux-design.html': 'ui_ux',
+            'digital-marketing.html': 'digital_marketing',
+            'business-analysis.html': 'business_analysis',
+            'product-design.html': 'product_design'
         };
 
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        if (pageTitleMap[currentPage] && pageTitleMap[currentPage][this.currentLang]) {
-            document.title = pageTitleMap[currentPage][this.currentLang];
+        const pageKey = pageKeyMap[currentPage];
+        const pageTitle = pageKey && this.translations[pageKey] && this.translations[pageKey].page_title;
+
+        if (pageTitle) {
+            document.title = pageTitle.includes('MHTECH Consulting')
+                ? pageTitle
+                : `${pageTitle} | MHTECH Consulting`;
         }
     }
 
     updateLanguageButton() {
         const langButtons = document.querySelectorAll('.lang-btn');
-        langButtons.forEach(btn => {
+        langButtons.forEach((btn) => {
             if (btn.getAttribute('data-lang') === this.currentLang) {
                 btn.classList.add('active');
             } else {
@@ -150,20 +178,17 @@ class I18n {
     async changeLanguage(lang) {
         if (lang === this.currentLang) return;
 
-        // Animation de transition (optionnel)
         document.body.style.opacity = '0.7';
 
         await this.loadTranslations(lang);
         this.updatePageLanguage();
 
-        // Fin de l'animation
         setTimeout(() => {
             document.body.style.opacity = '1';
         }, 200);
     }
 
     attachEventListeners() {
-        // Écouter les clics sur les boutons de langue
         document.addEventListener('click', (e) => {
             const langBtn = e.target.closest('.lang-btn');
             if (langBtn) {
@@ -179,13 +204,11 @@ class I18n {
     }
 }
 
-// Initialisation automatique au chargement du DOM
 let i18nInstance = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     i18nInstance = new I18n();
 });
 
-// Export pour utilisation globale
 window.I18n = I18n;
 window.getI18n = () => i18nInstance;
