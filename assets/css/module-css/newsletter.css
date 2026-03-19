@@ -197,6 +197,7 @@
     right: 100px;
     animation: leftRight 4s ease-in-out infinite;
     z-index: -1;
+    display: none;
 }
 
 .newsletter-two__img-1 img {
