@@ -8,8 +8,15 @@ class MailTemplate
     private const BRAND_WEBSITE = 'https://mhtechconsulting.com';
     private const BRAND_EMAIL = 'contact@mhtechconsulting.com';
     private const BRAND_PHONE = '+1 (248) 938 1944';
+    private const BRAND_LOCATION_FR = 'A distance, sur rendez-vous';
+    private const BRAND_LOCATION_EN = 'Remote by appointment';
 
-    public static function resetMailer(PHPMailer $mail): void
+    public static function normalizeLang(?string $lang): string
+    {
+        return strtolower(trim((string) $lang)) === 'fr' ? 'fr' : 'en';
+    }
+
+    public static function resetMailer(PHPMailer $mail, ?string $lang = null): void
     {
         $mail->clearAllRecipients();
         $mail->clearReplyTos();
@@ -17,11 +24,15 @@ class MailTemplate
         $mail->Subject = '';
         $mail->Body = '';
         $mail->AltBody = '';
+        $mail->setLanguage(self::normalizeLang($lang), __DIR__ . '/PHPMailer/language/');
     }
 
     public static function build(PHPMailer $mail, array $config): array
     {
+        $lang = self::normalizeLang($config['lang'] ?? null);
+        $copy = self::dictionary($lang);
         $logoCid = self::embedLogo($mail);
+
         $preheader = (string) ($config['preheader'] ?? '');
         $eyebrow = (string) ($config['eyebrow'] ?? '');
         $title = (string) ($config['title'] ?? '');
@@ -30,10 +41,10 @@ class MailTemplate
         $cards = is_array($config['cards'] ?? null) ? $config['cards'] : [];
         $steps = is_array($config['steps'] ?? null) ? $config['steps'] : [];
         $closing = (string) ($config['closing'] ?? '');
-        $footerNote = (string) ($config['footer_note'] ?? 'MHTECH Consulting accompagne les entreprises sur leurs enjeux IT, cybersécurité, cloud et staffing.');
+        $footerNote = (string) ($config['footer_note'] ?? $copy['footer_note']);
 
         $html = '<!DOCTYPE html>
-<html lang="fr">
+<html lang="' . self::escape($lang) . '">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,18 +55,20 @@ class MailTemplate
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#eef3f8; width:100%; border-collapse:collapse;">
         <tr>
             <td align="center" style="padding:28px 16px;">
-                <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width:680px; width:100%; border-collapse:separate;">
+                <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width:700px; width:100%; border-collapse:separate;">
                     <tr>
-                        <td style="background:linear-gradient(135deg, #16324f 0%, #3f6184 100%); border-radius:24px 24px 0 0; padding:28px 32px 24px 32px;">
+                        <td style="background:linear-gradient(135deg, #0f2339 0%, #39597c 100%); border-radius:24px 24px 0 0; padding:28px 32px 24px 32px;">
                             <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse;">
                                 <tr>
                                     <td align="left" valign="middle">';
 
         if ($logoCid !== null) {
-            $html .= '<img src="cid:' . self::escape($logoCid) . '" alt="MHTECH Consulting" width="74" style="display:block; width:74px; max-width:74px; height:auto; margin-bottom:18px;">';
+            $html .= '<img src="cid:' . self::escape($logoCid) . '" alt="' . self::escape(self::BRAND_NAME) . '" width="230" style="display:block; width:230px; max-width:100%; height:auto; margin-bottom:18px;">';
+        } else {
+            $html .= '<div style="font-size:26px; line-height:32px; color:#ffffff; font-weight:700; margin-bottom:18px;">' . self::escape(self::BRAND_NAME) . '</div>';
         }
 
-        $html .= '<div style="font-size:12px; line-height:18px; letter-spacing:1.4px; text-transform:uppercase; color:#b9d5ee; font-weight:700;">' . self::escape($eyebrow) . '</div>
+        $html .= '<div style="font-size:12px; line-height:18px; letter-spacing:1.6px; text-transform:uppercase; color:#b9d5ee; font-weight:700;">' . self::escape($eyebrow) . '</div>
                                         <div style="font-size:32px; line-height:40px; color:#ffffff; font-weight:700; margin-top:10px;">' . self::escape($title) . '</div>
                                         <div style="font-size:16px; line-height:26px; color:#e8f1f8; margin-top:14px;">' . self::escape($intro) . '</div>';
 
@@ -70,14 +83,15 @@ class MailTemplate
                     </tr>
                     <tr>
                         <td style="background-color:#ffffff; padding:24px; border-radius:0 0 24px 24px;">' .
-                            self::renderCards($cards) .
-                            self::renderSteps($steps);
+                            self::renderCards($cards, $copy) .
+                            self::renderSteps($steps, $copy);
 
         if ($closing !== '') {
             $html .= '<div style="margin-top:24px; font-size:15px; line-height:24px; color:#31445f;">' . nl2br(self::escape($closing)) . '</div>';
         }
 
-        $html .= '         </td>
+        $html .= self::renderContactBlock($copy) . '
+                        </td>
                     </tr>
                     <tr>
                         <td style="padding:18px 8px 0 8px;">
@@ -86,16 +100,7 @@ class MailTemplate
                                     <td style="font-size:13px; line-height:22px; color:#62758f; text-align:center; padding-bottom:8px;">' . self::escape($footerNote) . '</td>
                                 </tr>
                                 <tr>
-                                    <td style="font-size:13px; line-height:22px; color:#62758f; text-align:center;">
-                                        <a href="' . self::escape(self::BRAND_WEBSITE) . '" style="color:#315a80; text-decoration:none;">' . self::escape(self::BRAND_WEBSITE) . '</a>
-                                        &nbsp;&nbsp;|&nbsp;&nbsp;
-                                        <a href="mailto:' . self::escape(self::BRAND_EMAIL) . '" style="color:#315a80; text-decoration:none;">' . self::escape(self::BRAND_EMAIL) . '</a>
-                                        &nbsp;&nbsp;|&nbsp;&nbsp;
-                                        <span style="color:#62758f;">' . self::escape(self::BRAND_PHONE) . '</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="font-size:12px; line-height:20px; color:#7d8ea5; text-align:center; padding-top:10px;">&copy; 2026 ' . self::escape(self::BRAND_NAME) . '. Tous droits réservés.</td>
+                                    <td style="font-size:12px; line-height:20px; color:#7d8ea5; text-align:center; padding-top:10px;">' . self::escape($copy['copyright']) . '</td>
                                 </tr>
                             </table>
                         </td>
@@ -108,6 +113,7 @@ class MailTemplate
 </html>';
 
         $textParts = [];
+
         foreach ([$title, $intro] as $part) {
             if ($part !== '') {
                 $textParts[] = $part;
@@ -124,7 +130,6 @@ class MailTemplate
             foreach (($card['rows'] ?? []) as $row) {
                 $label = trim((string) ($row['label'] ?? ''));
                 $value = trim((string) ($row['value'] ?? ''));
-
                 if ($label !== '' && $value !== '') {
                     $textParts[] = $label . ': ' . $value;
                 }
@@ -132,10 +137,7 @@ class MailTemplate
 
             $messageValue = trim((string) ($card['message'] ?? ''));
             if ($messageValue !== '') {
-                if ($cardTitle === '') {
-                    $textParts[] = '';
-                }
-                $messageLabel = trim((string) ($card['message_label'] ?? 'Message'));
+                $messageLabel = trim((string) ($card['message_label'] ?? $copy['message_label']));
                 $textParts[] = $messageLabel . ':';
                 $textParts[] = $messageValue;
             }
@@ -150,7 +152,7 @@ class MailTemplate
 
         if ($steps !== []) {
             $textParts[] = '';
-            $textParts[] = 'Prochaines étapes:';
+            $textParts[] = $copy['next_steps_title'] . ':';
             foreach ($steps as $index => $step) {
                 $step = trim((string) $step);
                 if ($step !== '') {
@@ -165,18 +167,24 @@ class MailTemplate
         }
 
         $textParts[] = '';
-        $textParts[] = self::BRAND_NAME;
-        $textParts[] = self::BRAND_WEBSITE . ' | ' . self::BRAND_EMAIL . ' | ' . self::BRAND_PHONE;
+        $textParts[] = $copy['contact_heading'];
+        $textParts[] = self::BRAND_WEBSITE;
+        $textParts[] = self::BRAND_EMAIL;
+        $textParts[] = self::BRAND_PHONE;
+        $textParts[] = $copy['location_label'] . ': ' . $copy['location_value'];
+        $textParts[] = '';
+        $textParts[] = $footerNote;
+        $textParts[] = $copy['copyright'];
 
         return [
             'html' => $html,
-            'text' => implode("\n", array_filter($textParts, static function ($line) {
+            'text' => implode("\n", array_values(array_filter($textParts, static function ($line) {
                 return $line !== null;
-            }))
+            })))
         ];
     }
 
-    private static function renderCards(array $cards): string
+    private static function renderCards(array $cards, array $copy): string
     {
         $html = '';
 
@@ -185,7 +193,7 @@ class MailTemplate
             $rows = is_array($card['rows'] ?? null) ? $card['rows'] : [];
             $notes = is_array($card['notes'] ?? null) ? $card['notes'] : [];
             $messageValue = trim((string) ($card['message'] ?? ''));
-            $messageLabel = trim((string) ($card['message_label'] ?? 'Message'));
+            $messageLabel = trim((string) ($card['message_label'] ?? $copy['message_label']));
 
             $hasContent = ($title !== '') || ($rows !== []) || ($notes !== []) || ($messageValue !== '');
             if (!$hasContent) {
@@ -214,7 +222,7 @@ class MailTemplate
                     }
 
                     $html .= '<tr>
-                        <td valign="top" style="padding:8px 0; width:168px; font-size:14px; line-height:22px; color:#5d7189; font-weight:700;">' . self::escape($label) . '</td>
+                        <td valign="top" style="padding:8px 0; width:180px; font-size:14px; line-height:22px; color:#5d7189; font-weight:700;">' . self::escape($label) . '</td>
                         <td valign="top" style="padding:8px 0; font-size:14px; line-height:22px; color:#22324a;">' . $formattedValue . '</td>
                     </tr>';
                 }
@@ -223,11 +231,9 @@ class MailTemplate
 
             if ($messageValue !== '') {
                 $html .= '<div style="margin-top:14px;">';
-                if ($messageLabel !== '') {
-                    $html .= '<div style="font-size:14px; line-height:22px; color:#5d7189; font-weight:700; margin-bottom:8px;">' . self::escape($messageLabel) . '</div>';
-                }
-                $html .= '<div style="font-size:14px; line-height:24px; color:#22324a; background-color:#ffffff; border:1px solid #dbe6f2; border-radius:14px; padding:16px;">' . nl2br(self::escape($messageValue)) . '</div>
-                </div>';
+                $html .= '<div style="font-size:14px; line-height:22px; color:#5d7189; font-weight:700; margin-bottom:8px;">' . self::escape($messageLabel) . '</div>';
+                $html .= '<div style="font-size:14px; line-height:24px; color:#22324a; background-color:#ffffff; border:1px solid #dbe6f2; border-radius:14px; padding:16px;">' . nl2br(self::escape($messageValue)) . '</div>';
+                $html .= '</div>';
             }
 
             foreach ($notes as $note) {
@@ -244,7 +250,7 @@ class MailTemplate
         return $html;
     }
 
-    private static function renderSteps(array $steps): string
+    private static function renderSteps(array $steps, array $copy): string
     {
         $steps = array_values(array_filter(array_map('strval', $steps), static function ($step) {
             return trim($step) !== '';
@@ -255,7 +261,7 @@ class MailTemplate
         }
 
         $html = '<div style="background-color:#16324f; border-radius:18px; padding:22px 22px 10px 22px; margin-top:6px;">
-            <div style="font-size:18px; line-height:26px; font-weight:700; color:#ffffff; margin-bottom:16px;">Prochaines étapes</div>';
+            <div style="font-size:18px; line-height:26px; font-weight:700; color:#ffffff; margin-bottom:16px;">' . self::escape($copy['next_steps_title']) . '</div>';
 
         foreach ($steps as $index => $step) {
             $html .= '<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%; border-collapse:collapse; margin-bottom:12px;">
@@ -273,17 +279,85 @@ class MailTemplate
         return $html;
     }
 
-    private static function embedLogo(PHPMailer $mail): ?string
+    private static function renderContactBlock(array $copy): string
     {
-        $logoPath = dirname(__DIR__, 2) . '/images/resources/logo-1.png';
-        if (!is_file($logoPath)) {
-            return null;
+        $rows = [
+            ['label' => $copy['website_label'], 'value' => self::BRAND_WEBSITE, 'href' => self::BRAND_WEBSITE],
+            ['label' => $copy['email_label'], 'value' => self::BRAND_EMAIL, 'href' => 'mailto:' . self::BRAND_EMAIL],
+            ['label' => $copy['phone_label'], 'value' => self::BRAND_PHONE, 'href' => 'tel:+12489381944'],
+            ['label' => $copy['location_label'], 'value' => $copy['location_value'], 'href' => '']
+        ];
+
+        $html = '<div style="background-color:#ffffff; border:1px solid #dbe6f2; border-radius:18px; padding:22px; margin-top:18px;">
+            <div style="font-size:18px; line-height:26px; font-weight:700; color:#16324f; margin-bottom:14px;">' . self::escape($copy['contact_heading']) . '</div>
+            <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%; border-collapse:collapse;">';
+
+        foreach ($rows as $row) {
+            $valueHtml = self::escape($row['value']);
+            if ($row['href'] !== '') {
+                $valueHtml = '<a href="' . self::escape($row['href']) . '" style="color:#315a80; text-decoration:none;">' . self::escape($row['value']) . '</a>';
+            }
+
+            $html .= '<tr>
+                <td valign="top" style="padding:8px 0; width:180px; font-size:14px; line-height:22px; color:#5d7189; font-weight:700;">' . self::escape($row['label']) . '</td>
+                <td valign="top" style="padding:8px 0; font-size:14px; line-height:22px; color:#22324a;">' . $valueHtml . '</td>
+            </tr>';
         }
 
-        $cid = 'mhtech-logo';
-        $mail->addEmbeddedImage($logoPath, $cid, 'mhtech-logo.png');
+        $html .= '</table></div>';
 
-        return $cid;
+        return $html;
+    }
+
+    private static function embedLogo(PHPMailer $mail): ?string
+    {
+        $candidatePaths = [
+            dirname(__DIR__, 2) . '/images/resources/logo-mhtech-email.png',
+            dirname(__DIR__, 2) . '/images/resources/logo-mhtech-header.svg'
+        ];
+
+        foreach ($candidatePaths as $logoPath) {
+            if (!is_file($logoPath)) {
+                continue;
+            }
+
+            $cid = 'mhtech-logo';
+            $mail->addEmbeddedImage($logoPath, $cid, basename($logoPath));
+            return $cid;
+        }
+
+        return null;
+    }
+
+    private static function dictionary(string $lang): array
+    {
+        if ($lang === 'fr') {
+            return [
+                'message_label' => 'Message',
+                'next_steps_title' => 'Prochaines etapes',
+                'contact_heading' => 'Contacts MHTECH Consulting',
+                'website_label' => 'Site web',
+                'email_label' => 'Email',
+                'phone_label' => 'Telephone',
+                'location_label' => 'Disponibilite',
+                'location_value' => self::BRAND_LOCATION_FR,
+                'footer_note' => 'MHTECH Consulting accompagne les entreprises sur leurs enjeux IT, cybersecurite, cloud et staffing.',
+                'copyright' => 'Copyright 2026 MHTECH Consulting. Tous droits reserves.'
+            ];
+        }
+
+        return [
+            'message_label' => 'Message',
+            'next_steps_title' => 'Next steps',
+            'contact_heading' => 'MHTECH Consulting contacts',
+            'website_label' => 'Website',
+            'email_label' => 'Email',
+            'phone_label' => 'Phone',
+            'location_label' => 'Availability',
+            'location_value' => self::BRAND_LOCATION_EN,
+            'footer_note' => 'MHTECH Consulting supports businesses across IT consulting, cybersecurity, cloud and staffing needs.',
+            'copyright' => 'Copyright 2026 MHTECH Consulting. All rights reserved.'
+        ];
     }
 
     private static function escape(string $value): string

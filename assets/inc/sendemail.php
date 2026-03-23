@@ -3,23 +3,223 @@ require_once __DIR__ . '/app/settings.php';
 require_once __DIR__ . '/app/Database.php';
 require_once __DIR__ . '/app/MailTemplate.php';
 
+function detectFormLang(): string
+{
+    $postedLang = strtolower(trim((string) ($_POST['lang'] ?? '')));
+    if (in_array($postedLang, ['fr', 'en'], true)) {
+        return $postedLang;
+    }
+
+    $acceptLanguage = strtolower((string) ($_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? ''));
+    return strpos($acceptLanguage, 'fr') === 0 ? 'fr' : 'en';
+}
+
+function cleanText(string $value, string $pattern): string
+{
+    return trim((string) preg_replace($pattern, '', $value));
+}
+
+function getSendEmailCopy(string $lang): array
+{
+    if ($lang === 'fr') {
+        return [
+            'required' => 'Veuillez remplir tous les champs obligatoires.',
+            'invalid_email' => 'Adresse email invalide.',
+            'contact_save_error' => "Erreur lors de l'enregistrement de votre demande.",
+            'newsletter_success' => 'Merci pour votre abonnement ! Vous recevrez nos actualites prochainement.',
+            'contact_success' => 'Merci de nous avoir contacte ! Nous vous repondrons dans les plus brefs delais.',
+            'generic_error' => 'Une erreur est survenue : ',
+            'newsletter_user_subject' => 'Abonnement confirme - Newsletter MHTECH Consulting',
+            'newsletter_user_preheader' => 'Votre inscription a la newsletter MHTECH Consulting est confirmee.',
+            'newsletter_user_eyebrow' => 'Newsletter',
+            'newsletter_user_title' => 'Inscription confirmee',
+            'newsletter_user_intro' => 'Merci pour votre abonnement. Vous recevrez nos actualites technologiques, nos analyses et nos conseils pratiques.',
+            'newsletter_user_badge' => 'Adresse enregistree',
+            'newsletter_user_card' => 'Vos informations',
+            'newsletter_user_note' => 'Vous pourrez vous desinscrire a tout moment depuis nos prochains emails.',
+            'newsletter_user_closing' => "Merci de votre confiance.\nL'equipe MHTECH Consulting",
+            'newsletter_admin_subject' => 'Nouvel abonnement newsletter - MHTECH Consulting',
+            'newsletter_admin_preheader' => 'Un nouvel abonne vient de rejoindre la newsletter.',
+            'newsletter_admin_eyebrow' => 'Alerte admin',
+            'newsletter_admin_title' => 'Nouvel abonnement newsletter',
+            'newsletter_admin_intro' => 'Une nouvelle adresse email a ete ajoutee a la liste de diffusion MHTECH Consulting.',
+            'newsletter_admin_badge' => 'Action marketing',
+            'newsletter_admin_card' => "Details de l'abonnement",
+            'newsletter_admin_closing' => "L'abonnement a ete enregistre en base et ne necessite aucune action technique.",
+            'contact_user_subject' => 'Votre demande a bien ete recue - MHTECH Consulting',
+            'contact_user_preheader' => 'Votre message a bien ete transmis a MHTECH Consulting.',
+            'contact_user_eyebrow' => 'Contact',
+            'contact_user_title' => 'Votre message est bien arrive',
+            'contact_user_intro_prefix' => 'Bonjour ',
+            'contact_user_intro_suffix' => ', merci pour votre prise de contact. Notre equipe examine votre demande et reviendra vers vous dans les plus brefs delais.',
+            'contact_user_badge' => 'Demande recue',
+            'contact_user_summary' => 'Recapitulatif',
+            'contact_user_message_title' => 'Votre message',
+            'contact_user_closing' => "Nous vous repondrons rapidement avec la suite adaptee a votre besoin.\nL'equipe MHTECH Consulting",
+            'contact_admin_subject' => 'Nouvelle demande de contact - MHTECH Consulting',
+            'contact_admin_preheader' => 'Une nouvelle demande de contact attend votre traitement.',
+            'contact_admin_eyebrow' => 'Alerte admin',
+            'contact_admin_title' => 'Nouvelle demande de contact',
+            'contact_admin_intro' => "Une nouvelle soumission a ete enregistree sur le site. Vous pouvez repondre directement a l'expediteur depuis votre client email.",
+            'contact_admin_badge' => 'Priorite commerciale',
+            'contact_admin_coords' => 'Coordonnees',
+            'contact_admin_message_title' => 'Message recu',
+            'contact_admin_closing' => 'La demande a ete enregistree avec succes dans la base de donnees.',
+            'label_name' => 'Nom',
+            'label_email' => 'Email',
+            'label_phone' => 'Telephone',
+            'label_subject' => 'Sujet',
+            'label_request_type' => 'Type de demande',
+            'label_source' => 'Source',
+            'label_ip' => 'IP',
+            'label_db_id' => 'ID en base',
+            'label_newsletter_source' => 'Origine',
+            'not_available' => 'Non disponible',
+            'source_contact_page' => 'Page contact',
+            'source_staffing_page' => 'Page staffing',
+            'source_chat_popup' => 'Chat popup',
+            'source_unknown' => 'Source inconnue',
+            'newsletter_source_newsletter' => 'Newsletter',
+            'newsletter_source_newsletter_home' => 'Newsletter accueil',
+            'newsletter_source_newsletter_about' => 'Newsletter a propos',
+            'newsletter_source_newsletter_services' => 'Newsletter services',
+            'newsletter_source_newsletter_staffing' => 'Newsletter staffing',
+            'newsletter_source_newsletter_contact' => 'Newsletter contact',
+            'newsletter_source_newsletter_blog' => 'Newsletter blog',
+            'newsletter_source_newsletter_testimonials' => 'Newsletter temoignages',
+            'request_consulting' => 'Consulting IT',
+            'request_staffing' => 'Staffing IT',
+            'request_candidature' => 'Candidature',
+            'request_autre' => 'Autre'
+        ];
+    }
+
+    return [
+        'required' => 'Please fill in all required fields.',
+        'invalid_email' => 'Invalid email address.',
+        'contact_save_error' => 'An error occurred while saving your request.',
+        'newsletter_success' => 'Thank you for subscribing. You will receive our updates soon.',
+        'contact_success' => 'Thank you for contacting us. We will get back to you shortly.',
+        'generic_error' => 'An error occurred: ',
+        'newsletter_user_subject' => 'Subscription confirmed - MHTECH Consulting Newsletter',
+        'newsletter_user_preheader' => 'Your MHTECH Consulting newsletter subscription is confirmed.',
+        'newsletter_user_eyebrow' => 'Newsletter',
+        'newsletter_user_title' => 'Subscription confirmed',
+        'newsletter_user_intro' => 'Thank you for subscribing. You will receive our technology updates, insights and practical recommendations.',
+        'newsletter_user_badge' => 'Email registered',
+        'newsletter_user_card' => 'Your details',
+        'newsletter_user_note' => 'You can unsubscribe at any time from one of our future emails.',
+        'newsletter_user_closing' => "Thank you for your trust.\nThe MHTECH Consulting team",
+        'newsletter_admin_subject' => 'New newsletter subscription - MHTECH Consulting',
+        'newsletter_admin_preheader' => 'A new subscriber has joined the newsletter.',
+        'newsletter_admin_eyebrow' => 'Admin alert',
+        'newsletter_admin_title' => 'New newsletter subscription',
+        'newsletter_admin_intro' => 'A new email address has been added to the MHTECH Consulting mailing list.',
+        'newsletter_admin_badge' => 'Marketing action',
+        'newsletter_admin_card' => 'Subscription details',
+        'newsletter_admin_closing' => 'The subscription has been stored in the database and does not require technical action.',
+        'contact_user_subject' => 'Your request has been received - MHTECH Consulting',
+        'contact_user_preheader' => 'Your message has been delivered to MHTECH Consulting.',
+        'contact_user_eyebrow' => 'Contact',
+        'contact_user_title' => 'Your message has arrived',
+        'contact_user_intro_prefix' => 'Hello ',
+        'contact_user_intro_suffix' => ', thank you for reaching out. Our team is reviewing your request and will get back to you shortly.',
+        'contact_user_badge' => 'Request received',
+        'contact_user_summary' => 'Summary',
+        'contact_user_message_title' => 'Your message',
+        'contact_user_closing' => "We will get back to you quickly with the next steps adapted to your need.\nThe MHTECH Consulting team",
+        'contact_admin_subject' => 'New contact request - MHTECH Consulting',
+        'contact_admin_preheader' => 'A new contact request is awaiting review.',
+        'contact_admin_eyebrow' => 'Admin alert',
+        'contact_admin_title' => 'New contact request',
+        'contact_admin_intro' => 'A new submission has been recorded on the website. You can reply directly to the sender from your email client.',
+        'contact_admin_badge' => 'Sales priority',
+        'contact_admin_coords' => 'Contact details',
+        'contact_admin_message_title' => 'Received message',
+        'contact_admin_closing' => 'The request has been saved successfully in the database.',
+        'label_name' => 'Name',
+        'label_email' => 'Email',
+        'label_phone' => 'Phone',
+        'label_subject' => 'Subject',
+        'label_request_type' => 'Request type',
+        'label_source' => 'Source',
+        'label_ip' => 'IP',
+        'label_db_id' => 'Database ID',
+        'label_newsletter_source' => 'Source',
+        'not_available' => 'Not available',
+        'source_contact_page' => 'Contact page',
+        'source_staffing_page' => 'Staffing page',
+        'source_chat_popup' => 'Chat popup',
+        'source_unknown' => 'Unknown source',
+        'newsletter_source_newsletter' => 'Newsletter',
+        'newsletter_source_newsletter_home' => 'Homepage newsletter',
+        'newsletter_source_newsletter_about' => 'About newsletter',
+        'newsletter_source_newsletter_services' => 'Services newsletter',
+        'newsletter_source_newsletter_staffing' => 'Staffing newsletter',
+        'newsletter_source_newsletter_contact' => 'Contact newsletter',
+        'newsletter_source_newsletter_blog' => 'Blog newsletter',
+        'newsletter_source_newsletter_testimonials' => 'Testimonials newsletter',
+        'request_consulting' => 'IT Consulting',
+        'request_staffing' => 'IT Staffing',
+        'request_candidature' => 'Job application',
+        'request_autre' => 'Other'
+    ];
+}
+
+function formatRequestTypeLabel(string $lang, string $requestType): string
+{
+    $copy = getSendEmailCopy($lang);
+    $map = [
+        'consulting' => $copy['request_consulting'],
+        'staffing' => $copy['request_staffing'],
+        'candidature' => $copy['request_candidature'],
+        'autre' => $copy['request_autre'],
+        'other' => $copy['request_autre']
+    ];
+
+    return $map[$requestType] ?? trim($requestType);
+}
+
+function formatContactSourceLabel(string $lang, string $source): string
+{
+    $copy = getSendEmailCopy($lang);
+    $map = [
+        'contact_page' => $copy['source_contact_page'],
+        'staffing_page' => $copy['source_staffing_page'],
+        'chat_popup' => $copy['source_chat_popup'],
+        'unknown' => $copy['source_unknown']
+    ];
+
+    return $map[$source] ?? $copy['source_unknown'];
+}
+
+function formatNewsletterSourceLabel(string $lang, string $source): string
+{
+    $copy = getSendEmailCopy($lang);
+    $key = 'newsletter_source_' . $source;
+    return $copy[$key] ?? $copy['newsletter_source_newsletter'];
+}
+
 try {
-    $name = isset($_POST['name']) ? preg_replace("/[^\.\-\' a-zA-Z0-9]/", "", $_POST['name']) : "";
-    $senderEmail = isset($_POST['email']) ? preg_replace("/[^\.\-\_\@a-zA-Z0-9]/", "", $_POST['email']) : "";
-    $phone = isset($_POST['phone']) ? preg_replace("/[^\+\.\-\(\) 0-9]/", "", $_POST['phone']) : "";
-    $subject = isset($_POST['subject']) ? preg_replace("/[^\.\-\_\@a-zA-Z0-9\s]/", "", $_POST['subject']) : "";
-    $message = isset($_POST['message']) ? preg_replace("/(From:|To:|BCC:|CC:|Subject:|Content-Type:)/", "", $_POST['message']) : "";
-    $requestType = isset($_POST['request_type']) ? preg_replace("/[^a-zA-Z0-9_]/", "", $_POST['request_type']) : "";
+    $lang = detectFormLang();
+    $copy = getSendEmailCopy($lang);
+
+    $name = isset($_POST['name']) ? cleanText((string) $_POST['name'], "/[^.\-' a-zA-Z0-9]/") : '';
+    $senderEmail = isset($_POST['email']) ? cleanText((string) $_POST['email'], "/[^.\-_@a-zA-Z0-9]/") : '';
+    $phone = isset($_POST['phone']) ? cleanText((string) $_POST['phone'], "/[^+.\-() 0-9]/") : '';
+    $subject = isset($_POST['subject']) ? cleanText((string) $_POST['subject'], "/[^.\-_@a-zA-Z0-9 ]/") : '';
+    $message = isset($_POST['message']) ? trim((string) preg_replace("/(From:|To:|BCC:|CC:|Subject:|Content-Type:)/i", '', (string) ($_POST['message'] ?? ''))) : '';
+    $requestType = isset($_POST['request_type']) ? cleanText((string) $_POST['request_type'], "/[^a-zA-Z0-9_]/") : '';
     $adminEmail = trim((string) Env::get('ADMIN_EMAIL', 'contact@mhtechconsulting.com'));
 
-    if ($adminEmail === '' || stripos($adminEmail, 'scriptfusions') !== false) {
+    if ($adminEmail === '' || stripos($adminEmail, 'scriptfusions') !== false || !filter_var($adminEmail, FILTER_VALIDATE_EMAIL)) {
         $adminEmail = 'contact@mhtechconsulting.com';
     }
 
     $ipAddress = $_SERVER['REMOTE_ADDR'] ?? null;
     $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? null;
     $refererPath = parse_url($_SERVER['HTTP_REFERER'] ?? '', PHP_URL_PATH);
-    $refererPage = basename($refererPath ?: '');
+    $refererPage = basename((string) ($refererPath ?: ''));
 
     $newsletterSources = [
         'index.html' => 'newsletter_home',
@@ -33,24 +233,27 @@ try {
     $newsletterSource = $newsletterSources[$refererPage] ?? 'newsletter';
 
     $source = 'unknown';
-    if (!empty($name) && !empty($message)) {
-        if (!empty($requestType)) {
+    if ($name !== '' && $message !== '') {
+        if ($requestType !== '') {
             $source = 'contact_page';
-        } elseif (!empty($subject)) {
+        } elseif ($subject !== '') {
             $source = 'staffing_page';
         } else {
             $source = 'chat_popup';
         }
     }
 
-    if (empty($senderEmail)) {
-        echo "<div class='alert alert-danger' role='alert'>
-            Veuillez remplir tous les champs obligatoires.
-        </div>";
+    if ($senderEmail === '') {
+        echo "<div class='alert alert-danger' role='alert'>" . htmlspecialchars($copy['required']) . '</div>';
         return;
     }
 
-    if (empty($name) || empty($message)) {
+    if (!filter_var($senderEmail, FILTER_VALIDATE_EMAIL)) {
+        echo "<div class='alert alert-danger' role='alert'>" . htmlspecialchars($copy['invalid_email']) . '</div>';
+        return;
+    }
+
+    if ($name === '' && $message === '') {
         try {
             $db = Database::getInstance();
             $subscriptionId = $db->insert('newsletter_subscriptions', [
@@ -67,68 +270,73 @@ try {
                 'user_agent' => $userAgent
             ]);
         } catch (Exception $dbError) {
-            error_log("Newsletter DB Error: " . $dbError->getMessage());
+            error_log('Newsletter DB Error: ' . $dbError->getMessage());
         }
 
         try {
-            MailTemplate::resetMailer($mail);
+            MailTemplate::resetMailer($mail, $lang);
             $mail->addAddress($senderEmail);
-            $mail->Subject = 'Abonnement confirmé - Newsletter MHTECH Consulting';
+            $mail->Subject = $copy['newsletter_user_subject'];
             $userTemplate = MailTemplate::build($mail, [
-                'preheader' => 'Votre inscription à la newsletter MHTECH Consulting est confirmée.',
-                'eyebrow' => 'Newsletter',
-                'title' => 'Inscription confirmée',
-                'intro' => 'Merci pour votre abonnement. Vous recevrez nos actualités technologiques, nos analyses et nos conseils pratiques.',
-                'badge' => 'Adresse enregistrée',
+                'lang' => $lang,
+                'preheader' => $copy['newsletter_user_preheader'],
+                'eyebrow' => $copy['newsletter_user_eyebrow'],
+                'title' => $copy['newsletter_user_title'],
+                'intro' => $copy['newsletter_user_intro'],
+                'badge' => $copy['newsletter_user_badge'],
                 'cards' => [
                     [
-                        'title' => 'Vos informations',
+                        'title' => $copy['newsletter_user_card'],
                         'rows' => [
-                            ['label' => 'Email', 'value' => $senderEmail]
+                            ['label' => $copy['label_email'], 'value' => $senderEmail]
                         ],
                         'notes' => [
-                            'Vous pourrez vous désinscrire à tout moment depuis nos prochains emails.'
+                            $copy['newsletter_user_note']
                         ]
                     ]
                 ],
-                'closing' => "Merci de votre confiance.\nL'équipe MHTECH Consulting"
+                'closing' => $copy['newsletter_user_closing']
             ]);
             $mail->Body = $userTemplate['html'];
             $mail->AltBody = $userTemplate['text'];
             $mail->send();
 
-            MailTemplate::resetMailer($mail);
+            MailTemplate::resetMailer($mail, $lang);
             $mail->addAddress($adminEmail);
             $mail->addReplyTo($senderEmail);
-            $mail->Subject = 'Nouvel abonnement newsletter';
+            $mail->Subject = $copy['newsletter_admin_subject'];
             $adminTemplate = MailTemplate::build($mail, [
-                'preheader' => 'Un nouvel abonné vient de rejoindre la newsletter.',
-                'eyebrow' => 'Alerte admin',
-                'title' => 'Nouvel abonnement newsletter',
-                'intro' => 'Une nouvelle adresse email a été ajoutée à la liste de diffusion MHTECH Consulting.',
-                'badge' => 'Action marketing',
+                'lang' => $lang,
+                'preheader' => $copy['newsletter_admin_preheader'],
+                'eyebrow' => $copy['newsletter_admin_eyebrow'],
+                'title' => $copy['newsletter_admin_title'],
+                'intro' => $copy['newsletter_admin_intro'],
+                'badge' => $copy['newsletter_admin_badge'],
                 'cards' => [
                     [
-                        'title' => 'Détails de l’abonnement',
+                        'title' => $copy['newsletter_admin_card'],
                         'rows' => [
-                            ['label' => 'Email', 'value' => $senderEmail, 'href' => 'mailto:' . $senderEmail],
-                            ['label' => 'Source', 'value' => $newsletterSource],
-                            ['label' => 'IP', 'value' => (string) ($ipAddress ?? 'Non disponible')]
+                            ['label' => $copy['label_email'], 'value' => $senderEmail, 'href' => 'mailto:' . $senderEmail],
+                            ['label' => $copy['label_newsletter_source'], 'value' => formatNewsletterSourceLabel($lang, $newsletterSource)],
+                            ['label' => $copy['label_ip'], 'value' => (string) ($ipAddress ?? $copy['not_available'])]
                         ]
                     ]
                 ],
-                'closing' => "L'abonnement a été enregistré en base et ne nécessite aucune action technique."
+                'closing' => $copy['newsletter_admin_closing']
             ]);
             $mail->Body = $adminTemplate['html'];
             $mail->AltBody = $adminTemplate['text'];
             $mail->send();
         } catch (Exception $mailError) {
-            error_log("Newsletter Email Error: " . $mailError->getMessage());
+            error_log('Newsletter Email Error: ' . $mailError->getMessage());
         }
 
-        echo "<div class='alert alert-success' role='alert'>
-            Merci pour votre abonnement ! Vous recevrez nos actualités prochainement.
-        </div>";
+        echo "<div class='alert alert-success' role='alert'>" . htmlspecialchars($copy['newsletter_success']) . '</div>';
+        return;
+    }
+
+    if ($name === '' || $message === '') {
+        echo "<div class='alert alert-danger' role='alert'>" . htmlspecialchars($copy['required']) . '</div>';
         return;
     }
 
@@ -146,8 +354,8 @@ try {
             'user_agent' => $userAgent
         ];
 
-        $contactData = array_filter($contactData, function ($value) {
-            return !empty($value);
+        $contactData = array_filter($contactData, static function ($value) {
+            return $value !== null && $value !== '';
         });
 
         $contactId = $db->insert('contacts', $contactData);
@@ -160,103 +368,106 @@ try {
             'user_agent' => $userAgent
         ]);
     } catch (Exception $dbError) {
-        error_log("Contact DB Error: " . $dbError->getMessage());
-        throw new Exception("Erreur lors de l'enregistrement de votre demande");
+        error_log('Contact DB Error: ' . $dbError->getMessage());
+        throw new Exception($copy['contact_save_error']);
     }
 
     try {
-        $requestTypeLabel = $requestType !== '' ? ucwords(str_replace('_', ' ', $requestType)) : '';
+        $requestTypeLabel = $requestType !== '' ? formatRequestTypeLabel($lang, $requestType) : '';
+        $sourceLabel = formatContactSourceLabel($lang, $source);
 
         $userRows = [
-            ['label' => 'Nom', 'value' => $name],
-            ['label' => 'Email', 'value' => $senderEmail]
+            ['label' => $copy['label_name'], 'value' => $name],
+            ['label' => $copy['label_email'], 'value' => $senderEmail]
         ];
-        if (!empty($phone)) {
-            $userRows[] = ['label' => 'Téléphone', 'value' => $phone];
+        if ($phone !== '') {
+            $userRows[] = ['label' => $copy['label_phone'], 'value' => $phone];
         }
-        if (!empty($subject)) {
-            $userRows[] = ['label' => 'Sujet', 'value' => $subject];
+        if ($subject !== '') {
+            $userRows[] = ['label' => $copy['label_subject'], 'value' => $subject];
         }
-        if (!empty($requestTypeLabel)) {
-            $userRows[] = ['label' => 'Type de demande', 'value' => $requestTypeLabel];
+        if ($requestTypeLabel !== '') {
+            $userRows[] = ['label' => $copy['label_request_type'], 'value' => $requestTypeLabel];
         }
 
-        MailTemplate::resetMailer($mail);
+        MailTemplate::resetMailer($mail, $lang);
         $mail->addAddress($senderEmail, $name);
-        $mail->Subject = 'Votre demande a bien été reçue - MHTECH Consulting';
+        $mail->Subject = $copy['contact_user_subject'];
         $userTemplate = MailTemplate::build($mail, [
-            'preheader' => 'Votre message a bien été transmis à MHTECH Consulting.',
-            'eyebrow' => 'Contact',
-            'title' => 'Votre message est bien arrivé',
-            'intro' => 'Bonjour ' . $name . ', merci pour votre prise de contact. Notre équipe examine votre demande et reviendra vers vous dans les plus brefs délais.',
-            'badge' => 'Demande reçue',
+            'lang' => $lang,
+            'preheader' => $copy['contact_user_preheader'],
+            'eyebrow' => $copy['contact_user_eyebrow'],
+            'title' => $copy['contact_user_title'],
+            'intro' => $copy['contact_user_intro_prefix'] . $name . $copy['contact_user_intro_suffix'],
+            'badge' => $copy['contact_user_badge'],
             'cards' => [
                 [
-                    'title' => 'Récapitulatif',
+                    'title' => $copy['contact_user_summary'],
                     'rows' => $userRows
                 ],
                 [
-                    'title' => 'Votre message',
+                    'title' => $copy['contact_user_message_title'],
                     'message' => $message
                 ]
             ],
-            'closing' => "Nous vous répondrons rapidement avec la suite adaptée à votre besoin.\nL'équipe MHTECH Consulting"
+            'closing' => $copy['contact_user_closing']
         ]);
         $mail->Body = $userTemplate['html'];
         $mail->AltBody = $userTemplate['text'];
         $mail->send();
 
         $adminRows = [
-            ['label' => 'Nom', 'value' => $name],
-            ['label' => 'Email', 'value' => $senderEmail, 'href' => 'mailto:' . $senderEmail]
+            ['label' => $copy['label_name'], 'value' => $name],
+            ['label' => $copy['label_email'], 'value' => $senderEmail, 'href' => 'mailto:' . $senderEmail]
         ];
-        if (!empty($phone)) {
-            $adminRows[] = ['label' => 'Téléphone', 'value' => $phone, 'href' => 'tel:' . preg_replace('/\s+/', '', $phone)];
+        if ($phone !== '') {
+            $adminRows[] = ['label' => $copy['label_phone'], 'value' => $phone, 'href' => 'tel:' . preg_replace('/\s+/', '', $phone)];
         }
-        if (!empty($subject)) {
-            $adminRows[] = ['label' => 'Sujet', 'value' => $subject];
+        if ($subject !== '') {
+            $adminRows[] = ['label' => $copy['label_subject'], 'value' => $subject];
         }
-        if (!empty($requestTypeLabel)) {
-            $adminRows[] = ['label' => 'Type de demande', 'value' => $requestTypeLabel];
+        if ($requestTypeLabel !== '') {
+            $adminRows[] = ['label' => $copy['label_request_type'], 'value' => $requestTypeLabel];
         }
-        $adminRows[] = ['label' => 'Source', 'value' => $source];
-        $adminRows[] = ['label' => 'ID en base', 'value' => '#' . $contactId];
+        $adminRows[] = ['label' => $copy['label_source'], 'value' => $sourceLabel];
+        $adminRows[] = ['label' => $copy['label_db_id'], 'value' => '#' . $contactId];
 
-        MailTemplate::resetMailer($mail);
+        MailTemplate::resetMailer($mail, $lang);
         $mail->addAddress($adminEmail);
         $mail->addReplyTo($senderEmail, $name);
-        $mail->Subject = 'Nouvelle demande de contact';
+        $mail->Subject = $copy['contact_admin_subject'];
         $adminTemplate = MailTemplate::build($mail, [
-            'preheader' => 'Une nouvelle demande de contact attend votre traitement.',
-            'eyebrow' => 'Alerte admin',
-            'title' => 'Nouvelle demande de contact',
-            'intro' => 'Une nouvelle soumission a été enregistrée sur le site. Vous pouvez répondre directement à l’expéditeur depuis votre client email.',
-            'badge' => 'Priorité commerciale',
+            'lang' => $lang,
+            'preheader' => $copy['contact_admin_preheader'],
+            'eyebrow' => $copy['contact_admin_eyebrow'],
+            'title' => $copy['contact_admin_title'],
+            'intro' => $copy['contact_admin_intro'],
+            'badge' => $copy['contact_admin_badge'],
             'cards' => [
                 [
-                    'title' => 'Coordonnées',
+                    'title' => $copy['contact_admin_coords'],
                     'rows' => $adminRows
                 ],
                 [
-                    'title' => 'Message reçu',
+                    'title' => $copy['contact_admin_message_title'],
                     'message' => $message
                 ]
             ],
-            'closing' => "La demande a été enregistrée avec succès dans la base de données."
+            'closing' => $copy['contact_admin_closing']
         ]);
         $mail->Body = $adminTemplate['html'];
         $mail->AltBody = $adminTemplate['text'];
         $mail->send();
     } catch (Exception $mailError) {
-        error_log("Contact Email Error: " . $mailError->getMessage());
+        error_log('Contact Email Error: ' . $mailError->getMessage());
     }
 
-    echo "<div class='alert alert-success' role='alert'>
-        Merci de nous avoir contacté ! Nous vous répondrons dans les plus brefs délais.
-    </div>";
+    echo "<div class='alert alert-success' role='alert'>" . htmlspecialchars($copy['contact_success']) . '</div>';
 } catch (Exception $e) {
-    error_log("Sendemail Error: " . $e->getMessage());
-    echo "<div class='alert alert-danger' role='alert'>
-        Une erreur est survenue : " . htmlspecialchars($e->getMessage()) . "
-    </div>";
+    $lang = $lang ?? detectFormLang();
+    $copy = getSendEmailCopy($lang);
+    error_log('Sendemail Error: ' . $e->getMessage());
+    echo "<div class='alert alert-danger' role='alert'>" .
+        htmlspecialchars($copy['generic_error'] . $e->getMessage()) .
+        '</div>';
 }

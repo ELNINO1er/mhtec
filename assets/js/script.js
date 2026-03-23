@@ -759,7 +759,41 @@
     });
   }
 
+  function getCurrentFormLang() {
+    if (window.getI18n && typeof window.getI18n === "function") {
+      var instance = window.getI18n();
+      if (instance && typeof instance.getCurrentLang === "function") {
+        return instance.getCurrentLang() === "fr" ? "fr" : "en";
+      }
+    }
 
+    return localStorage.getItem("mhtech_lang") === "fr" ? "fr" : "en";
+  }
+
+  function syncFormLanguageFields() {
+    var currentLang = getCurrentFormLang();
+
+    $(".contact-form-validated").each(function () {
+      var $form = $(this);
+      var $langField = $form.find('input[name="lang"]');
+
+      if ($langField.length) {
+        $langField.val(currentLang);
+        return;
+      }
+
+      $('<input type="hidden" name="lang">')
+        .val(currentLang)
+        .appendTo($form);
+    });
+  }
+
+  syncFormLanguageFields();
+
+  $(document).on("click", ".lang-btn", function () {
+    setTimeout(syncFormLanguageFields, 50);
+    setTimeout(syncFormLanguageFields, 400);
+  });
 
   $(".contact-form-validated").each(function () {
     $(this).validate({
@@ -773,6 +807,8 @@
         var $form = $(form);
         var hasFileInput = $form.find('input[type="file"]').length > 0;
         var isMultipart = ($form.attr("enctype") || "").toLowerCase() === "multipart/form-data";
+
+        syncFormLanguageFields();
 
         var ajaxOptions = {
           type: ($form.attr("method") || "POST").toUpperCase(),
