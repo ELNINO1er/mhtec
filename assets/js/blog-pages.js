@@ -109,6 +109,7 @@
         const lang = getCurrentLang();
         const content = getPostContent(post, lang);
 
+        const pageHeaderBg = document.querySelector('.page-header__bg');
         const pageTitle = document.querySelector('.page-header__inner h3');
         const breadcrumbCurrent = document.querySelector('.thm-breadcrumb li:last-child');
         const heroImage = document.querySelector('.blog-details__img > img');
@@ -124,6 +125,10 @@
         const text3 = document.querySelector('.blog-details__text-3');
         const bodyImages = document.querySelectorAll('.blog-details__img-box-img img');
         const tagLinks = document.querySelectorAll('.blog-details__tag-list a');
+
+        if (pageHeaderBg) {
+            pageHeaderBg.style.backgroundImage = 'url("' + post.heroImage + '")';
+        }
 
         if (pageTitle) {
             pageTitle.textContent = content.title;

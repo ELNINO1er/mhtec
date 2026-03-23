@@ -19,7 +19,7 @@
                 "contact":  "Contact"
             },
     "header":  {
-                   "location":  "Notre adresse",
+                   "location":  "A distance, sur rendez-vous",
                    "welcome_text":  "MHTECH Consulting accompagne votre transformation digitale",
                    "follow_us":  "Suivez-nous :",
                    "contact_label":  "Contact"
@@ -240,7 +240,7 @@
                    "service4":  "Staffing IT",
                    "service5":  "Conseil IT",
                    "contact_title":  "Contact",
-                   "location":  "Notre adresse",
+                   "location":  "A distance, sur rendez-vous",
                   "copyright":  "\u00A9 2025 MHTECH Consulting. Tous droits reserves.",
                    "terms":  "Conditions d\u0027utilisation",
                    "privacy":  "Politique de confidentialite"
@@ -407,7 +407,7 @@
                        "footer_post2_title":  "5 leviers pour fiabiliser vos operations IT",
                        "footer_post2_date":  "Fev 17, 2025",
                        "footer_contact_title":  "Contact",
-                       "footer_location":  "Notre adresse",
+                       "footer_location":  "A distance, sur rendez-vous",
                        "footer_copyright":  "\u00A9 2025 MHTECH Consulting. Tous droits reserves.",
                        "footer_terms":  "Conditions d\u0027utilisation",
                        "footer_privacy":  "Politique de confidentialite",
@@ -490,7 +490,15 @@
                          "phone_label":  "Telephone",
                          "email_label":  "Email",
                          "address_label":  "Adresse",
+                         "availability_label":  "Disponibilite",
+                         "availability_value":  "A distance et sur rendez-vous",
                          "form_title":  "Construisons votre prochaine solution technologique",
+                         "remote_badge":  "Remote-first",
+                         "remote_title":  "A distance et sur rendez-vous",
+                         "remote_text":  "Nous accompagnons nos clients a distance et organisons les rendez-vous selon la nature du projet et les besoins de collaboration.",
+                         "remote_point_1":  "Consultation a distance",
+                         "remote_point_2":  "Echanges en francais et en anglais",
+                         "remote_point_3":  "Reponse sous 24h ouvrables",
                          "name_placeholder":  "Votre nom",
                          "email_placeholder":  "votre@email.com",
                          "phone_placeholder":  "+1 248 938 1944",

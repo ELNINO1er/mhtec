@@ -621,6 +621,99 @@
     border-radius: var(--itzone-bdr-radius);
 }
 
+.contact-page__availability-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 519px;
+    padding: 48px 42px;
+    border-radius: var(--itzone-bdr-radius);
+    background: linear-gradient(180deg, rgba(var(--itzone-white-rgb), 0.08) 0%, rgba(var(--itzone-white-rgb), 0.03) 100%);
+    border: 1px solid rgba(var(--itzone-white-rgb), 0.10);
+    overflow: hidden;
+}
+
+.contact-page__availability-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at top left, rgba(var(--itzone-base-rgb), 0.30), transparent 42%),
+        linear-gradient(135deg, rgba(var(--itzone-white-rgb), 0.04), transparent 55%);
+    z-index: 0;
+}
+
+.contact-page__availability-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-page__availability-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background-color: rgba(var(--itzone-base-rgb), 0.18);
+    border: 1px solid rgba(var(--itzone-base-rgb), 0.28);
+    color: var(--itzone-white);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.contact-page__availability-badge span:first-child {
+    color: var(--itzone-base);
+}
+
+.contact-page__availability-title {
+    margin-top: 28px;
+    margin-bottom: 18px;
+    font-size: 40px;
+    line-height: 1.15;
+    color: var(--itzone-white);
+}
+
+.contact-page__availability-text {
+    max-width: 460px;
+    margin: 0;
+    color: rgba(var(--itzone-white-rgb), 0.75);
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+.contact-page__availability-points {
+    margin-top: 28px;
+}
+
+.contact-page__availability-point {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--itzone-white);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.contact-page__availability-point + .contact-page__availability-point {
+    margin-top: 16px;
+}
+
+.contact-page__availability-point span:first-child {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: rgba(var(--itzone-base-rgb), 0.18);
+    color: var(--itzone-base);
+    flex-shrink: 0;
+}
+
 .contact-page__right {
     position: relative;
     display: block;

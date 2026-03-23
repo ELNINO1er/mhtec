@@ -19,7 +19,7 @@
                 "contact":  "Contact"
             },
     "header":  {
-                   "location":  "Our location",
+                   "location":  "Remote by appointment",
                    "welcome_text":  "MHTECH Consulting supports your digital transformation",
                    "follow_us":  "Follow us:",
                    "contact_label":  "Contact"
@@ -240,7 +240,7 @@
                    "service4":  "IT Staffing",
                    "service5":  "Strategic IT Consulting",
                    "contact_title":  "Contact",
-                   "location":  "Our location",
+                   "location":  "Remote by appointment",
                   "copyright":  "\u00A9 2025 MHTECH Consulting. All rights reserved.",
                    "terms":  "Terms of use",
                    "privacy":  "Privacy policy"
@@ -407,7 +407,7 @@
                        "footer_post2_title":  "5 ways to improve IT operations reliability",
                        "footer_post2_date":  "Feb 17, 2025",
                        "footer_contact_title":  "Contact",
-                       "footer_location":  "Our location",
+                       "footer_location":  "Remote by appointment",
                        "footer_copyright":  "\u00A9 2025 MHTECH Consulting. All rights reserved.",
                        "footer_terms":  "Terms of use",
                        "footer_privacy":  "Privacy policy",
@@ -490,7 +490,15 @@
                          "phone_label":  "Phone",
                          "email_label":  "Email",
                          "address_label":  "Address",
+                         "availability_label":  "Availability",
+                         "availability_value":  "Remote and by appointment",
                          "form_title":  "Let\u0027s build your next technology solution",
+                         "remote_badge":  "Remote-first",
+                         "remote_title":  "Remote and by appointment",
+                         "remote_text":  "We support clients remotely and schedule meetings based on project needs and collaboration requirements.",
+                         "remote_point_1":  "Remote consultation",
+                         "remote_point_2":  "French and English communication",
+                         "remote_point_3":  "Response within 24 business hours",
                          "name_placeholder":  "Your name",
                          "email_placeholder":  "your@email.com",
                          "phone_placeholder":  "+1 248 938 1944",

@@ -677,6 +677,14 @@
         padding: 60px 50px 60px;
     }
 
+    .contact-page__availability-card {
+        padding: 42px 32px;
+    }
+
+    .contact-page__availability-title {
+        font-size: 34px;
+    }
+
 
 
 
@@ -2279,6 +2287,20 @@
 
     .contact-page__form-title {
         font-size: 35px;
+    }
+
+    .contact-page__availability-card {
+        min-height: auto;
+        padding: 36px 24px;
+    }
+
+    .contact-page__availability-title {
+        font-size: 30px;
+    }
+
+    .contact-page__availability-text {
+        font-size: 16px;
+        line-height: 1.8;
     }
 
     .contact-page {
