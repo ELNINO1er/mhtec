@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /assets/inc/
+
+Sitemap: https://mhtechconsulting.com/sitemap.xml

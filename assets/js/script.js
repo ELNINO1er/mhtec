@@ -760,6 +760,11 @@
   }
 
   function getCurrentFormLang() {
+    var urlLang = new URLSearchParams(window.location.search).get("lang");
+    if (urlLang === "fr") {
+      return "fr";
+    }
+
     if (window.getI18n && typeof window.getI18n === "function") {
       var instance = window.getI18n();
       if (instance && typeof instance.getCurrentLang === "function") {

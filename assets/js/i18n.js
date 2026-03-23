@@ -5,9 +5,32 @@
 
 class I18n {
     constructor() {
-        this.currentLang = localStorage.getItem('mhtech_lang') || 'en';
+        this.currentLang = this.getInitialLanguage();
         this.translations = {};
         this.init();
+    }
+
+    getInitialLanguage() {
+        const params = new URLSearchParams(window.location.search);
+        const urlLang = params.get('lang');
+
+        if (urlLang === 'fr') {
+            return 'fr';
+        }
+
+        return localStorage.getItem('mhtech_lang') === 'fr' ? 'fr' : 'en';
+    }
+
+    syncLanguageUrl(lang) {
+        const url = new URL(window.location.href);
+
+        if (lang === 'fr') {
+            url.searchParams.set('lang', 'fr');
+        } else {
+            url.searchParams.delete('lang');
+        }
+
+        window.history.replaceState({}, '', url.toString());
     }
 
     async init() {
@@ -25,6 +48,7 @@ class I18n {
             this.translations = await response.json();
             this.currentLang = lang;
             localStorage.setItem('mhtech_lang', lang);
+            this.syncLanguageUrl(lang);
             this.updateLanguageButton();
         } catch (error) {
             console.error('Erreur lors du chargement des traductions:', error);
@@ -91,6 +115,11 @@ class I18n {
         this.updateLanguageButton();
         this.refreshAnimatedTitles();
         this.refreshSelectPickers();
+        window.dispatchEvent(new CustomEvent('mhtech:langchange', {
+            detail: {
+                lang: this.currentLang
+            }
+        }));
     }
 
     containsHtml(value) {

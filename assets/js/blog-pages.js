@@ -1,5 +1,18 @@
 (function () {
     function getCurrentLang() {
+        const params = new URLSearchParams(window.location.search);
+
+        if (params.get('lang') === 'fr') {
+            return 'fr';
+        }
+
+        if (window.getI18n && typeof window.getI18n === 'function') {
+            const instance = window.getI18n();
+            if (instance && typeof instance.getCurrentLang === 'function') {
+                return instance.getCurrentLang() === 'fr' ? 'fr' : 'en';
+            }
+        }
+
         return localStorage.getItem('mhtech_lang') === 'fr' ? 'fr' : 'en';
     }
 
@@ -25,7 +38,14 @@
     }
 
     function buildPostUrl(slug) {
-        return 'blog-details.html?slug=' + encodeURIComponent(slug);
+        const params = new URLSearchParams();
+        params.set('slug', slug);
+
+        if (getCurrentLang() === 'fr') {
+            params.set('lang', 'fr');
+        }
+
+        return 'blog-details.html?' + params.toString();
     }
 
     function wireBlogListingLinks() {
@@ -201,6 +221,10 @@
         renderCategories(post, lang);
         renderRecentPosts(post, lang);
         renderTagCloud(post, lang);
+
+        if (window.updateSeoHead && typeof window.updateSeoHead === 'function') {
+            window.updateSeoHead();
+        }
     }
 
     function runPageEnhancements() {
