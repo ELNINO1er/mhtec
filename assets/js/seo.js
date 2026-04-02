@@ -193,14 +193,20 @@
     };
 
     function getCurrentPage() {
-        const path = window.location.pathname.replace(/\/+$/, "");
-        const lastSegment = path.split("/").pop() || "index";
+        const path = window.location.pathname || "/";
+        const normalizedPath = path.replace(/\/+$/, "");
+        const lastSegment = normalizedPath.split("/").pop() || "";
 
-        if (lastSegment === "" || lastSegment === "index") {
+        if (!lastSegment || lastSegment === "index" || lastSegment === "index.html") {
             return "index.html";
         }
 
-        return lastSegment.endsWith(".html") ? lastSegment : lastSegment + ".html";
+        if (lastSegment.endsWith(".html")) {
+            return lastSegment;
+        }
+
+        const candidate = lastSegment + ".html";
+        return Object.prototype.hasOwnProperty.call(PAGE_META, candidate) ? candidate : "index.html";
     }
 
     function getCurrentLang() {
@@ -245,6 +251,25 @@
         const query = params.toString();
         url.search = query;
         return url.toString();
+    }
+
+    function escapeRegExp(value) {
+        return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    function getSiteBasePath() {
+        const currentPage = getCurrentPage();
+        let pathname = window.location.pathname || "/";
+
+        if (currentPage === "index.html") {
+            pathname = pathname.replace(/\/index(?:\.html)?$/i, "");
+        } else {
+            const pageSlug = currentPage.replace(/\.html$/i, "");
+            pathname = pathname.replace(new RegExp("/" + escapeRegExp(pageSlug) + "(?:\\.html)?$", "i"), "");
+        }
+
+        pathname = pathname.replace(/\/+$/, "");
+        return pathname === "/" ? "" : pathname;
     }
 
     function getCurrentExtraParams(page) {
@@ -520,9 +545,32 @@
         };
     }
 
+    function getRuntimeBasePath() {
+        const seoScript = document.querySelector('script[src*="assets/js/seo.js"]');
+        const scriptUrl = seoScript
+            ? new URL(seoScript.getAttribute("src"), window.location.href)
+            : new URL(window.location.href);
+        const normalizedPath = scriptUrl.pathname.replace(/\/assets\/js\/seo\.js$/i, "/");
+
+        return normalizedPath.endsWith("/") ? normalizedPath : normalizedPath + "/";
+    }
+
     function updateInternalLinks(lang) {
+        const basePath = getRuntimeBasePath();
+        const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+
         document.querySelectorAll('a[href]').forEach(function (link) {
-            const rawHref = link.getAttribute("href");
+            const currentHref = link.getAttribute("href");
+
+            if (!currentHref) {
+                return;
+            }
+
+            if (!link.hasAttribute("data-seo-original-href")) {
+                link.setAttribute("data-seo-original-href", currentHref);
+            }
+
+            const rawHref = link.getAttribute("data-seo-original-href");
 
             if (!rawHref ||
                 rawHref.startsWith("#") ||
@@ -535,29 +583,42 @@
                 return;
             }
 
-            if (!/\.html(\?|$)/i.test(rawHref)) {
+            if (!/\.html(\?|#|$)/i.test(rawHref)) {
                 return;
             }
 
-            const url = new URL(rawHref, window.location.href);
+            const hrefMatch = rawHref.match(/^([^?#]+)(\?[^#]*)?(#.*)?$/);
+
+            if (!hrefMatch) {
+                return;
+            }
+
+            const pathPart = hrefMatch[1]
+                .replace(/^\.\/+/, "")
+                .replace(/^\/+/, "");
+            const queryPart = hrefMatch[2] || "";
+            const hashPart = hrefMatch[3] || "";
+            const params = new URLSearchParams(queryPart.replace(/^\?/, ""));
 
             if (lang === "fr") {
-                url.searchParams.set("lang", "fr");
+                params.set("lang", "fr");
             } else {
-                url.searchParams.delete("lang");
+                params.delete("lang");
             }
 
-            let relativePath = url.pathname;
-
-            if (relativePath !== "/") {
-                relativePath = relativePath.replace(/\.html$/i, "");
+            if (isLocalhost) {
+                params.set("_nav", "4");
+            } else {
+                params.delete("_nav");
             }
 
-            const relativeHref = relativePath === "/"
-                ? "/" + (url.search ? url.search : "") + (url.hash ? url.hash : "")
-                : relativePath.split("/").pop() + (url.search ? url.search : "") + (url.hash ? url.hash : "");
+            const targetPath = pathPart.toLowerCase() === "index.html"
+                ? basePath
+                : basePath + pathPart;
+            const queryString = params.toString();
+            const finalHref = targetPath + (queryString ? "?" + queryString : "") + hashPart;
 
-            link.setAttribute("href", relativeHref);
+            link.setAttribute("href", finalHref);
         });
     }
 
@@ -591,7 +652,6 @@
         upsertJsonLd("organization", buildOrganizationSchema());
         upsertJsonLd("page", buildPageSchema(context));
         upsertJsonLd("breadcrumb", buildBreadcrumbSchema(context));
-
         updateInternalLinks(context.lang);
     }
 

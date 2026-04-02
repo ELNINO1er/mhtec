@@ -1,5 +1,5 @@
 Options -Indexes
-ErrorDocument 404 /404.html
+ErrorDocument 404 404.html
 
 <IfModule mod_alias.c>
     RedirectMatch 410 ^/(blog-left-sidebar|blog-right-sidebar|blog-standard|cart|checkout|faq|index-dark|index-one-page|index2-one-page|index2|index3-one-page|index3|login|pricing|product-details|products|project-details|sign-up|team-details|team|test-i18n|test-db-connection|wishlist)(\.(html|php))?$
@@ -8,12 +8,16 @@ ErrorDocument 404 /404.html
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1)$ [NC]
     RewriteRule ^index(\.html)?$ / [R=301,L]
-    RewriteCond %{THE_REQUEST} \s/+([^.?\s]+)\.html([?\s]|$) [NC]
-    RewriteRule ^ %1 [R=301,L]
 
+    RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1)$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+([^.?\s]+)\.html([?\s]|$) [NC]
+    RewriteRule ^ %1 [R=301,NE,L]
+
+    RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1)$ [NC]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+    RewriteCond %{REQUEST_FILENAME}.html -f
     RewriteRule ^([^.]+)/?$ $1.html [L]
 </IfModule>
