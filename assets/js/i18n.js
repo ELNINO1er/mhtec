@@ -126,6 +126,7 @@ class I18n {
             element.innerHTML = translation;
         });
 
+        this.updateSearchInputs();
         this.updatePageTitle();
         this.updateLanguageButton();
         this.syncFormLanguageFields();
@@ -173,6 +174,20 @@ class I18n {
                 $('.selectpicker').selectpicker('refresh');
             }
         }
+    }
+
+    updateSearchInputs() {
+        const searchPlaceholder = this.translate('search.placeholder');
+        const searchInputs = document.querySelectorAll('input[name="search-field"], input[name="q"], .sidebar__search-form input[type="search"]');
+
+        searchInputs.forEach((input) => {
+            if (!input.hasAttribute('data-i18n-placeholder')) {
+                input.setAttribute('data-i18n-placeholder', 'search.placeholder');
+            }
+
+            input.setAttribute('placeholder', searchPlaceholder);
+            input.setAttribute('aria-label', searchPlaceholder);
+        });
     }
 
     syncFormLanguageFields() {

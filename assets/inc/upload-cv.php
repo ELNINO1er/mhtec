@@ -2,6 +2,7 @@
 require_once __DIR__ . '/app/settings.php';
 require_once __DIR__ . '/app/Database.php';
 require_once __DIR__ . '/app/MailTemplate.php';
+require_once __DIR__ . '/app/RequestGuard.php';
 
 function detectUploadCvLang(): string
 {
@@ -34,6 +35,8 @@ function getUploadCvCopy(string $lang): array
             'error_invalid_extension' => 'Extension de fichier non autorisee',
             'error_create_dir' => 'Impossible de creer le dossier de stockage',
             'error_save_file' => "Erreur lors de l'enregistrement du fichier",
+            'submission_blocked' => 'La candidature n a pas pu etre verifiee. Merci de recharger la page et de reessayer.',
+            'rate_limited' => 'Trop de depots ont ete detectes. Merci de patienter avant de reessayer.',
             'user_subject' => 'Candidature recue - MHTECH Consulting',
             'user_preheader' => 'Votre CV a bien ete recu par MHTECH Consulting.',
             'user_eyebrow' => 'Staffing IT',
@@ -90,6 +93,8 @@ function getUploadCvCopy(string $lang): array
         'error_invalid_extension' => 'Invalid file extension',
         'error_create_dir' => 'Unable to create the storage directory',
         'error_save_file' => 'Error while saving the file',
+        'submission_blocked' => 'The application could not be verified. Please reload the page and try again.',
+        'rate_limited' => 'Too many uploads were detected. Please wait before trying again.',
         'user_subject' => 'Application received - MHTECH Consulting',
         'user_preheader' => 'Your resume has been received by MHTECH Consulting.',
         'user_eyebrow' => 'IT Staffing',
@@ -135,6 +140,14 @@ try {
 
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         throw new Exception($copy['method_not_allowed']);
+    }
+
+    if (RequestGuard::isHoneypotTriggered($_POST) || !RequestGuard::hasValidSubmissionTiming($_POST, 2, 43200)) {
+        throw new Exception($copy['submission_blocked']);
+    }
+
+    if (RequestGuard::isRateLimited('upload-cv', 4, 900)) {
+        throw new Exception($copy['rate_limited']);
     }
 
     $name = isset($_POST['name']) ? trim((string) preg_replace("/[^.\-' a-zA-Z0-9]/", '', (string) $_POST['name'])) : '';

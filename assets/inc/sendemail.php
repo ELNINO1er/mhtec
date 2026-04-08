@@ -2,6 +2,7 @@
 require_once __DIR__ . '/app/settings.php';
 require_once __DIR__ . '/app/Database.php';
 require_once __DIR__ . '/app/MailTemplate.php';
+require_once __DIR__ . '/app/RequestGuard.php';
 
 function detectFormLang(): string
 {
@@ -26,6 +27,8 @@ function getSendEmailCopy(string $lang): array
             'required' => 'Veuillez remplir tous les champs obligatoires.',
             'invalid_email' => 'Adresse email invalide.',
             'contact_save_error' => "Erreur lors de l'enregistrement de votre demande.",
+            'submission_blocked' => 'La demande n a pas pu etre verifiee. Merci de reessayer.',
+            'rate_limited' => 'Trop de tentatives ont ete detectees. Merci de patienter quelques minutes avant de reessayer.',
             'newsletter_success' => 'Merci pour votre abonnement ! Vous recevrez nos actualites prochainement.',
             'contact_success' => 'Merci de nous avoir contacte ! Nous vous repondrons dans les plus brefs delais.',
             'generic_error' => 'Une erreur est survenue : ',
@@ -98,6 +101,8 @@ function getSendEmailCopy(string $lang): array
         'required' => 'Please fill in all required fields.',
         'invalid_email' => 'Invalid email address.',
         'contact_save_error' => 'An error occurred while saving your request.',
+        'submission_blocked' => 'The request could not be verified. Please try again.',
+        'rate_limited' => 'Too many attempts were detected. Please wait a few minutes before trying again.',
         'newsletter_success' => 'Thank you for subscribing. You will receive our updates soon.',
         'contact_success' => 'Thank you for contacting us. We will get back to you shortly.',
         'generic_error' => 'An error occurred: ',
@@ -206,7 +211,16 @@ try {
 
     $name = isset($_POST['name']) ? cleanText((string) $_POST['name'], "/[^.\-' a-zA-Z0-9]/") : '';
     $senderEmail = isset($_POST['email']) ? cleanText((string) $_POST['email'], "/[^.\-_@a-zA-Z0-9]/") : '';
-    $phone = isset($_POST['phone']) ? cleanText((string) $_POST['phone'], "/[^+.\-() 0-9]/") : '';
+    if (RequestGuard::isHoneypotTriggered($_POST) || !RequestGuard::hasValidSubmissionTiming($_POST, 2, 43200)) {
+        throw new Exception($copy['submission_blocked']);
+    }
+
+    if (RequestGuard::isRateLimited('sendemail', 8, 600)) {
+        throw new Exception($copy['rate_limited']);
+    }
+
+    $phoneInput = $_POST['phone'] ?? $_POST['Phone'] ?? '';
+    $phone = $phoneInput !== '' ? cleanText((string) $phoneInput, "/[^+.\-() 0-9]/") : '';
     $subject = isset($_POST['subject']) ? cleanText((string) $_POST['subject'], "/[^.\-_@a-zA-Z0-9 ]/") : '';
     $message = isset($_POST['message']) ? trim((string) preg_replace("/(From:|To:|BCC:|CC:|Subject:|Content-Type:)/i", '', (string) ($_POST['message'] ?? ''))) : '';
     $requestType = isset($_POST['request_type']) ? cleanText((string) $_POST['request_type'], "/[^a-zA-Z0-9_]/") : '';

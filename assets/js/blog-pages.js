@@ -48,15 +48,15 @@
         const params = new URLSearchParams();
         params.set('slug', slug);
 
-        if (getCurrentLang() === 'fr') {
-            params.set('lang', 'fr');
+        if (getCurrentLang() === 'en') {
+            params.set('lang', 'en');
         }
 
         return 'blog-details?' + params.toString();
     }
 
     function wireBlogListingLinks() {
-        document.querySelectorAll('.blog-one__single[data-blog-slug]').forEach((card) => {
+        document.querySelectorAll('[data-blog-slug]').forEach((card) => {
             const slug = card.getAttribute('data-blog-slug');
             if (!slug) {
                 return;
@@ -124,6 +124,78 @@
 
         const content = getPostContent(currentPost, lang);
         list.innerHTML = content.tags.map((tag) => '<li><a href="blog.html">' + tag + '</a></li>').join('');
+    }
+
+    function getSearchQuery() {
+        const query = new URLSearchParams(window.location.search).get('q');
+        return query ? query.trim() : '';
+    }
+
+    function filterBlogListing() {
+        const query = getSearchQuery();
+        if (!query) {
+            return;
+        }
+
+        const lang = getCurrentLang();
+        const normalizedQuery = query.toLowerCase();
+        const statusId = 'blog-search-status';
+        let visibleCount = 0;
+
+        document.querySelectorAll('input[name="search-field"], input[name="q"], .sidebar__search-form input[type="search"]').forEach((input) => {
+            input.value = query;
+        });
+
+        document.querySelectorAll('.blog-one__single[data-blog-slug]').forEach((card) => {
+            const slug = card.getAttribute('data-blog-slug');
+            const post = getPostBySlug(slug);
+            const wrapper = card.closest('.col-xl-4, .col-lg-6, .col-md-6') || card.parentElement;
+
+            if (!post || !wrapper) {
+                return;
+            }
+
+            const content = getPostContent(post, lang);
+            const searchableText = [
+                content.title,
+                content.intro,
+                content.body,
+                content.author,
+                (content.tags || []).join(' ')
+            ].join(' ').toLowerCase();
+
+            const isMatch = searchableText.includes(normalizedQuery);
+            wrapper.style.display = isMatch ? '' : 'none';
+
+            if (isMatch) {
+                visibleCount += 1;
+            }
+        });
+
+        const container = document.querySelector('.blog-page .container');
+        if (!container) {
+            return;
+        }
+
+        let status = document.getElementById(statusId);
+        if (!status) {
+            status = document.createElement('p');
+            status.id = statusId;
+            status.className = 'blog-search-status';
+            status.style.marginBottom = '24px';
+            status.style.fontWeight = '600';
+            container.insertBefore(status, container.querySelector('.row'));
+        }
+
+        if (visibleCount > 0) {
+            status.textContent = lang === 'fr'
+                ? 'Resultats pour "' + query + '"'
+                : 'Results for "' + query + '"';
+        } else {
+            status.textContent = lang === 'fr'
+                ? 'Aucun article ne correspond a "' + query + '".'
+                : 'No article matches "' + query + '".';
+        }
     }
 
     function renderBlogDetail() {
@@ -237,8 +309,12 @@
     function runPageEnhancements() {
         const page = getCurrentPage();
 
-        if (page === 'blog.html') {
+        if (document.querySelector('[data-blog-slug]')) {
             wireBlogListingLinks();
+        }
+
+        if (page === 'blog.html') {
+            filterBlogListing();
         }
 
         if (page === 'blog-details.html') {

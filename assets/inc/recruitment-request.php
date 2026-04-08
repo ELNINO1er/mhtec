@@ -2,6 +2,7 @@
 require_once __DIR__ . '/app/settings.php';
 require_once __DIR__ . '/app/Database.php';
 require_once __DIR__ . '/app/MailTemplate.php';
+require_once __DIR__ . '/app/RequestGuard.php';
 
 function detectRecruitmentLang(): string
 {
@@ -22,6 +23,8 @@ function getRecruitmentCopy(string $lang): array
             'required' => 'Veuillez remplir tous les champs obligatoires',
             'invalid_email' => 'Adresse email invalide',
             'invalid_duration' => 'Duree de mission invalide',
+            'submission_blocked' => 'La demande n a pas pu etre verifiee. Merci de recharger la page et de reessayer.',
+            'rate_limited' => 'Trop de demandes ont ete detectees. Merci de patienter avant de reessayer.',
             'user_subject' => 'Demande de recrutement recue - MHTECH Consulting',
             'user_preheader' => 'Votre demande de recrutement a bien ete recue par MHTECH Consulting.',
             'user_eyebrow' => 'Staffing IT',
@@ -71,6 +74,8 @@ function getRecruitmentCopy(string $lang): array
         'required' => 'Please fill in all required fields',
         'invalid_email' => 'Invalid email address',
         'invalid_duration' => 'Invalid engagement duration',
+        'submission_blocked' => 'The request could not be verified. Please reload the page and try again.',
+        'rate_limited' => 'Too many requests were detected. Please wait before trying again.',
         'user_subject' => 'Recruitment request received - MHTECH Consulting',
         'user_preheader' => 'Your recruitment request has been received by MHTECH Consulting.',
         'user_eyebrow' => 'IT Staffing',
@@ -135,6 +140,14 @@ try {
 
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         throw new Exception($copy['method_not_allowed']);
+    }
+
+    if (RequestGuard::isHoneypotTriggered($_POST) || !RequestGuard::hasValidSubmissionTiming($_POST, 2, 43200)) {
+        throw new Exception($copy['submission_blocked']);
+    }
+
+    if (RequestGuard::isRateLimited('recruitment-request', 4, 900)) {
+        throw new Exception($copy['rate_limited']);
     }
 
     $company = isset($_POST['company']) ? trim((string) preg_replace("/[^.\-' a-zA-Z0-9]/", '', (string) $_POST['company'])) : '';

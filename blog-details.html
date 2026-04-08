@@ -443,8 +443,8 @@
                         <div class="sidebar">
                             <!--Start Sidebar Single-->
                             <div class="sidebar__single sidebar__search wow fadeInUp" data-wow-delay=".1s">
-                                <form action="#" class="sidebar__search-form">
-                                    <input type="search" data-i18n-placeholder="blog_details.search_placeholder" placeholder="Rechercher...">
+                                <form action="blog.html" method="get" class="sidebar__search-form">
+                                    <input type="search" name="q" data-i18n-placeholder="search.placeholder" placeholder="Rechercher">
                                     <button type="submit"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
@@ -719,9 +719,9 @@
     <div class="search-popup">
         <div class="color-layer"></div>
         <button class="close-search"><span class="far fa-times fa-fw"></span></button>
-        <form method="post" action="blog.html">
+        <form method="get" action="blog.html">
             <div class="form-group">
-                <input type="search" name="search-field" value="" data-i18n-placeholder="about_page.search_placeholder" placeholder="Rechercher" required="">
+                <input type="search" name="q" value="" data-i18n-placeholder="search.placeholder" placeholder="Rechercher" required="">
                 <button type="submit"><i class="fas fa-search"></i></button>
             </div>
         </form>

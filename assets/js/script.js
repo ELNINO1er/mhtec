@@ -775,25 +775,64 @@
     return localStorage.getItem("mhtech_lang") === "fr" ? "fr" : "en";
   }
 
-  function syncFormLanguageFields() {
+  function ensureHiddenInput($form, config) {
+    var $input = $form.find('[name="' + config.name + '"]');
+
+    if (!$input.length) {
+      $input = $("<input>")
+        .attr("type", config.type || "hidden")
+        .attr("name", config.name)
+        .appendTo($form);
+    }
+
+    if (config.attributes) {
+      Object.keys(config.attributes).forEach(function (key) {
+        $input.attr(key, config.attributes[key]);
+      });
+    }
+
+    if (typeof config.value !== "undefined") {
+      $input.val(config.value);
+    }
+
+    return $input;
+  }
+
+  function syncFormLanguageFields(resetTimestamp) {
     var currentLang = getCurrentFormLang();
 
     $(".contact-form-validated").each(function () {
       var $form = $(this);
-      var $langField = $form.find('input[name="lang"]');
+      ensureHiddenInput($form, {
+        name: "lang",
+        type: "hidden",
+        value: currentLang
+      });
 
-      if ($langField.length) {
-        $langField.val(currentLang);
-        return;
+      ensureHiddenInput($form, {
+        name: "website",
+        type: "text",
+        value: "",
+        attributes: {
+          autocomplete: "off",
+          tabindex: "-1",
+          "aria-hidden": "true",
+          style: "position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;opacity:0;"
+        }
+      });
+
+      var $startedAtField = ensureHiddenInput($form, {
+        name: "form_started_at",
+        type: "hidden"
+      });
+
+      if (resetTimestamp || !$startedAtField.val()) {
+        $startedAtField.val(String(Date.now()));
       }
-
-      $('<input type="hidden" name="lang">')
-        .val(currentLang)
-        .appendTo($form);
     });
   }
 
-  syncFormLanguageFields();
+  syncFormLanguageFields(true);
 
   $(document).on("click", ".lang-btn", function () {
     setTimeout(syncFormLanguageFields, 50);
@@ -825,6 +864,8 @@
             if ($.fn.selectpicker) {
               $form.find(".selectpicker").selectpicker("refresh");
             }
+
+            syncFormLanguageFields(true);
           }
         };
 
@@ -840,6 +881,57 @@
         return false;
       }
     });
+  });
+
+  function normalizeMenuTarget(value) {
+    if (!value) {
+      return "index";
+    }
+
+    var pathValue = value;
+
+    try {
+      pathValue = new URL(value, window.location.origin).pathname;
+    } catch (error) {
+      pathValue = value;
+    }
+
+    pathValue = pathValue.split("?")[0].split("#")[0].replace(/\/+$/, "");
+    var lastSegment = pathValue.split("/").pop() || "index";
+
+    if (lastSegment === "index" || lastSegment === "index.html") {
+      return "index";
+    }
+
+    return lastSegment.replace(/\.html$/i, "");
+  }
+
+  function buildBlogSearchUrl(query) {
+    var params = new URLSearchParams();
+    var lang = getCurrentFormLang();
+    var basePath = (window.location.pathname || "/").replace(/\/[^\/]*$/, "/");
+
+    if (query) {
+      params.set("q", query);
+    }
+
+    if (lang === "en") {
+      params.set("lang", "en");
+    }
+
+    return basePath + "blog.html" + (params.toString() ? "?" + params.toString() : "");
+  }
+
+  $(document).on("submit", "form", function (e) {
+    var $form = $(this);
+    var $searchInput = $form.find('input[type="search"]').first();
+
+    if (!$searchInput.length) {
+      return;
+    }
+
+    e.preventDefault();
+    window.location.href = buildBlogSearchUrl(($searchInput.val() || "").trim());
   });
 
 
@@ -901,7 +993,7 @@
   }
 
   function dynamicCurrentMenuClass(selector) {
-    let fileName = window.location.pathname.split("/").pop() || ""; // Default to index.html if no file name
+    let fileName = normalizeMenuTarget(window.location.pathname);
 
 
     // Remove existing 'current' classes to avoid duplicates
@@ -910,7 +1002,7 @@
     // Iterate through all <li> elements, including nested ones
     selector.find("li").each(function () {
       let anchor = $(this).find("a").first(); // Get the first <a> in the <li>
-      if (anchor.length && anchor.attr("href") === fileName) {
+      if (anchor.length && normalizeMenuTarget(anchor.attr("href")) === fileName) {
         $(this).addClass("current"); // Add 'current' to the matching <li>
         // Add 'current' to parent <li> if it exists (for dropdowns)
         let parentLi = $(this).closest("li.dropdown");
